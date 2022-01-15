@@ -1,4 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-15T15:57:05+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">John’s Blog</title><subtitle>John's Diary</subtitle><entry><title type="html">Jekyll 강좌(1) - 블로그 만들기</title><link href="http://localhost:4000/jekyll-basic" rel="alternate" type="text/html" title="Jekyll 강좌(1) - 블로그 만들기" /><published>2022-01-14T09:30:00+09:00</published><updated>2022-01-14T09:30:00+09:00</updated><id>http://localhost:4000/jekyll-basic</id><content type="html" xml:base="http://localhost:4000/jekyll-basic">&lt;p&gt;Hello, This is first jekyll post.&lt;/p&gt;</content><author><name>John</name></author><category term="jekyll" /><summary type="html">Hello, This is first jekyll post.</summary></entry><entry><title type="html">Python 강좌(3) - Python 기본3</title><link href="http://localhost:4000/python-first" rel="alternate" type="text/html" title="Python 강좌(3) - Python 기본3" /><published>2022-01-11T00:30:00+09:00</published><updated>2022-01-11T00:30:00+09:00</updated><id>http://localhost:4000/python-first</id><content type="html" xml:base="http://localhost:4000/python-first">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-16T00:59:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">John’s IT Blog</title><subtitle>AI &amp; Backend Developer</subtitle><entry><title type="html">합성곱 신경망 기초(CNN, Convolution Neural Network)</title><link href="http://localhost:4000/cnn-basic" rel="alternate" type="text/html" title="합성곱 신경망 기초(CNN, Convolution Neural Network)" /><published>2022-01-11T08:00:00+09:00</published><updated>2022-01-11T08:00:00+09:00</updated><id>http://localhost:4000/cnn-basic</id><content type="html" xml:base="http://localhost:4000/cnn-basic">&lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망&lt;/li&gt;
+  &lt;li&gt;이미지 경우, 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP 경우, 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점&lt;/li&gt;
+  &lt;li&gt;데이터의 공간적 정보를 유지하면서 배열 데이터 정보를 다음 레이어로 보낼 수 있어서 이미지(RGB 채널의 3차원 배열) 분야에서 적극 활용&lt;/li&gt;
+  &lt;li&gt;이미지의 특징을 뚜렷하게 검출하기 때문에 이미지 분류에서 높은 성능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-cnn_basic.png&quot; alt=&quot;cnn_basic&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;CNN에서는 필터를 이용한 Convolution연산을 반복적으로 진행하면서 이미지의 특징을 검출하기 때문에 생각보다 구조가 간단합니다. 
+&lt;strong&gt;다음의 세 가지 layer&lt;/strong&gt;를 기억하시면 됩니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Convolution layer : 특징 추출(feature extraction)&lt;/li&gt;
+  &lt;li&gt;Pooling layer : 특징 추출(feature extraction)&lt;/li&gt;
+  &lt;li&gt;Fully-connected layer : 분류(classificaiton)&lt;br /&gt;
+&lt;img src=&quot;./assets/built/images/cnn/22-01-16-cnn_basic_2.png&quot; alt=&quot;cnn_basic_2&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[ 학습 내용 ]&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;필터 (커널)&lt;/li&gt;
+  &lt;li&gt;패딩, 스트라이드&lt;/li&gt;
+  &lt;li&gt;Pooling&lt;/li&gt;
+  &lt;li&gt;ReLu 활성화 함수&lt;/li&gt;
+  &lt;li&gt;Fully-Connected layer&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;필터커널&quot;&gt;필터(커널)&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-06-filter.gif&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;커널(kernel)이라고도 불리며 이미지의 특징을 찾아내기 위한 공용 파라미터&lt;/li&gt;
+  &lt;li&gt;필터 통과 이미지는 특성값을 가지고 있어 feature map 또는 activation map 라고함&lt;/li&gt;
+  &lt;li&gt;이미지 픽셀 값은 Convolution 연산에 의해 변환되고 이 과정에서 색상, 선, 형태, 경계 등의 특징(feature)이 뚜렷해짐&lt;/li&gt;
+  &lt;li&gt;필터가 많을수록 더 많은 이미지 특성을 추출하며, 컨볼루션 연산이 진행하면 할수록 이미지 크기는 작아지고 채널 수는 증가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;패딩-스트라이드&quot;&gt;패딩, 스트라이드&lt;/h3&gt;
+
+&lt;p&gt;컨볼루션 연산을 계속할 경우, 이미지 크기가 작아져 어떻게 될까요?
+연산할 수 있는 픽셀이 없어 더 이상 훈련할 수 없게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-padding.svg&quot; alt=&quot;padding&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;패딩 (Padding)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;network가 깊어지면 이미지 크기가 무한정 작아지는 것을 막기 위해 패딩이 존재&lt;/li&gt;
+  &lt;li&gt;이미지 테두리에 일정 값(0 또는 1)을 넣어주는 작업&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;▶ 패딩 효과&lt;br /&gt;
+① 합성곱 연산을 할 때마다 이미지 축소 문제 발생 → 연산 결과 실제 입력된 이미지와 같은 크기 출력&lt;br /&gt;
+② 테두리에 위치한 픽셀은 필터 결과 단 한번만 사용 → 패딩으로 연산 두번 진행(테두리 이미지 정보 가져옴)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;스트라이드 (Stride)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-stride.svg&quot; alt=&quot;stride&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;이미지에 필터를 적용하는 간격&lt;/li&gt;
+  &lt;li&gt;스트라이드 값을 크게 주면 이동 간격이 넓어져 출력 데이터의 크기가 작아짐&lt;/li&gt;
+  &lt;li&gt;패딩과 다르게 스트라이드는 출력데이터의 크기를 축소시키는 역할&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;풀링&quot;&gt;풀링&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-pooling.png&quot; alt=&quot;pooling&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pooling layer는 대부분 convolutional layer 바로 다음에 위치해 공간(spatial size)을 축소&lt;/li&gt;
+  &lt;li&gt;채널 크기는 고정되며 입력 데이터의 크기가 축소되고 학습하지 않기 때문에 파라미터 수가 줄어들어 오버피팅(Overfitting) 방지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;오버피팅(Overfitting) : 모델이 훈련 데이터에만 잘 맞춰진 경우로 결과가 훈련 데이터 정확도는 높지만 새롭게 입력 받는 테스트 데이터의 정확도는 낮아 모델 성능이 떨어지는 현상&lt;br /&gt;
+풀링(Pooling)에는 맥스 풀링(Max Pooing)과 평균 풀링(Average Pooling)이 존재&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;맥스 풀링(Max Pooing) : 대상 이미지 영역에서 최대값을 구함&lt;/li&gt;
+  &lt;li&gt;평균 풀링(Average Pooling) : 대상 이미지 영역에서 평균값을 구함&lt;br /&gt;
+※ stride =2 를 특징으로 함&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;relu&quot;&gt;ReLu&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-relu.png&quot; alt=&quot;relu&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ReLu(Rectified Linear Unit) 활성화 함수는 비선형성 함수로 기본 선형 특성을 나타내는 layer에 비선형성을 증가&lt;/li&gt;
+  &lt;li&gt;ReLu 함수의 범위는 R(z)=max(0, z) 양수이기 때문에 vanishing gradient 문제점을 극복하고 학습 속도와 성능을 향상시켜 CNN에서 주로 사용되는 활성화 함수&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fully-connected-layer&quot;&gt;Fully-Connected layer&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-fully.png&quot; alt=&quot;fully&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CNN 마지막에서 분류(Classification)를 결정하는 단계&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;flatten : 각 레이어를 1차원 벡터로 변환&lt;/li&gt;
+  &lt;li&gt;fully-conneced layer : 1차원 벡터로 변환된 레이어를 하나의 벡터로 연결 (각 층의 노드들은 하나로 연결)&lt;br /&gt;
+마지막으로 Softmax 함수를 이용해 가장 확률이 높은 class를 output으로 분류합니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;참조 문헌&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer&quot;&gt;https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://seongkyun.github.io/study/2019/01/25/num_of_parameters/&quot;&gt;https://seongkyun.github.io/study/2019/01/25/num_of_parameters/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://taewan.kim/post/cnn/&quot;&gt;http://taewan.kim/post/cnn/&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN이란?</summary></entry><entry><title type="html">Python 강좌(3) - Python 기본3</title><link href="http://localhost:4000/python-first" rel="alternate" type="text/html" title="Python 강좌(3) - Python 기본3" /><published>2022-01-11T00:30:00+09:00</published><updated>2022-01-11T00:30:00+09:00</updated><id>http://localhost:4000/python-first</id><content type="html" xml:base="http://localhost:4000/python-first">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./python-basic&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
@@ -13,7 +119,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;자바 구문&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="python" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 Python 강좌(3) - Python 기본3</summary></entry><entry><title type="html">Python 강좌(2) - Python 제어문</title><link href="http://localhost:4000/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" /><published>2022-01-10T09:35:00+09:00</published><updated>2022-01-10T09:35:00+09:00</updated><id>http://localhost:4000/python-control-statement</id><content type="html" xml:base="http://localhost:4000/python-control-statement">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 Python 강좌(3) - Python 기본3</summary></entry><entry><title type="html">Python 강좌(2) - Python 제어문</title><link href="http://localhost:4000/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" /><published>2022-01-10T09:35:00+09:00</published><updated>2022-01-10T09:35:00+09:00</updated><id>http://localhost:4000/python-control-statement</id><content type="html" xml:base="http://localhost:4000/python-control-statement">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./python-basic&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
@@ -175,7 +281,7 @@ exclude:
   - _posts/iot
   - _posts/r
   - _posts/economy&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/jonghae5/86541894525678d46806e1003746934e.js&quot;&gt; &lt;/script&gt;</content><author><name>John</name></author><category term="python" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 Python 강좌(3) - Python 기본3</summary></entry><entry><title type="html">Java 강좌(1) - Java 기본</title><link href="http://localhost:4000/java-basic" rel="alternate" type="text/html" title="Java 강좌(1) - Java 기본" /><published>2022-01-10T09:30:00+09:00</published><updated>2022-01-10T09:30:00+09:00</updated><id>http://localhost:4000/java-basic</id><content type="html" xml:base="http://localhost:4000/java-basic">&lt;p&gt;자바입니다.&lt;/p&gt;</content><author><name>John</name></author><category term="java" /><summary type="html">자바입니다.</summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="http://localhost:4000/python-basic" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2022-01-10T09:30:00+09:00</published><updated>2022-01-10T09:30:00+09:00</updated><id>http://localhost:4000/python-basic</id><content type="html" xml:base="http://localhost:4000/python-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/jonghae5/86541894525678d46806e1003746934e.js&quot;&gt; &lt;/script&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 Python 강좌(3) - Python 기본3</summary></entry><entry><title type="html">Java 강좌(1) - Java 기본</title><link href="http://localhost:4000/java-basic" rel="alternate" type="text/html" title="Java 강좌(1) - Java 기본" /><published>2022-01-10T09:30:00+09:00</published><updated>2022-01-10T09:30:00+09:00</updated><id>http://localhost:4000/java-basic</id><content type="html" xml:base="http://localhost:4000/java-basic">&lt;p&gt;자바입니다.&lt;/p&gt;</content><author><name>John</name></author><category term="backend" /><summary type="html">자바입니다.</summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="http://localhost:4000/python-basic" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2022-01-10T09:30:00+09:00</published><updated>2022-01-10T09:30:00+09:00</updated><id>http://localhost:4000/python-basic</id><content type="html" xml:base="http://localhost:4000/python-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./python-basic&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
@@ -189,8 +295,4 @@ exclude:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;자바 구문&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="python" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 Python 강좌(3) - Python 기본3</summary></entry><entry><title type="html">Gettysburg Address</title><link href="http://localhost:4000/gettysburg-address" rel="alternate" type="text/html" title="Gettysburg Address" /><published>1863-11-19T19:18:00+09:00</published><updated>1863-11-19T19:18:00+09:00</updated><id>http://localhost:4000/gettysburg-address</id><content type="html" xml:base="http://localhost:4000/gettysburg-address">&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-&lt;p&gt;Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.&lt;/p&gt;
-
-&lt;p&gt;But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.&lt;/p&gt;</content><author><name>abraham</name></author><summary type="html">Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문 Python 강좌(3) - Python 기본3</summary></entry></feed>

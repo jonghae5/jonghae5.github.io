@@ -2,21 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> - Articles</title>
-    <description>John's Diary</description>
+    <description>AI &amp; Backend Developer</description>
     <link>
     http://localhost:4000</link>
     
       
       <item>
-        <title>Jekyll 강좌(1) - 블로그 만들기</title>
+        <title>합성곱 신경망 기초(CNN, Convolution Neural Network)</title>
         
-          <description>&lt;p&gt;Hello, This is first jekyll post.&lt;/p&gt;
+          <description>&lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
+
 </description>
         
-        <pubDate>Fri, 14 Jan 2022 09:30:00 +0900</pubDate>
+        <pubDate>Tue, 11 Jan 2022 08:00:00 +0900</pubDate>
         <link>
-        http://localhost:4000/jekyll-basic</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-basic</guid>
+        http://localhost:4000/cnn-basic</link>
+        <guid isPermaLink="true">http://localhost:4000/cnn-basic</guid>
       </item>
       
     
@@ -91,21 +92,6 @@
         <link>
         http://localhost:4000/java-basic</link>
         <guid isPermaLink="true">http://localhost:4000/java-basic</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Gettysburg Address</title>
-        
-          <description>&lt;p&gt;Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Thu, 19 Nov 1863 19:18:00 +0900</pubDate>
-        <link>
-        http://localhost:4000/gettysburg-address</link>
-        <guid isPermaLink="true">http://localhost:4000/gettysburg-address</guid>
       </item>
       
     

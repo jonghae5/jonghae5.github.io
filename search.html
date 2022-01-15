@@ -47,26 +47,26 @@
     <![endif]-->
     
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <meta name="description" content="John's Diary" />
-    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <meta name="description" content="AI & Backend Developer" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.png" type="image/png" />
     <link rel="canonical" href="http://localhost:4000/search" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
-    <meta property="og:site_name" content="John's Blog" />
+    <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Search Result" />
-    <meta property="og:description" content="John's Diary" />
+    <meta property="og:description" content="AI & Backend Developer" />
     <meta property="og:url" content="http://localhost:4000/search" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/blog-cover1.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Search Result" />
-    <meta name="twitter:description" content="John's Diary" />
+    <meta name="twitter:description" content="AI & Backend Developer" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/blog-cover1.png" />
     <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="John's Blog" />
+    <meta name="twitter:data1" content="John's IT Blog" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="2000" />
@@ -78,7 +78,7 @@
     "@type": "Website",
     "publisher": {
         "@type": "Organization",
-        "name": "John's Blog",
+        "name": "John's IT Blog",
         "logo": "http://localhost:4000/"
     },
     "url": "http://localhost:4000/search",
@@ -92,7 +92,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/search"
     },
-    "description": "John's Diary"
+    "description": "AI & Backend Developer"
 }
     </script>
 
@@ -124,16 +124,15 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="http://localhost:4000/">John's Blog</a>
+                <a class="site-nav-logo" href="http://localhost:4000/">John's IT Blog</a>
             
         
         
             <ul class="nav" role="menu">
     <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
     <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
-    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
-    <li class="nav-jekyll" role="menuitem"><a href="/tag/jekyll/">Jekyll</a></li>
-    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-ai" role="menuitem"><a href="/tag/data/">Data</a></li>
+    <li class="nav-backend" role="menuitem"><a href="/tag/backend/">Backend</a></li>
     <li class="nav-archive" role="menuitem">
         <a href="/archive.html">All Posts</a>
     </li>
@@ -182,12 +181,12 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
-    "jekyll-basic": {
-        "title": "Jekyll 강좌(1) - 블로그 만들기",
+    "cnn-basic": {
+        "title": "합성곱 신경망 기초(CNN, Convolution Neural Network)",
             "author": "John",
             "category": "",
-            "content": "Hello, This is first jekyll post.",
-        "url": "/jekyll-basic"
+            "content": "CNN이란?  Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망  이미지 경우, 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP 경우, 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점  데이터의 공간적 정보를 유지하면서 배열 데이터 정보를 다음 레이어로 보낼 수 있어서 이미지(RGB 채널의 3차원 배열) 분야에서 적극 활용  이미지의 특징을 뚜렷하게 검출하기 때문에 이미지 분류에서 높은 성능CNN에서는 필터를 이용한 Convolution연산을 반복적으로 진행하면서 이미지의 특징을 검출하기 때문에 생각보다 구조가 간단합니다. 다음의 세 가지 layer를 기억하시면 됩니다.  Convolution layer : 특징 추출(feature extraction)  Pooling layer : 특징 추출(feature extraction)  Fully-connected layer : 분류(classificaiton)[ 학습 내용 ]  필터 (커널)  패딩, 스트라이드  Pooling  ReLu 활성화 함수  Fully-Connected layer필터(커널)  커널(kernel)이라고도 불리며 이미지의 특징을 찾아내기 위한 공용 파라미터  필터 통과 이미지는 특성값을 가지고 있어 feature map 또는 activation map 라고함  이미지 픽셀 값은 Convolution 연산에 의해 변환되고 이 과정에서 색상, 선, 형태, 경계 등의 특징(feature)이 뚜렷해짐  필터가 많을수록 더 많은 이미지 특성을 추출하며, 컨볼루션 연산이 진행하면 할수록 이미지 크기는 작아지고 채널 수는 증가패딩, 스트라이드컨볼루션 연산을 계속할 경우, 이미지 크기가 작아져 어떻게 될까요?연산할 수 있는 픽셀이 없어 더 이상 훈련할 수 없게 됩니다.패딩 (Padding)  network가 깊어지면 이미지 크기가 무한정 작아지는 것을 막기 위해 패딩이 존재  이미지 테두리에 일정 값(0 또는 1)을 넣어주는 작업▶ 패딩 효과① 합성곱 연산을 할 때마다 이미지 축소 문제 발생 → 연산 결과 실제 입력된 이미지와 같은 크기 출력② 테두리에 위치한 픽셀은 필터 결과 단 한번만 사용 → 패딩으로 연산 두번 진행(테두리 이미지 정보 가져옴)스트라이드 (Stride)  이미지에 필터를 적용하는 간격  스트라이드 값을 크게 주면 이동 간격이 넓어져 출력 데이터의 크기가 작아짐  패딩과 다르게 스트라이드는 출력데이터의 크기를 축소시키는 역할풀링  Pooling layer는 대부분 convolutional layer 바로 다음에 위치해 공간(spatial size)을 축소  채널 크기는 고정되며 입력 데이터의 크기가 축소되고 학습하지 않기 때문에 파라미터 수가 줄어들어 오버피팅(Overfitting) 방지오버피팅(Overfitting) : 모델이 훈련 데이터에만 잘 맞춰진 경우로 결과가 훈련 데이터 정확도는 높지만 새롭게 입력 받는 테스트 데이터의 정확도는 낮아 모델 성능이 떨어지는 현상풀링(Pooling)에는 맥스 풀링(Max Pooing)과 평균 풀링(Average Pooling)이 존재  맥스 풀링(Max Pooing) : 대상 이미지 영역에서 최대값을 구함  평균 풀링(Average Pooling) : 대상 이미지 영역에서 평균값을 구함※ stride =2 를 특징으로 함ReLu  ReLu(Rectified Linear Unit) 활성화 함수는 비선형성 함수로 기본 선형 특성을 나타내는 layer에 비선형성을 증가  ReLu 함수의 범위는 R(z)=max(0, z) 양수이기 때문에 vanishing gradient 문제점을 극복하고 학습 속도와 성능을 향상시켜 CNN에서 주로 사용되는 활성화 함수Fully-Connected layer  CNN 마지막에서 분류(Classification)를 결정하는 단계  flatten : 각 레이어를 1차원 벡터로 변환  fully-conneced layer : 1차원 벡터로 변환된 레이어를 하나의 벡터로 연결 (각 층의 노드들은 하나로 연결)마지막으로 Softmax 함수를 이용해 가장 확률이 높은 class를 output으로 분류합니다.참조 문헌https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layerhttps://seongkyun.github.io/study/2019/01/25/num_of_parameters/http://taewan.kim/post/cnn/",
+        "url": "/cnn-basic"
     }
     ,
     
@@ -225,15 +224,6 @@ into the {body} of the default.hbs template -->
             "content": "자바입니다.",
         "url": "/java-basic"
     }
-    ,
-    
-    "gettysburg-address": {
-        "title": "Gettysburg Address",
-            "author": "abraham",
-            "category": "",
-            "content": "Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.",
-        "url": "/gettysburg-address"
-    }
     
     
     };
@@ -265,7 +255,7 @@ $(function() {
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="http://localhost:4000/">John's Blog</a> &copy; 2022</section>
+                <section class="copyright"><a href="http://localhost:4000/">John's IT Blog</a> &copy; 2022</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
@@ -286,7 +276,7 @@ $(function() {
         <a class="subscribe-overlay-close" href="#"></a>
         <div class="subscribe-overlay-content">
             
-            <h1 class="subscribe-overlay-title">Search John's Blog</h1>
+            <h1 class="subscribe-overlay-title">Search John's IT Blog</h1>
             <p class="subscribe-overlay-description">
                 lunr.js를 이용한 posts 검색 </p>
             
