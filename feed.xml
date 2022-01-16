@@ -1,13 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-16T00:59:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">John’s IT Blog</title><subtitle>AI &amp; Backend Developer</subtitle><entry><title type="html">합성곱 신경망 기초(CNN, Convolution Neural Network)</title><link href="http://localhost:4000/cnn-basic" rel="alternate" type="text/html" title="합성곱 신경망 기초(CNN, Convolution Neural Network)" /><published>2022-01-11T08:00:00+09:00</published><updated>2022-01-11T08:00:00+09:00</updated><id>http://localhost:4000/cnn-basic</id><content type="html" xml:base="http://localhost:4000/cnn-basic">&lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-16T23:48:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">John’s IT Blog</title><subtitle>AI &amp; Backend Developer</subtitle><entry><title type="html">합성곱 신경망 역전파(CNN, Backpropagation)</title><link href="http://localhost:4000/cnn-basic-2" rel="alternate" type="text/html" title="합성곱 신경망 역전파(CNN, Backpropagation)" /><published>2022-01-16T21:00:00+09:00</published><updated>2022-01-16T21:00:00+09:00</updated><id>http://localhost:4000/cnn-basic-2</id><content type="html" xml:base="http://localhost:4000/cnn-basic-2">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 역전파(CNN, Backpropagation)&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cnn-foward-pass&quot;&gt;CNN foward pass&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/1.gif&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CNN은 필터가 입력데이터를 슬라이딩하면서 지역적 특징(feature)을 추출&lt;/li&gt;
+  &lt;li&gt;이 특징을 최대값(Max Pooling)이나 평균값(Average Pooling)으로 압축해 다음 레이어로 전달&lt;/li&gt;
+  &lt;li&gt;이런 과정을 반복해 분류 등 원하는 결과를 만들어내는 것이 CNN의 일반적인 구조&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/3.gif&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;𝑥𝑖𝑗 는 각각 입력값의 𝑖번째 행, 𝑗번째 열의 요소&lt;/li&gt;
+  &lt;li&gt;3x3 행렬, 2x2 필터(커널), 스트라이드 1&lt;/li&gt;
+  &lt;li&gt;이후 conv 레이어에 최대값이나 평균값을 취해서 정보를 압축(pooling)되어 2x2 행렬이 2x1 벡터로 바뀜&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cnn-backward-pass&quot;&gt;CNN backward pass&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;[Average Pooling 레이어의 그래디언트 전파 과정]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;average-pooling&quot;&gt;Average Pooling&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/4.png&quot; alt=&quot;4&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;바로 뒤 레이어로부터 전파된 그래디언트가 𝑑1, 𝑑2&lt;/li&gt;
+  &lt;li&gt;현재 지점의 Gradient는 미분의 연쇄법칙(chain rule)에 의해 흘러들어온 Gradient에 Local Gradient를 곱한 것과 같음&lt;/li&gt;
+  &lt;li&gt;Average Pooling을 하는 지점의 로컬 그래디언트는 1/𝑚&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;max-pooling&quot;&gt;Max Pooling&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/5.png&quot; alt=&quot;5&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;대값이 속해 있는 요소의 로컬 그래디언트는 1, 나머지는 0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;conv-layer&quot;&gt;Conv Layer&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/6.png&quot; alt=&quot;6&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;𝑥11 은 forward compute pass 과정에서 2x2필터 가운데 빨간색(𝑤1) 
+가중치하고만 합성곱이 수행 되므로 역전파 때도 마찬가지로 딱 한번의 역전파가 일어남&lt;/li&gt;
+  &lt;li&gt;Kapathy의 계산그래프 형태로 나타내면 𝑥11 의 그래디언트는 흘러들어온 그래디언트 
+𝑑11에 로컬그래디언트(𝑤1)를 곱해서 구할 수 있다. (곱셈 연산의 Local Gradient는 ‘상대방 변화량’)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/7.png&quot; alt=&quot;7&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;간단한 방법&lt;/strong&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/8.png&quot; alt=&quot;8&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;흘러들어온 그래디언트 행렬(2x2 크기)을 conv layer를 만들 때 썼던 필터가 슬라이딩하면서 값을 구한다&lt;/li&gt;
+  &lt;li&gt;필터 요소의 순서를 정반대로 바꿔 예컨대 빨-파-노-초 필터를 초-노-파-빨 필터로 바꿔서 
+Gradient Matrix에 합성곱을 수행해주면 입력벡터에 대한 그래디언트를 구할 수 있다.&lt;/li&gt;
+  &lt;li&gt;필터의 Gradient는 Gradient Matrix 첫번째 요소인 𝑑11은 𝑥11, 𝑥12, 𝑥21, 𝑥22와 연결되어 있는 걸 확인할 수 있다.
+흘러들어온 Gradient(𝑑11, 𝑑12, 𝑑21, 𝑑22)에 Local Gradient를 곱한다.&lt;/li&gt;
+  &lt;li&gt;각각의 Local Gradient는 합성곱 필터 가중치로 연결된 입력값들이기 때문에 𝑑𝑤11은 𝑥11𝑑11+𝑥12𝑑12+𝑥21𝑑21+𝑥22𝑑22&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;참조 문헌&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cs231n.github.io/optimization-2/&quot;&gt;https://cs231n.github.io/optimization-2/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/&quot;&gt;https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://ratsgo.github.io/deep%20learning/2017/04/05/CNNbackprop/&quot;&gt;https://ratsgo.github.io/deep%20learning/2017/04/05/CNNbackprop/&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 역전파(CNN, Backpropagation)</summary></entry><entry><title type="html">합성곱 신경망 기초(CNN, Convolution Neural Network)</title><link href="http://localhost:4000/cnn-basic" rel="alternate" type="text/html" title="합성곱 신경망 기초(CNN, Convolution Neural Network)" /><published>2022-01-16T07:00:00+09:00</published><updated>2022-01-16T07:00:00+09:00</updated><id>http://localhost:4000/cnn-basic</id><content type="html" xml:base="http://localhost:4000/cnn-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 역전파(CNN, Backpropagation)&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망&lt;/li&gt;
-  &lt;li&gt;이미지 경우, 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP 경우, 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점&lt;/li&gt;
+  &lt;li&gt;이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점&lt;/li&gt;
   &lt;li&gt;데이터의 공간적 정보를 유지하면서 배열 데이터 정보를 다음 레이어로 보낼 수 있어서 이미지(RGB 채널의 3차원 배열) 분야에서 적극 활용&lt;/li&gt;
   &lt;li&gt;이미지의 특징을 뚜렷하게 검출하기 때문에 이미지 분류에서 높은 성능&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-cnn_basic.png&quot; alt=&quot;cnn_basic&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-cnn_basic.png&quot; alt=&quot;cnn_basic&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;CNN에서는 필터를 이용한 Convolution연산을 반복적으로 진행하면서 이미지의 특징을 검출하기 때문에 생각보다 구조가 간단합니다. 
 &lt;strong&gt;다음의 세 가지 layer&lt;/strong&gt;를 기억하시면 됩니다.&lt;/p&gt;
@@ -16,7 +93,7 @@
   &lt;li&gt;Convolution layer : 특징 추출(feature extraction)&lt;/li&gt;
   &lt;li&gt;Pooling layer : 특징 추출(feature extraction)&lt;/li&gt;
   &lt;li&gt;Fully-connected layer : 분류(classificaiton)&lt;br /&gt;
-&lt;img src=&quot;./assets/built/images/cnn/22-01-16-cnn_basic_2.png&quot; alt=&quot;cnn_basic_2&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-cnn_basic_2.png&quot; alt=&quot;cnn_basic_2&quot; /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;[ 학습 내용 ]&lt;/p&gt;
@@ -30,7 +107,7 @@
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;필터커널&quot;&gt;필터(커널)&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-06-filter.gif&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-filter.gif&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;커널(kernel)이라고도 불리며 이미지의 특징을 찾아내기 위한 공용 파라미터&lt;/li&gt;
   &lt;li&gt;필터 통과 이미지는 특성값을 가지고 있어 feature map 또는 activation map 라고함&lt;/li&gt;
@@ -43,10 +120,10 @@
 &lt;p&gt;컨볼루션 연산을 계속할 경우, 이미지 크기가 작아져 어떻게 될까요?
 연산할 수 있는 픽셀이 없어 더 이상 훈련할 수 없게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-padding.svg&quot; alt=&quot;padding&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-padding.svg&quot; alt=&quot;padding&quot; /&gt;&lt;br /&gt;
 &lt;strong&gt;패딩 (Padding)&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;network가 깊어지면 이미지 크기가 무한정 작아지는 것을 막기 위해 패딩이 존재&lt;/li&gt;
+  &lt;li&gt;Network가 깊어지면 이미지 크기가 무한정 작아지는 것을 막기 위해 패딩이 존재&lt;/li&gt;
   &lt;li&gt;이미지 테두리에 일정 값(0 또는 1)을 넣어주는 작업&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -56,7 +133,7 @@
 
 &lt;p&gt;&lt;strong&gt;스트라이드 (Stride)&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-stride.svg&quot; alt=&quot;stride&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-stride.png&quot; alt=&quot;stride&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;이미지에 필터를 적용하는 간격&lt;/li&gt;
   &lt;li&gt;스트라이드 값을 크게 주면 이동 간격이 넓어져 출력 데이터의 크기가 작아짐&lt;/li&gt;
@@ -64,7 +141,7 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;풀링&quot;&gt;풀링&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-pooling.png&quot; alt=&quot;pooling&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-pooling.png&quot; alt=&quot;pooling&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Pooling layer는 대부분 convolutional layer 바로 다음에 위치해 공간(spatial size)을 축소&lt;/li&gt;
@@ -74,21 +151,22 @@
 &lt;p&gt;오버피팅(Overfitting) : 모델이 훈련 데이터에만 잘 맞춰진 경우로 결과가 훈련 데이터 정확도는 높지만 새롭게 입력 받는 테스트 데이터의 정확도는 낮아 모델 성능이 떨어지는 현상&lt;br /&gt;
 풀링(Pooling)에는 맥스 풀링(Max Pooing)과 평균 풀링(Average Pooling)이 존재&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;맥스 풀링(Max Pooing) : 대상 이미지 영역에서 최대값을 구함&lt;/li&gt;
-  &lt;li&gt;평균 풀링(Average Pooling) : 대상 이미지 영역에서 평균값을 구함&lt;br /&gt;
-※ stride =2 를 특징으로 함&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;① 맥스 풀링(Max Pooing) : 대상 이미지 영역에서 최대값을 구함 
+② 평균 풀링(Average Pooling) : 대상 이미지 영역에서 평균값을 구함&lt;br /&gt;
+※ stride =2 를 특징으로 함&lt;/p&gt;
+
+&lt;p&gt;[CNN 배열 공식]&lt;br /&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-cal.png&quot; alt=&quot;cal&quot; width=&quot;600&quot; height=&quot;250&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;relu&quot;&gt;ReLu&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-relu.png&quot; alt=&quot;relu&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-relu.png&quot; alt=&quot;relu&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;ReLu(Rectified Linear Unit) 활성화 함수는 비선형성 함수로 기본 선형 특성을 나타내는 layer에 비선형성을 증가&lt;/li&gt;
   &lt;li&gt;ReLu 함수의 범위는 R(z)=max(0, z) 양수이기 때문에 vanishing gradient 문제점을 극복하고 학습 속도와 성능을 향상시켜 CNN에서 주로 사용되는 활성화 함수&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;fully-connected-layer&quot;&gt;Fully-Connected layer&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;./assets/built/images/cnn/22-01-16-fully.png&quot; alt=&quot;fully&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-fully.png&quot; alt=&quot;fully&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;CNN 마지막에서 분류(Classification)를 결정하는 단계&lt;/li&gt;
 &lt;/ul&gt;
@@ -96,7 +174,7 @@
 &lt;ol&gt;
   &lt;li&gt;flatten : 각 레이어를 1차원 벡터로 변환&lt;/li&gt;
   &lt;li&gt;fully-conneced layer : 1차원 벡터로 변환된 레이어를 하나의 벡터로 연결 (각 층의 노드들은 하나로 연결)&lt;br /&gt;
-마지막으로 Softmax 함수를 이용해 가장 확률이 높은 class를 output으로 분류합니다.&lt;/li&gt;
+마지막으로 Softmax 함수를 이용해 가장 확률이 높은 class를 output으로 분류&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
@@ -104,7 +182,7 @@
 
 &lt;p&gt;&lt;a href=&quot;https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer&quot;&gt;https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://seongkyun.github.io/study/2019/01/25/num_of_parameters/&quot;&gt;https://seongkyun.github.io/study/2019/01/25/num_of_parameters/&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://taewan.kim/post/cnn/&quot;&gt;http://taewan.kim/post/cnn/&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN이란?</summary></entry><entry><title type="html">Python 강좌(3) - Python 기본3</title><link href="http://localhost:4000/python-first" rel="alternate" type="text/html" title="Python 강좌(3) - Python 기본3" /><published>2022-01-11T00:30:00+09:00</published><updated>2022-01-11T00:30:00+09:00</updated><id>http://localhost:4000/python-first</id><content type="html" xml:base="http://localhost:4000/python-first">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;a href=&quot;http://taewan.kim/post/cnn/&quot;&gt;http://taewan.kim/post/cnn/&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 역전파(CNN, Backpropagation)</summary></entry><entry><title type="html">Python 강좌(3) - Python 기본3</title><link href="http://localhost:4000/python-first" rel="alternate" type="text/html" title="Python 강좌(3) - Python 기본3" /><published>2022-01-11T00:30:00+09:00</published><updated>2022-01-11T00:30:00+09:00</updated><id>http://localhost:4000/python-first</id><content type="html" xml:base="http://localhost:4000/python-first">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./python-basic&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;

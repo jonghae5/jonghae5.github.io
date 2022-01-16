@@ -8,13 +8,38 @@
     
       
       <item>
-        <title>합성곱 신경망 기초(CNN, Convolution Neural Network)</title>
+        <title>합성곱 신경망 역전파(CNN, Backpropagation)</title>
         
-          <description>&lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 역전파(CNN, Backpropagation)&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
 
 </description>
         
-        <pubDate>Tue, 11 Jan 2022 08:00:00 +0900</pubDate>
+        <pubDate>Sun, 16 Jan 2022 21:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/cnn-basic-2</link>
+        <guid isPermaLink="true">http://localhost:4000/cnn-basic-2</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>합성곱 신경망 기초(CNN, Convolution Neural Network)</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 역전파(CNN, Backpropagation)&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Sun, 16 Jan 2022 07:00:00 +0900</pubDate>
         <link>
         http://localhost:4000/cnn-basic</link>
         <guid isPermaLink="true">http://localhost:4000/cnn-basic</guid>
