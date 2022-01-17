@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/data/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-16T23:48:32+09:00</updated>
+  <updated>2022-01-17T23:15:21+09:00</updated>
   <id>http://localhost:4000/tag/data/feed.xml</id>
 
   
@@ -52,54 +52,80 @@
   &lt;li&gt;이런 과정을 반복해 분류 등 원하는 결과를 만들어내는 것이 CNN의 일반적인 구조&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;[Cross-Correlation]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/1_2.png&quot; alt=&quot;1_2&quot; /&gt;
+[Convolution]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/1_1.png&quot; alt=&quot;1_1&quot; /&gt;
+K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/3.gif&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;𝑥𝑖𝑗 는 각각 입력값의 𝑖번째 행, 𝑗번째 열의 요소&lt;/li&gt;
   &lt;li&gt;3x3 행렬, 2x2 필터(커널), 스트라이드 1&lt;/li&gt;
-  &lt;li&gt;이후 conv 레이어에 최대값이나 평균값을 취해서 정보를 압축(pooling)되어 2x2 행렬이 2x1 벡터로 바뀜&lt;/li&gt;
+  &lt;li&gt;이후 conv 레이어에 최대값이나 평균값을 취해서 정보를 압축(pooling)되어 2x2 행렬이 2x1 벡터로 바뀐다.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;cnn-backward-pass&quot;&gt;CNN backward pass&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;[Average Pooling 레이어의 그래디언트 전파 과정]&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CNN 역전파 공식 (가중치 변화에 따른 오차 변화량)&lt;/li&gt;
+  &lt;li&gt;HxW feature Map, k1 x k2 kernel 일 때, output은 (H-k1+1),(W-k2+1)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h5 id=&quot;average-pooling&quot;&gt;Average Pooling&lt;/h5&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/4.png&quot; alt=&quot;4&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_1.png&quot; alt=&quot;eq_1&quot; /&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_2.png&quot; alt=&quot;eq_2&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;현재 지점(x)의 그래디언트 식
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_3.png&quot; alt=&quot;eq_3&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;최종 식
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_4.png&quot; alt=&quot;eq_4&quot; width=&quot;50%&quot; height=&quot;45%&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[Average Pooling]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/4.png&quot; alt=&quot;4&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;바로 뒤 레이어로부터 전파된 그래디언트가 𝑑1, 𝑑2&lt;/li&gt;
-  &lt;li&gt;현재 지점의 Gradient는 미분의 연쇄법칙(chain rule)에 의해 흘러들어온 Gradient에 Local Gradient를 곱한 것과 같음&lt;/li&gt;
+  &lt;li&gt;현재 지점의 그래디언트는 미분의 연쇄법칙(chain rule)에 의해 흘러들어온 그래디언트(d)에 로컬 그래디언트(w 혹은 x)를 곱한 것과 같음&lt;/li&gt;
   &lt;li&gt;Average Pooling을 하는 지점의 로컬 그래디언트는 1/𝑚&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;max-pooling&quot;&gt;Max Pooling&lt;/h5&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/5.png&quot; alt=&quot;5&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;[Max Pooling]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/5.png&quot; alt=&quot;5&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;대값이 속해 있는 요소의 로컬 그래디언트는 1, 나머지는 0&lt;/li&gt;
+  &lt;li&gt;가장 큰 값이 속해 있는 요소의 로컬 그래디언트는 1, 나머지는 0&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;conv-layer&quot;&gt;Conv Layer&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/6.png&quot; alt=&quot;6&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;[Convolution Layer]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/6.png&quot; alt=&quot;6&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;𝑥11 은 forward compute pass 과정에서 2x2필터 가운데 빨간색(𝑤1) 
+  &lt;li&gt;𝑥11 은 forward pass 과정에서 2x2필터 가운데 빨간색(𝑤1) 
 가중치하고만 합성곱이 수행 되므로 역전파 때도 마찬가지로 딱 한번의 역전파가 일어남&lt;/li&gt;
-  &lt;li&gt;Kapathy의 계산그래프 형태로 나타내면 𝑥11 의 그래디언트는 흘러들어온 그래디언트 
-𝑑11에 로컬그래디언트(𝑤1)를 곱해서 구할 수 있다. (곱셈 연산의 Local Gradient는 ‘상대방 변화량’)&lt;/li&gt;
+  &lt;li&gt;Kapathy의 계산그래프 형태로 나타내면 &lt;strong&gt;𝑥11 의 그래디언트&lt;/strong&gt;는 흘러들어온 그래디언트
+𝑑11에 로컬 그래디언트(𝑤1)를 곱해서 구할 수 있다.&lt;/li&gt;
+  &lt;li&gt;마찬가지로 &lt;strong&gt;𝑤1 의 그래디언트&lt;/strong&gt;는 흘러들어온 그래디언트 𝑑11에 로컬 그래디언트(𝑥11)를 곱해 계산&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/7.png&quot; alt=&quot;7&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;하지만 이렇게 하나하나 따져가면서 구하려면 식이 복잡하고 이해가 어렵다.&lt;/li&gt;
+  &lt;li&gt;conv layer가 역전파를 할 때 약간의 트릭을 쓰면 조금 더 간단히 그래디언트를 구할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;p&gt;&lt;strong&gt;간단한 방법&lt;/strong&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/5_1.png&quot; alt=&quot;5_1&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;
 &lt;img src=&quot;../../assets/built/images/cnn/22-01-17/8.png&quot; alt=&quot;8&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;흘러들어온 그래디언트 행렬(2x2 크기)을 conv layer를 만들 때 썼던 필터가 슬라이딩하면서 값을 구한다&lt;/li&gt;
+  &lt;li&gt;흘러들어온 그래디언트 행렬에(2x2 크기)을 conv layer를 만들 때 썼던 필터가 슬라이딩하면서 값을 구한다&lt;/li&gt;
   &lt;li&gt;필터 요소의 순서를 정반대로 바꿔 예컨대 빨-파-노-초 필터를 초-노-파-빨 필터로 바꿔서 
-Gradient Matrix에 합성곱을 수행해주면 입력벡터에 대한 그래디언트를 구할 수 있다.&lt;/li&gt;
-  &lt;li&gt;필터의 Gradient는 Gradient Matrix 첫번째 요소인 𝑑11은 𝑥11, 𝑥12, 𝑥21, 𝑥22와 연결되어 있는 걸 확인할 수 있다.
-흘러들어온 Gradient(𝑑11, 𝑑12, 𝑑21, 𝑑22)에 Local Gradient를 곱한다.&lt;/li&gt;
-  &lt;li&gt;각각의 Local Gradient는 합성곱 필터 가중치로 연결된 입력값들이기 때문에 𝑑𝑤11은 𝑥11𝑑11+𝑥12𝑑12+𝑥21𝑑21+𝑥22𝑑22&lt;/li&gt;
+그래디언트 행렬에 합성곱을 수행해주면 입력벡터(x)에 대한 그래디언트를 구할 수 있다.&lt;/li&gt;
+  &lt;li&gt;필터의 그래디언트는 그래디언트 행렬 첫번째 요소인 𝑑11은 𝑥11, 𝑥12, 𝑥21, 𝑥22와 연결되어 있는 걸 확인할 수 있다. (영향을 끼치는 곳)
+흘러들어온 그래디언트(𝑑11, 𝑑12, 𝑑21, 𝑑22)에 로컬 그래디언트(x11, x12, x21, x22)를 곱한다.&lt;/li&gt;
+  &lt;li&gt;각각의 로컬 그래다언트는 합성곱 필터 가중치로 연결된 입력값들이기 때문에 𝑑𝑤11은 𝑥11𝑑11+𝑥12𝑑12+𝑥21𝑑21+𝑥22𝑑22&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
