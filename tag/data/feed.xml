@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/data/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-18T18:00:45+09:00</updated>
+  <updated>2022-01-18T18:14:20+09:00</updated>
   <id>http://localhost:4000/tag/data/feed.xml</id>
 
   
@@ -44,15 +44,17 @@
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법&lt;br /&gt;
-“배치 정규화, 가중치 초기화”&lt;/p&gt;
 
 &lt;h3 id=&quot;가중치-초기화&quot;&gt;가중치 초기화&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/0.png&quot; alt=&quot;0&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;가중치가 중요한 이유&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다.&lt;/li&gt;
+  &lt;li&gt;그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다.&lt;/li&gt;
+  &lt;li&gt;지역 최적화(Local Optimization)에 실패해 Local mnimum에 수렴하기도 한다.&lt;/li&gt;
+  &lt;li&gt;즉, 같은 모델을 훈련시키더라도 가중치가 어떤 초기 값을 갖느냐에 따라서 모델 훈련 결과가 달라진다.
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/0.png&quot; alt=&quot;0&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;가중치 값이 0일 경우, 학습이 불가능하다.&lt;/li&gt;
   &lt;li&gt;가중치 값을 같은 값으로 할 경우, 1개 신경망에 학습시키는 것과 동일&lt;/li&gt;
   &lt;li&gt;평균 0 ,1보다 작은 표준편차 분포를 사용한다.&lt;/li&gt;
@@ -83,9 +85,8 @@
 
 &lt;p&gt;&lt;strong&gt;Xavier Initialization&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Sigmoid와 같은 S자 함수일 때, 출력값들을 표준 정규 분포 형태로 갖게 한다.&lt;/li&gt;
-  &lt;li&gt;출력값이 표준 정규분포 형태일 경우, 안정적으로 학습 가능&lt;/li&gt;
   &lt;li&gt;이전 노드와 다음 노드 개수에 의존하는 방법&lt;/li&gt;
+  &lt;li&gt;비선형함수(ex. sigmoid, tanh)에서 효과적인 결과&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/7.png&quot; alt=&quot;7&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
@@ -145,16 +146,15 @@
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;br /&gt;
-그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법&lt;br /&gt;
-“배치 정규화, 가중치 초기화”&lt;/p&gt;
+
 &lt;h3 id=&quot;배치-정규화&quot;&gt;배치 정규화&lt;/h3&gt;
-&lt;p&gt;깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다.&lt;br /&gt;
-&lt;strong&gt;“각 층이 활성화를 적당히 퍼뜨리도록 강제로 해보자”&lt;/strong&gt;
+&lt;p&gt;깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;“각 층이 활성화를 적당히 퍼뜨리도록 강제로 해보자”&lt;/strong&gt;
 &lt;img src=&quot;../../assets/built/images/cnn/22-01-18/1.jpeg&quot; alt=&quot;1&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;배치란? 신경망 학습시, 전체 데이터를 한 번에 학습시키지 않고, 조그만 단위로 분할해서 학습 시키는 것.&lt;/li&gt;
-  &lt;li&gt;배치 정규화란? 배치 단위로 정규화 하는 것.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;배치란?&lt;/strong&gt; 신경망 학습시, 전체 데이터를 한 번에 학습시키지 않고, 조그만 단위로 분할해서 학습 시키는 것.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;배치 정규화란?&lt;/strong&gt; 배치 단위로 정규화 하는 것.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;[배치 정규화 알고리즘]&lt;/strong&gt;
@@ -171,12 +171,13 @@
   &lt;li&gt;감마(γ), 베타(β) 값은 학습 가능한 변수, 역전파를 통해서 학습&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;[⭐배치 정규화 효과⭐]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;⭐&lt;strong&gt;배치 정규화 효과&lt;/strong&gt;⭐&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;학습이 빠르게 진행(Epoch 수를 줄이는데 효과적)&lt;/li&gt;
   &lt;li&gt;Dropout 필요성 감소&lt;/li&gt;
   &lt;li&gt;더 높은 Learning rate 사용 가능&lt;/li&gt;
   &lt;li&gt;규제 효과 (과적합 방지)&lt;/li&gt;
+  &lt;li&gt;그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제 해결&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
@@ -204,7 +205,7 @@
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 배치 정규화 깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다. “각 층이 활성화를 적당히 퍼뜨리도록 강제로 해보자” 배치란? 신경망 학습시, 전체 데이터를 한 번에 학습시키지 않고, 조그만 단위로 분할해서 학습 시키는 것. 배치 정규화란? 배치 단위로 정규화 하는 것.</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</summary>
       
 
       

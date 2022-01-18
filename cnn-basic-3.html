@@ -56,7 +56,7 @@
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="합성곱 신경망 기초 3(배치정규화, Batch Normalization)" />
-    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 배치 정규화 깊은 신경망일 수록 같은 Input 이라도" />
+    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 배치 정규화 깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다. “각 층이 활성화를" />
     <meta property="og:url" content="http://localhost:4000/cnn-basic-3" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -66,7 +66,7 @@
     <meta property="article:tag" content="Data" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="합성곱 신경망 기초 3(배치정규화, Batch Normalization)" />
-    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 배치 정규화 깊은 신경망일 수록 같은 Input 이라도" />
+    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 배치 정규화 깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다. “각 층이 활성화를" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -98,7 +98,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/cnn-basic-3"
     },
-    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 배치 정규화 깊은 신경망일 수록 같은 Input 이라도"
+    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 배치 정규화 깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다. “각 층이 활성화를"
 }
     </script>
 
@@ -199,16 +199,15 @@ into the {body} of the default.hbs template -->
     <li><a href="./cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
     <li><a href="./cnn-basic-4">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</a></li>
 </ul>
-<p><br />
-그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법<br />
-“배치 정규화, 가중치 초기화”</p>
+
 <h3 id="배치-정규화">배치 정규화</h3>
-<p>깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다.<br />
-<strong>“각 층이 활성화를 적당히 퍼뜨리도록 강제로 해보자”</strong>
+<p>깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다.</p>
+
+<p><strong>“각 층이 활성화를 적당히 퍼뜨리도록 강제로 해보자”</strong>
 <img src="../../assets/built/images/cnn/22-01-18/1.jpeg" alt="1" width="50%" height="50%" /></p>
 <ul>
-  <li>배치란? 신경망 학습시, 전체 데이터를 한 번에 학습시키지 않고, 조그만 단위로 분할해서 학습 시키는 것.</li>
-  <li>배치 정규화란? 배치 단위로 정규화 하는 것.</li>
+  <li><strong>배치란?</strong> 신경망 학습시, 전체 데이터를 한 번에 학습시키지 않고, 조그만 단위로 분할해서 학습 시키는 것.</li>
+  <li><strong>배치 정규화란?</strong> 배치 단위로 정규화 하는 것.</li>
 </ul>
 
 <p><strong>[배치 정규화 알고리즘]</strong>
@@ -225,12 +224,13 @@ into the {body} of the default.hbs template -->
   <li>감마(γ), 베타(β) 값은 학습 가능한 변수, 역전파를 통해서 학습</li>
 </ul>
 
-<p><strong>[⭐배치 정규화 효과⭐]</strong></p>
+<p>⭐<strong>배치 정규화 효과</strong>⭐</p>
 <ol>
   <li>학습이 빠르게 진행(Epoch 수를 줄이는데 효과적)</li>
   <li>Dropout 필요성 감소</li>
   <li>더 높은 Learning rate 사용 가능</li>
   <li>규제 효과 (과적합 방지)</li>
+  <li>그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제 해결</li>
 </ol>
 
 <hr />
@@ -426,7 +426,6 @@ into the {body} of the default.hbs template -->
     합성곱 신경망 기초 2(역전파, Backpropagation)
     합성곱 신경망 기초 3(배치정규화, Batch Normalization)
     합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)
-
 
 
 </p>

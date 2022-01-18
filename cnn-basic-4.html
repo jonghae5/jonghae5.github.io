@@ -56,7 +56,7 @@
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" />
-    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 가중치 초기화 가중치 값이 0일 경우, 학습이 불가능하다." />
+    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 가중치 초기화 가중치가 중요한 이유 Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다. 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다. 지역" />
     <meta property="og:url" content="http://localhost:4000/cnn-basic-4" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -66,7 +66,7 @@
     <meta property="article:tag" content="Data" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" />
-    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 가중치 초기화 가중치 값이 0일 경우, 학습이 불가능하다." />
+    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 가중치 초기화 가중치가 중요한 이유 Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다. 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다. 지역" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -98,7 +98,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/cnn-basic-4"
     },
-    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법 “배치 정규화, 가중치 초기화” 가중치 초기화 가중치 값이 0일 경우, 학습이 불가능하다."
+    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 가중치 초기화 가중치가 중요한 이유 Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다. 그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다. 지역"
 }
     </script>
 
@@ -199,15 +199,17 @@ into the {body} of the default.hbs template -->
     <li><a href="./cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
     <li><a href="./cnn-basic-4">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</a></li>
 </ul>
-<p><br /></p>
-
-<p>그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제를 해결할 수 있는 방법<br />
-“배치 정규화, 가중치 초기화”</p>
 
 <h3 id="가중치-초기화">가중치 초기화</h3>
-<p><img src="../../assets/built/images/cnn/22-01-18/0.png" alt="0" width="50%" height="50%" /></p>
+<p><br />
+<strong>가중치가 중요한 이유</strong></p>
 
 <ul>
+  <li>Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다.</li>
+  <li>그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다.</li>
+  <li>지역 최적화(Local Optimization)에 실패해 Local mnimum에 수렴하기도 한다.</li>
+  <li>즉, 같은 모델을 훈련시키더라도 가중치가 어떤 초기 값을 갖느냐에 따라서 모델 훈련 결과가 달라진다.
+<img src="../../assets/built/images/cnn/22-01-18/0.png" alt="0" width="50%" height="50%" /></li>
   <li>가중치 값이 0일 경우, 학습이 불가능하다.</li>
   <li>가중치 값을 같은 값으로 할 경우, 1개 신경망에 학습시키는 것과 동일</li>
   <li>평균 0 ,1보다 작은 표준편차 분포를 사용한다.</li>
@@ -238,9 +240,8 @@ into the {body} of the default.hbs template -->
 
 <p><strong>Xavier Initialization</strong></p>
 <ul>
-  <li>Sigmoid와 같은 S자 함수일 때, 출력값들을 표준 정규 분포 형태로 갖게 한다.</li>
-  <li>출력값이 표준 정규분포 형태일 경우, 안정적으로 학습 가능</li>
   <li>이전 노드와 다음 노드 개수에 의존하는 방법</li>
+  <li>비선형함수(ex. sigmoid, tanh)에서 효과적인 결과</li>
 </ul>
 
 <p><img src="../../assets/built/images/cnn/22-01-18/7.png" alt="7" width="70%" height="50%" /></p>
@@ -445,7 +446,15 @@ into the {body} of the default.hbs template -->
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 그래디언트 손실(Vanishing Gradient)와</p>
+                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 
+
+    합성곱 신경망 기초(CNN, Convolution Neural Network) 
+    합성곱 신경망 기초 2(역전파, Backpropagation)
+    합성곱 신경망 기초 3(배치정규화, Batch Normalization)
+    합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)
+
+
+</p>
                     
                 </section>
             </a>
