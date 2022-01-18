@@ -56,17 +56,17 @@
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="합성곱 신경망 기초(CNN, Convolution Neural Network)" />
-    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 역전파(CNN, Backpropagation) CNN이란? Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망 이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점 데이터의 공간적 정보를 유지하면서 배열 데이터" />
+    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) CNN이란? Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망 이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는" />
     <meta property="og:url" content="http://localhost:4000/cnn-basic" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-01-16T07:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-01-16T07:00:00+09:00" />
+    <meta property="article:published_time" content="2022-01-16T21:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-01-16T21:00:00+09:00" />
     <meta property="article:tag" content="Data" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="합성곱 신경망 기초(CNN, Convolution Neural Network)" />
-    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 역전파(CNN, Backpropagation) CNN이란? Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망 이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점 데이터의 공간적 정보를 유지하면서 배열 데이터" />
+    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) CNN이란? Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망 이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -98,7 +98,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/cnn-basic"
     },
-    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 역전파(CNN, Backpropagation) CNN이란? Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망 이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점 데이터의 공간적 정보를 유지하면서 배열 데이터"
+    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) CNN이란? Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망 이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는"
 }
     </script>
 
@@ -195,8 +195,9 @@ into the {body} of the default.hbs template -->
                     <p><span class="table-of-contents-list">CNN 강좌는 여러 절로 구성되어 있습니다. </span></p>
 <ul class="table-of-contents-list">
     <li><a href="./cnn-basic">합성곱 신경망 기초(CNN, Convolution Neural Network)</a></li> <!-- 확장자 X 시간 X 파일의 이름만 작성-->
-    <li><a href="./cnn-basic-2">합성곱 신경망 역전파(CNN, Backpropagation)</a></li>
-
+    <li><a href="./cnn-basic-2">합성곱 신경망 기초 2(역전파, Backpropagation)</a></li>
+    <li><a href="./cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
+    <li><a href="./cnn-basic-4">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</a></li>
 </ul>
 
 <h3 id="cnn이란">CNN이란?</h3>
@@ -421,20 +422,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/cnn-basic-2">합성곱 신경망 역전파(CNN, Backpropagation)</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/python-first">Python 강좌(3) - Python 기본3</a></li>
+                                            <li><a href="/cnn-basic-4">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</a></li>
                                         
                                     
                                   
@@ -443,7 +431,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/python-control-statement">Python 강좌(2) - Python 제어문</a></li>
+                                            <li><a href="/cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
                                         
                                     
                                   
@@ -452,6 +440,12 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                            <li><a href="/cnn-basic-2">합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
                                     
                                   
                                 
@@ -462,7 +456,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/data/">
                                 
-                                    See all 4 posts  →
+                                    See all 3 posts  →
                                 
                             </a>
                         </footer>
@@ -491,15 +485,16 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">합성곱 신경망 역전파(CNN, Backpropagation)</h2>
+                    <h2 class="post-card-title">합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
                         <p>CNN 강좌는 여러 절로 구성되어 있습니다. 
 
     합성곱 신경망 기초(CNN, Convolution Neural Network) 
-    합성곱 신경망 역전파(CNN, Backpropagation)
-
+    합성곱 신경망 기초 2(역전파, Backpropagation)
+    합성곱 신경망 기초 3(배치정규화, Batch Normalization)
+    합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)
 
 
 </p>
@@ -535,32 +530,26 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/python-first">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/python-logo.png)"></div>
+            <a class="post-card-image-link" href="/java-basic">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/java-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/python-first">
+            <a class="post-card-content-link" href="/java-basic">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Data</span>
+                                <span class="post-card-tags">Backend</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Python 강좌(3) - Python 기본3</h2>
+                    <h2 class="post-card-title">Java 강좌(1) - Java 기본</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>Python 강좌는 여러 절로 구성되어 있습니다. 
-
-    Python 강좌(1) - Python 기본 
-    Python 강좌(2) - Python 제어문
-    Python 강좌(3) - Python 기본3
-
-
+                        <p>자바입니다.
 </p>
                     
                 </section>
