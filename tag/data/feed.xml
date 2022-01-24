@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/data/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-01-19T20:33:06+09:00</updated>
+  <updated>2022-01-24T23:09:00+09:00</updated>
   <id>http://localhost:4000/tag/data/feed.xml</id>
 
   
@@ -32,6 +32,103 @@
 
   
     <entry>
+      <title type="html">합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</title>
+      <link href="http://localhost:4000/cnn-basic-5" rel="alternate" type="text/html" title="합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)" />
+      <published>2022-01-23T21:00:00+09:00</published>
+      <updated>2022-01-23T21:00:00+09:00</updated>
+      <id>http://localhost:4000/cnn-basic-5</id>
+      <content type="html" xml:base="http://localhost:4000/cnn-basic-5">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vggnet&quot;&gt;VGGNet&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;ILSVRC 2014 대회에서 2등을 차지한 Karen Simonyan과 Andrew Zisserman이 만든 CNN 모델&lt;/li&gt;
+  &lt;li&gt;ILSVRC는 ImageNet Large Scale Visual Recognition Challenge의 약자로, 2010년에 시작된 이미지 인식(Image Recognition) 경진대회&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vgg-16-architecture&quot;&gt;VGG-16 Architecture&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-23/vggnet_2.jpeg&quot; alt=&quot;1&quot; width=&quot;65%&quot; height=&quot;65%&quot; /&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-23/vggnet_1.png&quot; alt=&quot;0&quot; width=&quot;65%&quot; height=&quot;65%&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;13 Convolution Layers + 3 Fully-connected Layers&lt;/li&gt;
+  &lt;li&gt;3x3 convolution filters&lt;/li&gt;
+  &lt;li&gt;stride: 1 &amp;amp; padding: 1&lt;/li&gt;
+  &lt;li&gt;2x2 max pooling (stride : 2)&lt;/li&gt;
+  &lt;li&gt;ReLU&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;configuration&quot;&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-23/vggnet_4.jpeg&quot; alt=&quot;4&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Input Size RGB 224x224, 복수의 Convolution layer, Max-Pooling층이 반복되는 구조이며 최종단에는 FC layer으로 구성되어 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3x3-필터-사용-why-use-smaller-filters&quot;&gt;3x3 필터 사용 (Why use smaller filters?)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;VGG 모델 이전 Convolutional Network를 활용하여 이미지 분류에서 좋은 성과를 보였던 모델들은 비교적 큰 Receptive Field를 갖는 11x11필터나 7x7 필터를 포함&lt;/li&gt;
+  &lt;li&gt;그러나 VGG 모델은 오직 3x3 크기의 작은 필터만 사용했음에도 이미지 분류 정확도를 비약적으로 개선
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-23/vggnet_3.png&quot; alt=&quot;3&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;u&gt;파라미터 수를 줄이고 Layer를 다층 쌓아서 모델의 전체 Depth를 깊게 만들기 위해서이다.&lt;/u&gt;&lt;/li&gt;
+  &lt;li&gt;Input Size가 7x7이며, 3x3의 Output Size를 도출해내야 한다고 가정하자, 이때 Filter Size가 3x3이라면 총 두 차례의 Convolution을 진행해야 한다.&lt;/li&gt;
+  &lt;li&gt;반면 5x5의 Filter Size로는 단 한 번의 Convolution으로 동일한 사이즈의 Feature Map을 산출한다. 3x3 Filter로 세 차례 Convolution 하는 것은 7x7 Filter로 한 번 Convolution 하는 것과 대응된다.&lt;/li&gt;
+  &lt;li&gt;즉, 3x3 Filter 3개는 7x7 Filter 하나와 동일한 Receptive Field (= Filter가 한 번에 볼 수 있는 입력 이미지의 Spatial Area) 를 가지면서도 더 깊은 레이어를 쌓을 수 있게 하는 것이다.&lt;/li&gt;
+  &lt;li&gt;이처럼 Layer 수가 늘어나면 이미지 특성에 비선형성을 더 추가할 수 있기 때문에(Deeper, more non-linearities), Filter를 통해 추출한 Feature가 점점 유용해지는 이점을 얻게 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;필터의-크기가-작으면-파라미터-수도-적어진다smaller-filters-fewer-parameters&quot;&gt;필터의 크기가 작으면 파라미터 수도 적어진다(Smaller filters, fewer parameters)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3x3 Filter에는 9개의 파라미터가 있다. 이때 Depth를 C라고 한다면 3 x 3 x C 개의 파라미터가 있고, 여기에 출력되는 Feature Map의 개수(=입력 Depth)를 곱하면 각 레이어 당 3x3xCxC의 파라미터를 가지게 된다. 만약 Layer가 3개라면, 총 파라미터는 3 * (32C2)개이다.&lt;/li&gt;
+  &lt;li&gt;반면 7x7 Filter의 경우 7x7xCxC개의 파라미터 수가 있을 것이다. 레이어를 더 적게 쌓았음에도 파라미터 수가 많은 것을 확인할 수 있다.&lt;/li&gt;
+  &lt;li&gt;여기서 파라미터(weight) 수가 적다는 것은 어떤 의미를 가질까? CNN에서 가중치는 모두 훈련이 필요한 것들이므로, &lt;u&gt;파라미터 수가 적을 수록 학습 속도가 빨라진다는 이점을 얻을 수 있다.&lt;/u&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;VGGNet은 3x3의 작은 필터를 모든 Conv 레이어에 사용하였다.&lt;/li&gt;
+  &lt;li&gt;작은 필터를 사용함으로써 더 많은 ReLU함수를 사용할 수 있고 더 많은 비선형성을 확보할 수 있었다.&lt;/li&gt;
+  &lt;li&gt;VGGNet의 A~E까지 각각의 다른 모델이 아니라 학습의 단계부터 알 수 있듯, 업그레이드된 모델이다.&lt;/li&gt;
+  &lt;li&gt;위와 같은 특징들로 AlexNet보다 2배 이상 깊은 네트워크이며 좋은 성능을 가진 모델을 만들어 낼 수 있었다.&lt;/li&gt;
+  &lt;li&gt;줄였음에도 파라미터의 수가 엄청나게 많기 때문에 학습 시간이 오래 걸린다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;참조 문헌&lt;br /&gt;
+&lt;a href=&quot;https://arxiv.org/pdf/1409.1556.pdf&quot;&gt;https://arxiv.org/pdf/1409.1556.pdf&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>John</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="data" />
+      
+
+      
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
       <title type="html">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</title>
       <link href="http://localhost:4000/cnn-basic-4" rel="alternate" type="text/html" title="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" />
       <published>2022-01-17T21:00:00+09:00</published>
@@ -43,6 +140,7 @@
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;가중치-초기화&quot;&gt;가중치 초기화&lt;/h3&gt;
@@ -126,7 +224,7 @@
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</summary>
       
 
       
@@ -145,6 +243,7 @@
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;배치-정규화&quot;&gt;배치 정규화&lt;/h3&gt;
@@ -205,7 +304,7 @@
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</summary>
       
 
       
@@ -224,6 +323,7 @@
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;cnn-foward-pass&quot;&gt;CNN foward pass&lt;/h3&gt;
@@ -336,7 +436,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</summary>
       
 
       
@@ -355,6 +455,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
@@ -485,7 +586,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</summary>
       
 
       
