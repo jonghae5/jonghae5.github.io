@@ -11,7 +11,7 @@
 
 
 
-    <title>합성곱 신경망 기초(CNN, Convolution Neural Network)</title>
+    <title>합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,24 +49,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="AI & Backend Developer" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/cnn-basic" />
+    <link rel="canonical" href="http://localhost:4000/cnn-basic-6" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="합성곱 신경망 기초(CNN, Convolution Neural Network)" />
-    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) CNN이란? Convolution을 이용한" />
-    <meta property="og:url" content="http://localhost:4000/cnn-basic" />
+    <meta property="og:title" content="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" />
+    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) ResNet ILSVRC 2015" />
+    <meta property="og:url" content="http://localhost:4000/cnn-basic-6" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-01-16T21:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-01-16T21:00:00+09:00" />
+    <meta property="article:published_time" content="2022-01-27T21:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-01-27T21:00:00+09:00" />
     <meta property="article:tag" content="Data" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="합성곱 신경망 기초(CNN, Convolution Neural Network)" />
-    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) CNN이란? Convolution을 이용한" />
+    <meta name="twitter:title" content="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" />
+    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) ResNet ILSVRC 2015" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -87,7 +87,7 @@
         "name": "John's IT Blog",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/cnn-basic",
+    "url": "http://localhost:4000/cnn-basic-6",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/built/images/ai-logo.jpg",
@@ -96,9 +96,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/cnn-basic"
+        "@id": "http://localhost:4000/cnn-basic-6"
     },
-    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) CNN이란? Convolution을 이용한"
+    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) ResNet ILSVRC 2015"
 }
     </script>
 
@@ -111,7 +111,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="합성곱 신경망 기초(CNN, Convolution Neural Network)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" href="/feed.xml" />
 
 
 </head>
@@ -172,7 +172,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="16 January 2022">16 January 2022</time>
+                    <time class="post-full-meta-date" datetime="27 January 2022">27 January 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -182,7 +182,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">합성곱 신경망 기초(CNN, Convolution Neural Network)</h1>
+                <h1 class="post-full-title">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</h1>
             </header>
 <!-- 글 포스트하면 뒷 배경화면 -->
 <!--            -->
@@ -202,114 +202,70 @@ into the {body} of the default.hbs template -->
     <li><a href="./cnn-basic-6">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</a></li>
 </ul>
 
-<h3 id="cnn이란">CNN이란?</h3>
-
+<h3 id="resnet">ResNet</h3>
 <ul>
-  <li>Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망</li>
-  <li>이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점</li>
-  <li>데이터의 공간적 정보를 유지하면서 배열 데이터 정보를 다음 레이어로 보낼 수 있어서 이미지(RGB 채널의 3차원 배열) 분야에서 적극 활용</li>
-  <li>이미지의 특징을 뚜렷하게 검출하기 때문에 이미지 분류에서 높은 성능</li>
+  <li>ILSVRC 2015 우승 (3.6% Top 5 Error)한 모델이며 Deep Residual Learning 이라고도 부른다.</li>
+  <li>152개의 Layer 구조이며 8배 깊은 Layers를 가졌음에도 불구하고 실행 시간이 VGGNet보다 빠르다.</li>
+  <li>이 모델은 일반적인 레이어만 깊은 모델들과 비교했을 때 성능이 좋을 뿐만 아니라 학습 속도도 더 빠르다.</li>
 </ul>
 
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-cnn_basic.png" alt="cnn_basic" /></p>
-
-<p>CNN에서는 필터를 이용한 Convolution연산을 반복적으로 진행하면서 이미지의 특징을 검출하기 때문에 생각보다 구조가 간단합니다. 
-<strong>다음의 세 가지 layer</strong>를 기억하시면 됩니다.</p>
-
-<ol>
-  <li>Convolution layer : 특징 추출(feature extraction)</li>
-  <li>Pooling layer : 특징 추출(feature extraction)</li>
-  <li>Fully-connected layer : 분류(classificaiton)<br />
-<img src="../../assets/built/images/cnn/22-01-16/22-01-16-cnn_basic_2.png" alt="cnn_basic_2" /></li>
-</ol>
-
-<p>[ 학습 내용 ]</p>
-
-<ol>
-  <li>필터 (커널)</li>
-  <li>패딩, 스트라이드</li>
-  <li>Pooling</li>
-  <li>ReLu 활성화 함수</li>
-  <li>Fully-Connected layer</li>
-</ol>
-
-<h3 id="필터커널">필터(커널)</h3>
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-filter.gif" alt="filter" /></p>
+<h3 id="introduction">Introduction</h3>
 <ul>
-  <li>커널(kernel)이라고도 불리며 이미지의 특징을 찾아내기 위한 공용 파라미터</li>
-  <li>필터 통과 이미지는 특성값을 가지고 있어 feature map 또는 activation map 라고함</li>
-  <li>이미지 픽셀 값은 Convolution 연산에 의해 변환되고 이 과정에서 색상, 선, 형태, 경계 등의 특징(feature)이 뚜렷해짐</li>
-  <li>필터가 많을수록 더 많은 이미지 특성을 추출하며, 컨볼루션 연산이 진행하면 할수록 이미지 크기는 작아지고 채널 수는 증가</li>
+  <li>VGGNet 논문에서 CNN 의 레이어가 깊어질수록 성능이 더 좋다는 것을 확인할 수 있었다.</li>
+  <li>하지만 레이어가 너무 깊어지면 Vanishing/Exploding gradient, 그리고 degradation problem 크게 이 두 가지 문제점에 봉착한다.</li>
+  <li>우선 Vanishing/Exploding gradient 같은 경우에는 레이어 사이에 batchNorm 을 적용해주면 해결할 수 있다.
+<img src="../../assets/built/images/cnn/22-01-27/2.png" alt="2" width="65%" height="65%" /></li>
 </ul>
 
-<h3 id="패딩-스트라이드">패딩, 스트라이드</h3>
+<p>Degradation Problem 이란 정확도가 어느 순간부터 정체되고 레이어가 더 깊어질수록 성능이 더 나빠지는 현상을 의미한다.</p>
 
-<p>컨볼루션 연산을 계속할 경우, 이미지 크기가 작아져 어떻게 될까요?
-연산할 수 있는 픽셀이 없어 더 이상 훈련할 수 없게 됩니다.</p>
+<p>이 논문에서는 Residual Learning 을 통해 Degradation Problem 을 해결하는 방법을 제시한다.</p>
 
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-padding.svg" alt="padding" /><br />
-<strong>패딩 (Padding)</strong></p>
-<ul>
-  <li>Network가 깊어지면 이미지 크기가 무한정 작아지는 것을 막기 위해 패딩이 존재</li>
-  <li>이미지 테두리에 일정 값(0 또는 1)을 넣어주는 작업</li>
-</ul>
-
-<p>▶ 패딩 효과<br />
-① 합성곱 연산을 할 때마다 이미지 축소 문제 발생 → 연산 결과 실제 입력된 이미지와 같은 크기 출력<br />
-② 테두리에 위치한 픽셀은 필터 결과 단 한번만 사용 → 패딩으로 연산 두번 진행(테두리 이미지 정보 가져옴)</p>
-
-<p><strong>스트라이드 (Stride)</strong></p>
-
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-stride.png" alt="stride" /></p>
-<ul>
-  <li>이미지에 필터를 적용하는 간격</li>
-  <li>스트라이드 값을 크게 주면 이동 간격이 넓어져 출력 데이터의 크기가 작아짐</li>
-  <li>패딩과 다르게 스트라이드는 출력데이터의 크기를 축소시키는 역할</li>
-</ul>
-
-<h3 id="풀링">풀링</h3>
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-pooling.png" alt="pooling" /></p>
+<p><img src="../../assets/built/images/cnn/22-01-27/3.png" alt="3" width="65%" height="65%" />
+<img src="../../assets/built/images/cnn/22-01-27/0.png" alt="0" width="30%" height="30%" /></p>
 
 <ul>
-  <li>Pooling layer는 대부분 convolutional layer 바로 다음에 위치해 공간(spatial size)을 축소</li>
-  <li>채널 크기는 고정되며 입력 데이터의 크기가 축소되고 학습하지 않기 때문에 파라미터 수가 줄어들어 오버피팅(Overfitting) 방지</li>
+  <li>간단하게 input 을 x, input이 통과하는 Function 을 F(x), 그리고 Output 을 H(x) 이라고 가정해보자. F(x) = H(x) - x 를 최소화시키는 Residual mapping으로 H(x)를 재정의한다. <br /></li>
+  <li>Residual Learning 에서는 F(x) 를 H(x) - x 라고 define 해 주었다. 원래 Output H(x) 에서 자기 자신인 x 를 빼주기 때문에 ‘Residual Learning’ 이라는 이름을 가지게 된다. <br /></li>
+  <li>또 x 가 이 F(x) 를 통과한 이후에, 이 값은 자기 자신인 x 와 더해주고, Layer를 Skip해서 더해주기에 ‘Skip Connections’ 이라고 부른다. 이 Residual Block 을 통과하고 나면 최종적인 값은 F(x) + x 가 나오게 된다.</li>
+  <li>F(x) 와 x 를 직접적으로 더해주기 위해선 F(x) 와 x 가 서로 같은 Dimension 이어야 한다. 일반적으로 F(x) 와 이전의 input x가 채널수가 같다면 별다른 조치를 취해주지 않아도 그냥 더해주면 된다.</li>
+  <li>하지만 Channel 개수가 달라지거나 MaxPool 등에 의해서 x 의 크기가 달라질 때, padding 이나 별다른 Ws 를 곱해주어서 사이즈를 매칭 시켜주는 것이 중요하다.</li>
 </ul>
 
-<p>오버피팅(Overfitting) : 모델이 훈련 데이터에만 잘 맞춰진 경우로 결과가 훈련 데이터 정확도는 높지만 새롭게 입력 받는 테스트 데이터의 정확도는 낮아 모델 성능이 떨어지는 현상<br />
-풀링(Pooling)에는 맥스 풀링(Max Pooing)과 평균 풀링(Average Pooling)이 존재</p>
+<h3 id="resnet-architecture">ResNet Architecture</h3>
+<p><img src="../../assets/built/images/cnn/22-01-27/4.png" alt="4" width="65%" height="65%" /></p>
 
-<p>① 맥스 풀링(Max Pooing) : 대상 이미지 영역에서 최대값을 구함 
-② 평균 풀링(Average Pooling) : 대상 이미지 영역에서 평균값을 구함<br />
-※ stride =2 를 특징으로 함</p>
-
-<p>[CNN 배열 공식]<br />
-<img src="../../assets/built/images/cnn/22-01-16/22-01-16-cal.png" alt="cal" width="600" height="250" /></p>
-
-<h3 id="relu">ReLu</h3>
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-relu.png" alt="relu" width="50%" height="50%" /></p>
 <ul>
-  <li>ReLu(Rectified Linear Unit) 활성화 함수는 비선형성 함수로 기본 선형 특성을 나타내는 layer에 비선형성을 증가</li>
-  <li>ReLu 함수의 범위는 R(z)=max(0, z) 양수이기 때문에 vanishing gradient 문제점을 극복하고 학습 속도와 성능을 향상시켜 CNN에서 주로 사용되는 활성화 함수</li>
+  <li>ResNet 의 기본 구조는 VGGNet-34 을 따른다. 위 그림을 보면 VGG-34 과 모델 구성은 같은데, 레이어 두개마다 Skip Connection 을 해준다는 것을 볼 수 있다.</li>
+  <li>중간에 점선으로 표시된 Skip Connection 은 x 와 F(x) 의 Dimension 이 달라져서 따로 맞춰줘야 되는 Skip Connection 들을 의미한다.</li>
 </ul>
 
-<h3 id="fully-connected-layer">Fully-Connected layer</h3>
-<p><img src="../../assets/built/images/cnn/22-01-16/22-01-16-fully.png" alt="fully" /></p>
+<h3 id="deeper-bottleneck-architectures">Deeper Bottleneck Architectures</h3>
+<p><img src="../../assets/built/images/cnn/22-01-27/7.png" alt="7" width="65%" height="65%" /></p>
 <ul>
-  <li>CNN 마지막에서 분류(Classification)를 결정하는 단계</li>
+  <li>네트워크의 깊이가 50 을 넘어가면, 제아무리 ResNet을 이용하고 3x3 필터만 사용한다 할지라도 Training 시간이 매우 길어질 수 있다. 따라서 이 경우엔 원래 모델 구조에서 약간의 수정이 필요하다.</li>
+  <li>3x3 필터를 두 번 사용하는 대신, 1x1 -&gt; 3x3 -&gt; 1x1 필터들을 사용하는 구조를 만든다. 이렇게 수정한 구조는 Dimension 의 크기를 줄일 뿐만 아니라 시간 복잡도도 줄이는 효과를 볼 수 있다.</li>
 </ul>
 
-<ol>
-  <li>flatten : 각 레이어를 1차원 벡터로 변환</li>
-  <li>fully-conneced layer : 1차원 벡터로 변환된 레이어를 하나의 벡터로 연결 (각 층의 노드들은 하나로 연결)<br />
-마지막으로 Softmax 함수를 이용해 가장 확률이 높은 class를 output으로 분류</li>
-</ol>
+<h3 id="experiments">Experiments</h3>
+<p>ResNet 은 1000개의 클라스로 이루어진 ImageNet 2012 데이터셋으로 training
+<img src="../../assets/built/images/cnn/22-01-27/5.png" alt="5" width="65%" height="65%" /></p>
+<ul>
+  <li>위 그래프에서 왼쪽 그림은 Plain Network 의 18, 34 Layer, 오른쪽 그림은 ResNet 의 18, 34 layer 의 Loss 과정이다.</li>
+  <li>우선 왼쪽 그림에서는 Degradation Problem 이 보이는 것을 확인할 수 있다. 34-Layer 네트워크가 18-layer 보다 Loss 가 높기 때문이다.</li>
+  <li>반면 ResNet 같은 경우엔 34-Layer 가 Loss 가 더 낮게 나오는 것을 확인할 수 있다. Degradation Problem 이 해결됐음을 보여주는 그래프이다.</li>
+</ul>
+
+<p><img src="../../assets/built/images/cnn/22-01-27/6.png" alt="6" width="65%" height="65%" /></p>
+<ul>
+  <li>위 표에서는 더 깊은 ResNet 들의 성능을 보여준다. 레이어가 깊어지면 깊어질수록 error 는 줄어드는 경향성을 볼 수 있고, 110 개의 레이어가 있을 때 가장 적은 에러가 나온다.</li>
+  <li>하지만 그렇다고 너무 깊어지면, 예를 들어 1000 개 이상의 레이어가 존재할 때는 오버피팅으로 인하여 성능이 더 얕은 모델들보다 더 안 좋게 나온다.</li>
+</ul>
 
 <hr />
-<p>참조 문헌</p>
-
-<p><a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer">https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer</a><br />
-<a href="https://seongkyun.github.io/study/2019/01/25/num_of_parameters/">https://seongkyun.github.io/study/2019/01/25/num_of_parameters/</a><br />
-<a href="http://taewan.kim/post/cnn/">http://taewan.kim/post/cnn/</a></p>
+<p>참조 문헌<br />
+[1] He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).<br />
+<a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf">https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf</a></p>
 
                 </div>
             </section>
@@ -375,9 +331,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/cnn-basic';
-                            var this_page_identifier = '/cnn-basic';
-                            var this_page_title = '합성곱 신경망 기초(CNN, Convolution Neural Network)';
+                            var this_page_url = 'http://localhost:4000/cnn-basic-6';
+                            var this_page_identifier = '/cnn-basic-6';
+                            var this_page_title = '합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -422,11 +378,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/cnn-basic-6">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -451,6 +402,8 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                            <li><a href="/cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
+                                        
                                     
                                   
                                 
@@ -462,6 +415,9 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -482,16 +438,19 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
                 
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/cnn-basic-2">
+            <a class="post-card-image-link" href="/cnn-basic-5">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/ai-logo.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/cnn-basic-2">
+            <a class="post-card-content-link" href="/cnn-basic-5">
                 <header class="post-card-header">
                     
                         
@@ -501,7 +460,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)</h2>
+                    <h2 class="post-card-title">합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -523,60 +482,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
-
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/java-basic">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/java-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/java-basic">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Backend</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Java 강좌(1) - Java 기본</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>자바입니다.
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/built/images/author-logo.jpg" alt="John" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/John/">John</a>
-                        </span>
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
+                      2 min read
                     
                 </span>
             </footer>
@@ -598,18 +504,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">합성곱 신경망 기초(CNN, Convolution Neural Network)</div>
+    <div class="floating-header-title">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%95%A9%EC%84%B1%EA%B3%B1+%EC%8B%A0%EA%B2%BD%EB%A7%9D+%EA%B8%B0%EC%B4%88%28CNN%2C+Convolution+Neural+Network%29&amp;url=https://jonghae5.github.io/cnn-basic"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%95%A9%EC%84%B1%EA%B3%B1+%EC%8B%A0%EA%B2%BD%EB%A7%9D+%EA%B8%B0%EC%B4%88+6%28ResNet%2C+Residual+Learning+for+Image+Recognition%29&amp;url=https://jonghae5.github.io/cnn-basic-6"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/cnn-basic"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/cnn-basic-6"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
