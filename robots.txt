@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https:/jonghae5.github.io/sitemap.xml
+Sitemap: https://jonghae5.github.io/sitemap.xml
 
