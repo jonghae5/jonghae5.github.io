@@ -11,7 +11,7 @@
 
 
 
-    <title>합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</title>
+    <title>클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,30 +49,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="AI & Frontend Developer" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/cnn-basic-4" />
+    <link rel="canonical" href="http://localhost:4000/js-basic" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" />
-    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 가중치 초기화 가중치가" />
-    <meta property="og:url" content="http://localhost:4000/cnn-basic-4" />
-    <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
+    <meta property="og:title" content="클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)" />
+    <meta property="og:description" content="Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 변수 다루기 😎 var를 지양하자. 👍 let &amp; const 사용 var : 함수 스코프" />
+    <meta property="og:url" content="http://localhost:4000/js-basic" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/js-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-01-17T21:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-01-17T21:00:00+09:00" />
-    <meta property="article:tag" content="Data" />
+    <meta property="article:published_time" content="2022-02-08T21:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-02-08T21:00:00+09:00" />
+    <meta property="article:tag" content="Frontend" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" />
-    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 가중치 초기화 가중치가" />
+    <meta name="twitter:title" content="클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)" />
+    <meta name="twitter:description" content="Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 변수 다루기 😎 var를 지양하자. 👍 let &amp; const 사용 var : 함수 스코프" />
     <meta name="twitter:url" content="http://localhost:4000/" />
-    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/js-logo.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="John's IT Blog" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Data" />
+    <meta name="twitter:data2" content="Frontend" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -87,18 +87,18 @@
         "name": "John's IT Blog",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/cnn-basic-4",
+    "url": "http://localhost:4000/js-basic",
     "image": {
         "@type": "ImageObject",
-        "url": "http://localhost:4000/assets/built/images/ai-logo.jpg",
+        "url": "http://localhost:4000/assets/built/images/js-logo.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/cnn-basic-4"
+        "@id": "http://localhost:4000/js-basic"
     },
-    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 가중치 초기화 가중치가"
+    "description": "Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 변수 다루기 😎 var를 지양하자. 👍 let &amp; const 사용 var : 함수 스코프"
 }
     </script>
 
@@ -111,7 +111,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)" href="/feed.xml" />
 
 
 </head>
@@ -168,102 +168,124 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-data post tag-data ">
+        <article class="post-full  tag-frontend post tag-frontend ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="17 January 2022">17 January 2022</time>
+                    <time class="post-full-meta-date" datetime=" 8 February 2022"> 8 February 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/data/'>DATA</a>
+                               <a href='/tag/frontend/'>FRONTEND</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</h1>
+                <h1 class="post-full-title">클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)</h1>
             </header>
 <!-- 글 포스트하면 뒷 배경화면 -->
 <!--            -->
-<!--            <figure class="post-full-image" style="background-image: url(/assets/built/images/ai-logo.jpg)">-->
+<!--            <figure class="post-full-image" style="background-image: url(/assets/built/images/js-logo.png)">-->
 <!--            </figure>-->
 <!--            -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p><span class="table-of-contents-list">CNN 강좌는 여러 절로 구성되어 있습니다. </span></p>
+                    <p><span class="table-of-contents-list">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. </span></p>
 <ul class="table-of-contents-list">
-    <li><a href="./cnn-basic">합성곱 신경망 기초(CNN, Convolution Neural Network)</a></li> <!-- 확장자 X 시간 X 파일의 이름만 작성-->
-    <li><a href="./cnn-basic-2">합성곱 신경망 기초 2(역전파, Backpropagation)</a></li>
-    <li><a href="./cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
-    <li><a href="./cnn-basic-4">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</a></li>
-    <li><a href="./cnn-basic-5">합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</a></li>
-    <li><a href="./cnn-basic-6">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</a></li>
+    <li><a href="./js-basic">클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope)</a></li> <!-- 확장자 X 시간 X 파일의 이름만 작성-->
+    <li><a href="./js-basic-2">클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)</a></li>
+    <li><a href="./js-basic-3">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</a></li>
 </ul>
 
-<h3 id="가중치-초기화">가중치 초기화</h3>
-<p><br />
-<strong>가중치가 중요한 이유</strong></p>
+<h3 id="변수-다루기-">변수 다루기 😎</h3>
+
+<h3 id="var를-지양하자-">var를 지양하자. 👍</h3>
 
 <ul>
-  <li>Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다.</li>
-  <li>그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다.</li>
-  <li>지역 최적화(Local Optimization)에 실패해 Local mnimum에 수렴하기도 한다.</li>
-  <li>즉, 같은 모델을 훈련시키더라도 가중치가 어떤 초기 값을 갖느냐에 따라서 모델 훈련 결과가 달라진다.
-<img src="../../assets/built/images/cnn/22-01-18/0.png" alt="0" width="50%" height="50%" /></li>
-  <li>가중치 값이 0일 경우, 학습이 불가능하다.</li>
-  <li>가중치 값을 같은 값으로 할 경우, 1개 신경망에 학습시키는 것과 동일</li>
-  <li>평균 0 ,1보다 작은 표준편차 분포를 사용한다.</li>
+  <li>let &amp; const 사용</li>
 </ul>
 
-<p><strong>1) Sigmoid, 정규분포</strong></p>
+<p>var : 함수 스코프
+let &amp; const : 블록 단위 스코프 + Temporary Dead Zone</p>
 
-<p><img src="../../assets/built/images/cnn/22-01-18/4.png" alt="4" width="70%" height="50%" /></p>
 <ul>
-  <li>표준편차가 크기 때문에 학습이 반복될 수록 0,1로 치우치는 문제가 발생</li>
+  <li>var는 변수 선언 및 할당 재사용 가능
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름2</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>호이스팅으로 인해, 변수 선언이 먼저 가기 때문에 아래와 같이 undefined가 나온다.
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name2</span><span class="p">);</span> <span class="c1">// undefined</span>
+<span class="kd">var</span> <span class="nx">name2</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name2</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>let (변수 선언 및 재할당 가능)
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">name</span> <span class="o">=</span><span class="dl">"</span><span class="s2">이름2</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>const (변수 선언시 할당해주어야 한다)
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름;
+</span></code></pre></div>    </div>
+    <hr />
+    <h3 id="function-scope--block-scope-">function scope &amp; block scope 👍</h3>
+  </li>
+  <li>var는 Function 단위이므로 지역에서 할당한 변수가 전역까지 오염된다.</li>
 </ul>
 
-<p><strong>2) 1)에서 표준편차를 줄였을 경우</strong>
-<img src="../../assets/built/images/cnn/22-01-18/5.png" alt="5" width="70%" height="50%" /></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nb">global</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">전역</span><span class="dl">"</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">global</span> <span class="o">===</span><span class="dl">"</span><span class="s2">전역) {
+    var global = '지역'
+
+    console.log(global); // 지역
+}
+console.log(global) // 지역
+</span></code></pre></div></div>
+
 <ul>
-  <li>Sigmoid 그래디언트 최댓값이 0.25이므로 현상을 완화할 수는 있지만 0.5로 몰리는 현상</li>
+  <li>let는 block 단위이므로 전역에 오염되지 않는다.</li>
 </ul>
 
-<p><strong>“더 나은 방법을 찾아보자”</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nb">global</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">전역</span><span class="dl">"</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">global</span> <span class="o">===</span><span class="dl">"</span><span class="s2">전역) {
+    var global = '지역'
 
-<p><strong>LeCun Initialization</strong></p>
+    console.log(global); // 지역
+}
+console.log(global) // 전역
+</span></code></pre></div></div>
+
 <ul>
-  <li>CNN LeNet 창시자 LeCun이 도입</li>
-  <li>정규분포, Uniform 분포를 따르는 방법 2가지가 있다.</li>
+  <li>let보다 const를 사용하는 것이 좋다.</li>
+  <li>const는 재할당 불가만 기억하면 된다.</li>
 </ul>
 
-<p><img src="../../assets/built/images/cnn/22-01-18/6.png" alt="6" width="70%" height="50%" /></p>
+<p>객체 조작은 문제 없음</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">john</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">age</span> <span class="p">:</span> <span class="mi">27</span><span class="p">,</span>
+<span class="p">}</span>
 
-<p><strong>Xavier Initialization</strong></p>
-<ul>
-  <li>이전 노드와 다음 노드 개수에 의존하는 방법</li>
-  <li>비선형함수(ex. sigmoid, tanh)에서 효과적인 결과</li>
-</ul>
+<span class="c1">// Error 발생(재할당 불가)</span>
+<span class="c1">// person = {</span>
+<span class="c1">//   name : "john2",</span>
+<span class="c1">//    age : 30,</span>
 
-<p><img src="../../assets/built/images/cnn/22-01-18/7.png" alt="7" width="70%" height="50%" /></p>
+<span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">john2</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p><strong>He Initialization</strong></p>
-<ul>
-  <li>Relu 활성화 함수 사용시, Xavier 설정이 비효율적인 결과를 가져온다.(평균, 표준편차 0으로 수렴)</li>
-  <li>최근 대부분 모델에서 He 초기화를 사용한다.</li>
-</ul>
 
-<p><img src="../../assets/built/images/cnn/22-01-18/8.png" alt="8" width="70%" height="50%" /></p>
-
-<p><strong>⭐️ 최근 Deep CNN 모델들은 <span style="color:#2D3748; background-color:#fff5b1;">Gaussian Distribution</span> 초기화 방법 사용</strong></p>
-
-<hr />
-<p>참조 문헌
-<a href="https://kharshit.github.io/blog/2018/12/28/why-batch-normalization">https://kharshit.github.io/blog/2018/12/28/why-batch-normalization</a>
-<a href="https://reniew.github.io/13/">https://reniew.github.io/13/</a><br />
-<a href="https://wooono.tistory.com/227">https://wooono.tistory.com/227</a></p>
-
+</code></pre></div></div>
+<p>배열 조작시에도 문제 없음</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<span class="nx">numList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
 
                 </div>
             </section>
@@ -329,9 +351,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/cnn-basic-4';
-                            var this_page_identifier = '/cnn-basic-4';
-                            var this_page_title = '합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)';
+                            var this_page_url = 'http://localhost:4000/js-basic';
+                            var this_page_identifier = '/js-basic';
+                            var this_page_title = '클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -365,7 +387,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; John's IT Blog &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/data/">Data</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/frontend/">Frontend</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -375,17 +397,6 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/cnn-basic-6">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</a></li>
-                                        
                                     
                                   
                                 
@@ -393,20 +404,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/cnn-basic-5">합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
+                                            <li><a href="/js-basic-3">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</a></li>
                                         
                                     
                                   
@@ -415,22 +413,29 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                            <li><a href="/js-basic-2">클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)</a></li>
+                                        
                                     
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/data/">
+                            <a href="/tag/frontend/">
                                 
-                                    See all 5 posts  →
+                                    See all 2 posts  →
                                 
                             </a>
                         </footer>
@@ -440,55 +445,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/cnn-basic-5">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/ai-logo.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/cnn-basic-5">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Data</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/built/images/author-logo.jpg" alt="John" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/John/">John</a>
-                        </span>
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      2 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -496,26 +452,26 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/cnn-basic-3">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/ai-logo.jpg)"></div>
+            <a class="post-card-image-link" href="/js-basic-3">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/js-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/cnn-basic-3">
+            <a class="post-card-content-link" href="/js-basic-3">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Data</span>
+                                <span class="post-card-tags">Frontend</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</h2>
+                    <h2 class="post-card-title">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초</p>
+                        <p>Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트</p>
                     
                 </section>
             </a>
@@ -555,18 +511,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</div>
+    <div class="floating-header-title">클린코드 자바스크립트 1-1 변수 다루기(let & const 사용, function scope & block scope)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%95%A9%EC%84%B1%EA%B3%B1+%EC%8B%A0%EA%B2%BD%EB%A7%9D+%EA%B8%B0%EC%B4%88+4%28%EA%B0%80%EC%A4%91%EC%B9%98+%EC%B4%88%EA%B8%B0%ED%99%94%2C+Weight+Initialization%29&amp;url=https://jonghae5.github.io/cnn-basic-4"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+1-1+%EB%B3%80%EC%88%98+%EB%8B%A4%EB%A3%A8%EA%B8%B0%28let+%26+const+%EC%82%AC%EC%9A%A9%2C+function+scope+%26+block+scope%29&amp;url=https://jonghae5.github.io/js-basic"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/cnn-basic-4"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/js-basic"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
