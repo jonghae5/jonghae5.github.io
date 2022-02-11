@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/author/John/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-02-09T22:02:49+09:00</updated>
+  <updated>2022-02-11T22:22:52+09:00</updated>
   <id>http://localhost:4000/author/John/feed.xml</id>
 
   
@@ -32,105 +32,103 @@
 
   
     <entry>
-      <title type="html">클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)</title>
-      <link href="http://localhost:4000/js-basic" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope)" />
-      <published>2022-02-08T21:00:00+09:00</published>
-      <updated>2022-02-08T21:00:00+09:00</updated>
-      <id>http://localhost:4000/js-basic</id>
-      <content type="html" xml:base="http://localhost:4000/js-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+      <title type="html">클린코드 자바스크립트 2-1 타입 다루기(타입 검사)</title>
+      <link href="http://localhost:4000/js-basic-4" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-1 타입 다루기(타입 검사)" />
+      <published>2022-02-10T21:00:00+09:00</published>
+      <updated>2022-02-10T21:00:00+09:00</updated>
+      <id>http://localhost:4000/js-basic-4</id>
+      <content type="html" xml:base="http://localhost:4000/js-basic-4">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
+&lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
 
-&lt;h3 id=&quot;var를-지양하자-&quot;&gt;var를 지양하자. 👍&lt;/h3&gt;
+&lt;h3 id=&quot;타입-검사&quot;&gt;타입 검사👍&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;let &amp;amp; const 사용&lt;/li&gt;
+  &lt;li&gt;PRIMITIVE vs REFERENCE&lt;/li&gt;
+  &lt;li&gt;Recference 는 객체 (Array, function, Date …)&lt;/li&gt;
+  &lt;li&gt;typeof 로 감별해내기 어렵다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;var : 함수 스코프
-let &amp;amp; const : 블록 단위 스코프 + Temporary Dead Zone&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'string'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'boolean'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'undefined'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'number'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'symbol'&lt;/span&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;var는 변수 선언 및 할당 재사용 가능
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;호이스팅으로 인해, 변수 선언이 먼저 가기 때문에 아래와 같이 undefined가 나온다.
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;let (변수 선언 및 재할당 가능)
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;const (변수 선언시 할당해주어야 한다)
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;hr /&gt;
-    &lt;h3 id=&quot;function-scope--block-scope-&quot;&gt;function scope &amp;amp; block scope 👍&lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;li&gt;var는 Function 단위이므로 지역에서 할당한 변수가 전역까지 오염된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역) {
-    var global = '지역'
-
-    console.log(global); // 지역
-}
-console.log(global) // 지역
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;let는 block 단위이므로 전역에 오염되지 않는다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역) {
-    var global = '지역'
-
-    console.log(global); // 지역
-}
-console.log(global) // 전역
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;let보다 const를 사용하는 것이 좋다.&lt;/li&gt;
-  &lt;li&gt;const는 재할당 불가만 기억하면 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;객체 조작은 문제 없음&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;john&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Error 발생(재할당 불가)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// person = {&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//   name : &quot;john2&quot;,&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//    age : 30,&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;john2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myFunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'function'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'function&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'undefined'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;배열 조작시에도 문제 없음&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;numList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+&lt;p&gt;가장 치명적인 문제 😥&lt;br /&gt;
+자바 스크립트가 인정한 오류&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 'object'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자바스크립트는 동적으로 변하는 언어 ▻ 타입 동적&lt;/li&gt;
+  &lt;li&gt;객체의 프로토타입 체인을 확인하는 법 (객체 확인에 용이)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;85&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;poco&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;poco&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;poco&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 최상위에 Object 가 있으므로 true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '[object Array]'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '[object Function]'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '[object Date]'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자바스크립트는 동적인 타입을 가진 언어이다.&lt;/li&gt;
+  &lt;li&gt;타입 검사가 어려움 하나하나 잘 찾아가면서 검사 해야한다.&lt;/li&gt;
+  &lt;li&gt;어떠한 부분이 주의해야할지 외우는게 아닌 하나하나 잘 찾아서 검사해야한다!&lt;/li&gt;
+  &lt;li&gt;Primitive vs Reference / typeof instanceof 등&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;solution-&quot;&gt;Solution 🌼&lt;/h3&gt;
+&lt;p&gt;아래와 같은 내용으로 Stack Overflow , Google 최신 검색해보며 타입 검사&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript is function&lt;/li&gt;
+  &lt;li&gt;javascript is Array&lt;/li&gt;
+  &lt;li&gt;javascript is String&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;}&lt;/p&gt;</content>
 
       
       
@@ -151,7 +149,7 @@ console.log(global) // 전역
       
 
       
-        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</summary>
+        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary>
       
 
       
@@ -159,76 +157,72 @@ console.log(global) // 전역
     </entry>
   
     <entry>
-      <title type="html">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</title>
-      <link href="http://localhost:4000/js-basic-3" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-3 변수 다루기(호이스팅)" />
-      <published>2022-02-08T21:00:00+09:00</published>
-      <updated>2022-02-08T21:00:00+09:00</updated>
-      <id>http://localhost:4000/js-basic-3</id>
-      <content type="html" xml:base="http://localhost:4000/js-basic-3">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+      <title type="html">클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</title>
+      <link href="http://localhost:4000/js-basic-6" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)" />
+      <published>2022-02-10T21:00:00+09:00</published>
+      <updated>2022-02-10T21:00:00+09:00</updated>
+      <id>http://localhost:4000/js-basic-6</id>
+      <content type="html" xml:base="http://localhost:4000/js-basic-6">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;호이스팅-&quot;&gt;호이스팅 👍&lt;/h3&gt;
+&lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
+
+&lt;h3 id=&quot;형변환-주의하기&quot;&gt;형변환 주의하기👍&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;[http://dorey.github.io/JavaScript-Equality-Table/]&quot;&gt;http://dorey.github.io/JavaScript-Equality-Table/&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;런타임시 선언과 할당이 분리되는 것&lt;/li&gt;
-  &lt;li&gt;런타임시 선언이 최상단으로 끌어올려진다.&lt;/li&gt;
-  &lt;li&gt;var 경우, 할당이 제대로 되지 않았을 때, 선언했다면 undefined&lt;/li&gt;
+  &lt;li&gt;느슨한 검사 =&amp;gt; 암묵적 형 변환&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 10&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; 문자와 결합&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '11 문자와 결합'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
 
-    &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;9.999&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 9 (10진수)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 100&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// functon&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 명시적 변환 (옳은 예)&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; 문자와 결합&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '11 문자와 결합'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;사용자가 형변환시 명시적 변환&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;자바스크립트 엔진이 평가시 암묵적 형변환&lt;/strong&gt;&lt;br /&gt;
+▻ 타입 변환시 명시적 변환을 해주어야 한다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;isnan&quot;&gt;isNaN👍&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MAX_SAFE_INTEGER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//9007199254740991&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//ƒ isInteger() {}&lt;/span&gt;
+
+
+&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;숫자가&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;아니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false =&amp;gt; 숫자가 맞다.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;테스트&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true =&amp;gt; 숫자가 아니다.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;테스트&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false =&amp;gt; 숫자가 맞다.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ES2015+ 이후 버전&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;const를 사용해 함수를 만들고 할당하는 방식(함수 표현식)을 추천
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//error&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;호이스팅-문제-&quot;&gt;호이스팅 문제 😫&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;코드 작성시 예측과 실행이 다른 문제가 생긴다.&lt;/li&gt;
-  &lt;li&gt;var 사용 X &amp;gt; let,const 지향&lt;/li&gt;
-  &lt;li&gt;함수 조심 &amp;gt; 함수 표현식 사용&lt;/li&gt;
+  &lt;li&gt;isNaN ▻ 느슨한 검사&lt;/li&gt;
+  &lt;li&gt;Number.isNaN ▻ 엄격한 검사&lt;/li&gt;
 &lt;/ul&gt;</content>
 
       
@@ -250,7 +244,111 @@ console.log(global) // 전역
       
 
       
-        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</summary>
+        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)</title>
+      <link href="http://localhost:4000/js-basic-5" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq 줄이기)" />
+      <published>2022-02-10T21:00:00+09:00</published>
+      <updated>2022-02-10T21:00:00+09:00</updated>
+      <id>http://localhost:4000/js-basic-5</id>
+      <content type="html" xml:base="http://localhost:4000/js-basic-5">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
+
+&lt;h3 id=&quot;undefined--null-&quot;&gt;undefined &amp;amp; null 👍&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// null&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// null =&amp;gt; math =&amp;gt; 0&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 123&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 선언했지만 정의되지 않고 할당 X&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;varb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;varb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//undefined&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;varb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;varb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// NaN&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;차이점&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;undefined, null =&amp;gt; 값이 없거나(명시적 표현) 정의되지 않음&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;undefined ▻ NaN ▻ type undefined&lt;/li&gt;
+  &lt;li&gt;null ▻ 0 ▻ type Object&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;eqeq-줄이기-동등-연산자-&quot;&gt;eqeq 줄이기 (동등 연산자 ==)👍&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;equality (==)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;형변환(type casting)이 일어난다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//Strict equality(===)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#ticketNum&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '0'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 위험 협업시 알아듣기 어렵다.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 옳은 예&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;valueAsNumber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>John</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="frontend" />
+      
+
+      
+        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary>
       
 
       
@@ -268,7 +366,12 @@ console.log(global) // 전역
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
 
 &lt;h3 id=&quot;전역-공간-사용-최소화-&quot;&gt;전역 공간 사용 최소화 👍&lt;/h3&gt;
 
@@ -476,7 +579,241 @@ console.log(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
       
 
       
-        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</summary>
+        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</title>
+      <link href="http://localhost:4000/js-basic-3" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-3 변수 다루기(호이스팅)" />
+      <published>2022-02-08T21:00:00+09:00</published>
+      <updated>2022-02-08T21:00:00+09:00</updated>
+      <id>http://localhost:4000/js-basic-3</id>
+      <content type="html" xml:base="http://localhost:4000/js-basic-3">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
+
+&lt;h3 id=&quot;호이스팅-&quot;&gt;호이스팅 👍&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;런타임시 선언과 할당이 분리되는 것&lt;/li&gt;
+  &lt;li&gt;런타임시 선언이 최상단으로 끌어올려진다.&lt;/li&gt;
+  &lt;li&gt;var 경우, 할당이 제대로 되지 않았을 때, 선언했다면 undefined&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 10&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 100&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// functon&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;const를 사용해 함수를 만들고 할당하는 방식(함수 표현식)을 추천
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//error&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;호이스팅-문제-&quot;&gt;호이스팅 문제 😫&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;코드 작성시 예측과 실행이 다른 문제가 생긴다.&lt;/li&gt;
+  &lt;li&gt;var 사용 X &amp;gt; let,const 지향&lt;/li&gt;
+  &lt;li&gt;함수 조심 &amp;gt; 함수 표현식 사용&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>John</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="frontend" />
+      
+
+      
+        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)</title>
+      <link href="http://localhost:4000/js-basic" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope)" />
+      <published>2022-02-08T21:00:00+09:00</published>
+      <updated>2022-02-08T21:00:00+09:00</updated>
+      <id>http://localhost:4000/js-basic</id>
+      <content type="html" xml:base="http://localhost:4000/js-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
+
+&lt;h3 id=&quot;var를-지양하자-&quot;&gt;var를 지양하자. 👍&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;let &amp;amp; const 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;var : 함수 스코프
+let &amp;amp; const : 블록 단위 스코프 + Temporary Dead Zone&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;var는 변수 선언 및 할당 재사용 가능
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;호이스팅으로 인해, 변수 선언이 먼저 가기 때문에 아래와 같이 undefined가 나온다.
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;let (변수 선언 및 재할당 가능)
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;const (변수 선언시 할당해주어야 한다)
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;이름;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;h3 id=&quot;function-scope--block-scope-&quot;&gt;function scope &amp;amp; block scope 👍&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;var는 Function 단위이므로 지역에서 할당한 변수가 전역까지 오염된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역) {
+    var global = '지역'
+
+    console.log(global); // 지역
+}
+console.log(global) // 지역
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;let는 block 단위이므로 전역에 오염되지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;전역) {
+    var global = '지역'
+
+    console.log(global); // 지역
+}
+console.log(global) // 전역
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;let보다 const를 사용하는 것이 좋다.&lt;/li&gt;
+  &lt;li&gt;const는 재할당 불가만 기억하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;객체 조작은 문제 없음&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;john&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Error 발생(재할당 불가)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// person = {&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//   name : &quot;john2&quot;,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//    age : 30,&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;john2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;배열 조작시에도 문제 없음&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;numList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>John</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="frontend" />
+      
+
+      
+        <summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary>
       
 
       
@@ -661,110 +998,6 @@ console.log(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
 &lt;hr /&gt;
 &lt;p&gt;참조 문헌&lt;br /&gt;
 &lt;a href=&quot;https://arxiv.org/pdf/1409.1556.pdf&quot;&gt;https://arxiv.org/pdf/1409.1556.pdf&lt;/a&gt;&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>John</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="data" />
-      
-
-      
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</title>
-      <link href="http://localhost:4000/cnn-basic-4" rel="alternate" type="text/html" title="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" />
-      <published>2022-01-17T21:00:00+09:00</published>
-      <updated>2022-01-17T21:00:00+09:00</updated>
-      <id>http://localhost:4000/cnn-basic-4</id>
-      <content type="html" xml:base="http://localhost:4000/cnn-basic-4">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;가중치-초기화&quot;&gt;가중치 초기화&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;가중치가 중요한 이유&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다.&lt;/li&gt;
-  &lt;li&gt;그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다.&lt;/li&gt;
-  &lt;li&gt;지역 최적화(Local Optimization)에 실패해 Local mnimum에 수렴하기도 한다.&lt;/li&gt;
-  &lt;li&gt;즉, 같은 모델을 훈련시키더라도 가중치가 어떤 초기 값을 갖느냐에 따라서 모델 훈련 결과가 달라진다.
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/0.png&quot; alt=&quot;0&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;가중치 값이 0일 경우, 학습이 불가능하다.&lt;/li&gt;
-  &lt;li&gt;가중치 값을 같은 값으로 할 경우, 1개 신경망에 학습시키는 것과 동일&lt;/li&gt;
-  &lt;li&gt;평균 0 ,1보다 작은 표준편차 분포를 사용한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;1) Sigmoid, 정규분포&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/4.png&quot; alt=&quot;4&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;표준편차가 크기 때문에 학습이 반복될 수록 0,1로 치우치는 문제가 발생&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;2) 1)에서 표준편차를 줄였을 경우&lt;/strong&gt;
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/5.png&quot; alt=&quot;5&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Sigmoid 그래디언트 최댓값이 0.25이므로 현상을 완화할 수는 있지만 0.5로 몰리는 현상&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;“더 나은 방법을 찾아보자”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;LeCun Initialization&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;CNN LeNet 창시자 LeCun이 도입&lt;/li&gt;
-  &lt;li&gt;정규분포, Uniform 분포를 따르는 방법 2가지가 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/6.png&quot; alt=&quot;6&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Xavier Initialization&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;이전 노드와 다음 노드 개수에 의존하는 방법&lt;/li&gt;
-  &lt;li&gt;비선형함수(ex. sigmoid, tanh)에서 효과적인 결과&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/7.png&quot; alt=&quot;7&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;He Initialization&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Relu 활성화 함수 사용시, Xavier 설정이 비효율적인 결과를 가져온다.(평균, 표준편차 0으로 수렴)&lt;/li&gt;
-  &lt;li&gt;최근 대부분 모델에서 He 초기화를 사용한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/8.png&quot; alt=&quot;8&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;⭐️ 최근 Deep CNN 모델들은 &lt;span style=&quot;color:#2D3748; background-color:#fff5b1;&quot;&gt;Gaussian Distribution&lt;/span&gt; 초기화 방법 사용&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;참조 문헌
-&lt;a href=&quot;https://kharshit.github.io/blog/2018/12/28/why-batch-normalization&quot;&gt;https://kharshit.github.io/blog/2018/12/28/why-batch-normalization&lt;/a&gt;
-&lt;a href=&quot;https://reniew.github.io/13/&quot;&gt;https://reniew.github.io/13/&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://wooono.tistory.com/227&quot;&gt;https://wooono.tistory.com/227&lt;/a&gt;&lt;/p&gt;</content>
 
       
       
@@ -979,157 +1212,6 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
 &lt;p&gt;&lt;a href=&quot;https://cs231n.github.io/optimization-2/&quot;&gt;https://cs231n.github.io/optimization-2/&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/&quot;&gt;https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://ratsgo.github.io/deep%20learning/2017/04/05/CNNbackprop/&quot;&gt;https://ratsgo.github.io/deep%20learning/2017/04/05/CNNbackprop/&lt;/a&gt;&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>John</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="data" />
-      
-
-      
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">합성곱 신경망 기초(CNN, Convolution Neural Network)</title>
-      <link href="http://localhost:4000/cnn-basic" rel="alternate" type="text/html" title="합성곱 신경망 기초(CNN, Convolution Neural Network)" />
-      <published>2022-01-16T21:00:00+09:00</published>
-      <updated>2022-01-16T21:00:00+09:00</updated>
-      <id>http://localhost:4000/cnn-basic</id>
-      <content type="html" xml:base="http://localhost:4000/cnn-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cnn이란&quot;&gt;CNN이란?&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Convolution을 이용한 이미지 처리에 탁월한 성능을 보이는 인공신경망&lt;/li&gt;
-  &lt;li&gt;이미지 경우 이동되었거나, 방향이 뒤틀렸거나 등 다양한 변형이 존재한다. 기존 MLP는 픽셀 값이 약간 달라져도 민감하게 영향을 받는다는 단점&lt;/li&gt;
-  &lt;li&gt;데이터의 공간적 정보를 유지하면서 배열 데이터 정보를 다음 레이어로 보낼 수 있어서 이미지(RGB 채널의 3차원 배열) 분야에서 적극 활용&lt;/li&gt;
-  &lt;li&gt;이미지의 특징을 뚜렷하게 검출하기 때문에 이미지 분류에서 높은 성능&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-cnn_basic.png&quot; alt=&quot;cnn_basic&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;CNN에서는 필터를 이용한 Convolution연산을 반복적으로 진행하면서 이미지의 특징을 검출하기 때문에 생각보다 구조가 간단합니다. 
-&lt;strong&gt;다음의 세 가지 layer&lt;/strong&gt;를 기억하시면 됩니다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Convolution layer : 특징 추출(feature extraction)&lt;/li&gt;
-  &lt;li&gt;Pooling layer : 특징 추출(feature extraction)&lt;/li&gt;
-  &lt;li&gt;Fully-connected layer : 분류(classificaiton)&lt;br /&gt;
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-cnn_basic_2.png&quot; alt=&quot;cnn_basic_2&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;[ 학습 내용 ]&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;필터 (커널)&lt;/li&gt;
-  &lt;li&gt;패딩, 스트라이드&lt;/li&gt;
-  &lt;li&gt;Pooling&lt;/li&gt;
-  &lt;li&gt;ReLu 활성화 함수&lt;/li&gt;
-  &lt;li&gt;Fully-Connected layer&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;필터커널&quot;&gt;필터(커널)&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-filter.gif&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;커널(kernel)이라고도 불리며 이미지의 특징을 찾아내기 위한 공용 파라미터&lt;/li&gt;
-  &lt;li&gt;필터 통과 이미지는 특성값을 가지고 있어 feature map 또는 activation map 라고함&lt;/li&gt;
-  &lt;li&gt;이미지 픽셀 값은 Convolution 연산에 의해 변환되고 이 과정에서 색상, 선, 형태, 경계 등의 특징(feature)이 뚜렷해짐&lt;/li&gt;
-  &lt;li&gt;필터가 많을수록 더 많은 이미지 특성을 추출하며, 컨볼루션 연산이 진행하면 할수록 이미지 크기는 작아지고 채널 수는 증가&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;패딩-스트라이드&quot;&gt;패딩, 스트라이드&lt;/h3&gt;
-
-&lt;p&gt;컨볼루션 연산을 계속할 경우, 이미지 크기가 작아져 어떻게 될까요?
-연산할 수 있는 픽셀이 없어 더 이상 훈련할 수 없게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-padding.svg&quot; alt=&quot;padding&quot; /&gt;&lt;br /&gt;
-&lt;strong&gt;패딩 (Padding)&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Network가 깊어지면 이미지 크기가 무한정 작아지는 것을 막기 위해 패딩이 존재&lt;/li&gt;
-  &lt;li&gt;이미지 테두리에 일정 값(0 또는 1)을 넣어주는 작업&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;▶ 패딩 효과&lt;br /&gt;
-① 합성곱 연산을 할 때마다 이미지 축소 문제 발생 → 연산 결과 실제 입력된 이미지와 같은 크기 출력&lt;br /&gt;
-② 테두리에 위치한 픽셀은 필터 결과 단 한번만 사용 → 패딩으로 연산 두번 진행(테두리 이미지 정보 가져옴)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;스트라이드 (Stride)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-stride.png&quot; alt=&quot;stride&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;이미지에 필터를 적용하는 간격&lt;/li&gt;
-  &lt;li&gt;스트라이드 값을 크게 주면 이동 간격이 넓어져 출력 데이터의 크기가 작아짐&lt;/li&gt;
-  &lt;li&gt;패딩과 다르게 스트라이드는 출력데이터의 크기를 축소시키는 역할&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;풀링&quot;&gt;풀링&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-pooling.png&quot; alt=&quot;pooling&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Pooling layer는 대부분 convolutional layer 바로 다음에 위치해 공간(spatial size)을 축소&lt;/li&gt;
-  &lt;li&gt;채널 크기는 고정되며 입력 데이터의 크기가 축소되고 학습하지 않기 때문에 파라미터 수가 줄어들어 오버피팅(Overfitting) 방지&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;오버피팅(Overfitting) : 모델이 훈련 데이터에만 잘 맞춰진 경우로 결과가 훈련 데이터 정확도는 높지만 새롭게 입력 받는 테스트 데이터의 정확도는 낮아 모델 성능이 떨어지는 현상&lt;br /&gt;
-풀링(Pooling)에는 맥스 풀링(Max Pooing)과 평균 풀링(Average Pooling)이 존재&lt;/p&gt;
-
-&lt;p&gt;① 맥스 풀링(Max Pooing) : 대상 이미지 영역에서 최대값을 구함 
-② 평균 풀링(Average Pooling) : 대상 이미지 영역에서 평균값을 구함&lt;br /&gt;
-※ stride =2 를 특징으로 함&lt;/p&gt;
-
-&lt;p&gt;[CNN 배열 공식]&lt;br /&gt;
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-cal.png&quot; alt=&quot;cal&quot; width=&quot;600&quot; height=&quot;250&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;relu&quot;&gt;ReLu&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-relu.png&quot; alt=&quot;relu&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;ReLu(Rectified Linear Unit) 활성화 함수는 비선형성 함수로 기본 선형 특성을 나타내는 layer에 비선형성을 증가&lt;/li&gt;
-  &lt;li&gt;ReLu 함수의 범위는 R(z)=max(0, z) 양수이기 때문에 vanishing gradient 문제점을 극복하고 학습 속도와 성능을 향상시켜 CNN에서 주로 사용되는 활성화 함수&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;fully-connected-layer&quot;&gt;Fully-Connected layer&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-16/22-01-16-fully.png&quot; alt=&quot;fully&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;CNN 마지막에서 분류(Classification)를 결정하는 단계&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;flatten : 각 레이어를 1차원 벡터로 변환&lt;/li&gt;
-  &lt;li&gt;fully-conneced layer : 1차원 벡터로 변환된 레이어를 하나의 벡터로 연결 (각 층의 노드들은 하나로 연결)&lt;br /&gt;
-마지막으로 Softmax 함수를 이용해 가장 확률이 높은 class를 output으로 분류&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;참조 문헌&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer&quot;&gt;https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#layer&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://seongkyun.github.io/study/2019/01/25/num_of_parameters/&quot;&gt;https://seongkyun.github.io/study/2019/01/25/num_of_parameters/&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://taewan.kim/post/cnn/&quot;&gt;http://taewan.kim/post/cnn/&lt;/a&gt;&lt;/p&gt;</content>
 
       
       
