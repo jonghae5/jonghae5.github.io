@@ -1,11 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-11T22:22:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">John’s IT Blog</title><subtitle>AI &amp; Frontend Developer</subtitle><entry><title type="html">클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)</title><link href="http://localhost:4000/js-basic-5" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)" /><published>2022-02-10T21:00:00+09:00</published><updated>2022-02-10T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-5</id><content type="html" xml:base="http://localhost:4000/js-basic-5">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-14T21:02:58+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">John’s IT Blog</title><subtitle>AI &amp; Frontend Developer</subtitle><entry><title type="html">클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</title><link href="http://localhost:4000/js-basic-7" rel="alternate" type="text/html" title="클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)" /><published>2022-02-13T21:00:00+09:00</published><updated>2022-02-13T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-7</id><content type="html" xml:base="http://localhost:4000/js-basic-7">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;경계-다루기-&quot;&gt;경계 다루기 😎&lt;/h3&gt;
+
+&lt;h3 id=&quot;min-max&quot;&gt;min-max👍&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;최소값과 최대값을 다룬다.&lt;/li&gt;
+  &lt;li&gt;포함 여부를 결정해야 한다(이상-초과 / 이하-미만)&lt;/li&gt;
+  &lt;li&gt;혹은 네이밍에 최소값 최대값 포함 여부를 작성한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;genRandomNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;min&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MIN_NUMBER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MAX_NUMBER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// MAX_NUMBER_LIMIT 초과&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// MAX_IN_NUMBER 포함&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;genRandomNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MIN_NUMBER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MAX_NUMBER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MAX_AGE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isAdult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 최소값, 최대값 (포함되는지 vs 안되는지)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 이상, 초과 vs 이하, 미만&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;begin-end&quot;&gt;Begin-End👍&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;경계를 포함하지만 제외하는 경우&lt;/li&gt;
+  &lt;li&gt;달력, 에어비엔비와 같은 출국,입국일을 생각하면 쉽다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reservationDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;beginDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;endDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ....some code&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;reservationDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;YYYY-MM-DD&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;YYYY-MM-DD&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;first-last&quot;&gt;First-Last👍&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;포함된 양 끝을 의미한다.&lt;/li&gt;
+  &lt;li&gt;포함되어 있는 규칙이나 연속성에 대해 보장 X&lt;/li&gt;
+  &lt;li&gt;부터 ~~~ 까지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;students&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getStudents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ...some code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;getStudents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;students&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;students&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;prefix접두사---suffix접미사의-중요성-규칙-&quot;&gt;Prefix(접두사) - Suffix(접미사)의 중요성 (규칙) 👍&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;JS의 prefix getter, setter&lt;/li&gt;
+  &lt;li&gt;React usePrefix (기본 Hooks, useState,useEffect …)&lt;/li&gt;
+  &lt;li&gt;jQuery prefix $&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;매개변수-순서가-경계-&quot;&gt;매개변수 순서가 경계 👍&lt;/h3&gt;
+&lt;p&gt;호출하는 함수의 네이밍과 인자의 순서의 연관성을 고려한다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;매개변수를 2개가 넘지 않도록 만든다.&lt;/li&gt;
+  &lt;li&gt;arguments, rest parameter 사용&lt;/li&gt;
+  &lt;li&gt;랩핑하는 함수 사용&lt;/li&gt;
+  &lt;li&gt;매개변수를 객체로 담아서 넘긴다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;someArg1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;someArg3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 많이 쓰는 매개변수 일 경우 이렇게 들고온다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;someFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someFunc2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someArg2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;getRandomNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;getDates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2021-01-01&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2021-12-31&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;shuffleArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</title><link href="http://localhost:4000/js-basic-6" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)" /><published>2022-02-10T21:00:00+09:00</published><updated>2022-02-10T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-6</id><content type="html" xml:base="http://localhost:4000/js-basic-6">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
+
+&lt;h3 id=&quot;형변환-주의하기&quot;&gt;형변환 주의하기👍&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;[http://dorey.github.io/JavaScript-Equality-Table/]&quot;&gt;http://dorey.github.io/JavaScript-Equality-Table/&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;느슨한 검사 =&amp;gt; 암묵적 형 변환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; 문자와 결합&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '11 문자와 결합'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;9.999&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 9 (10진수)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 명시적 변환 (옳은 예)&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; 문자와 결합&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '11 문자와 결합'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;사용자가 형변환시 명시적 변환&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;자바스크립트 엔진이 평가시 암묵적 형변환&lt;/strong&gt;&lt;br /&gt;
+▻ 타입 변환시 명시적 변환을 해주어야 한다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;isnan&quot;&gt;isNaN👍&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MAX_SAFE_INTEGER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//9007199254740991&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//ƒ isInteger() {}&lt;/span&gt;
+
+
+&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;숫자가&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;아니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false =&amp;gt; 숫자가 맞다.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;테스트&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true =&amp;gt; 숫자가 아니다.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;테스트&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false =&amp;gt; 숫자가 맞다.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ES2015+ 이후 버전&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;isNaN ▻ 느슨한 검사&lt;/li&gt;
+  &lt;li&gt;Number.isNaN ▻ 엄격한 검사&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)</title><link href="http://localhost:4000/js-basic-5" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)" /><published>2022-02-10T21:00:00+09:00</published><updated>2022-02-10T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-5</id><content type="html" xml:base="http://localhost:4000/js-basic-5">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
@@ -68,14 +238,15 @@
 &lt;span class=&quot;c1&quot;&gt;// 옳은 예&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ticketNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;valueAsNumber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary></entry><entry><title type="html">클린코드 자바스크립트 2-1 타입 다루기(타입 검사)</title><link href="http://localhost:4000/js-basic-4" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-1 타입 다루기(타입 검사)" /><published>2022-02-10T21:00:00+09:00</published><updated>2022-02-10T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-4</id><content type="html" xml:base="http://localhost:4000/js-basic-4">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">클린코드 자바스크립트 2-1 타입 다루기(타입 검사)</title><link href="http://localhost:4000/js-basic-4" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-1 타입 다루기(타입 검사)" /><published>2022-02-10T21:00:00+09:00</published><updated>2022-02-10T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-4</id><content type="html" xml:base="http://localhost:4000/js-basic-4">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
@@ -159,75 +330,86 @@
   &lt;li&gt;javascript is String&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;}&lt;/p&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary></entry><entry><title type="html">클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</title><link href="http://localhost:4000/js-basic-6" rel="alternate" type="text/html" title="클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)" /><published>2022-02-10T21:00:00+09:00</published><updated>2022-02-10T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-6</id><content type="html" xml:base="http://localhost:4000/js-basic-6">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</title><link href="http://localhost:4000/js-basic-3" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-3 변수 다루기(호이스팅)" /><published>2022-02-08T21:00:00+09:00</published><updated>2022-02-08T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-3</id><content type="html" xml:base="http://localhost:4000/js-basic-3">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;타입-다루기-&quot;&gt;타입 다루기 😎&lt;/h3&gt;
+&lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
 
-&lt;h3 id=&quot;형변환-주의하기&quot;&gt;형변환 주의하기👍&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;[http://dorey.github.io/JavaScript-Equality-Table/]&quot;&gt;http://dorey.github.io/JavaScript-Equality-Table/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;호이스팅-&quot;&gt;호이스팅 👍&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;느슨한 검사 =&amp;gt; 암묵적 형 변환&lt;/li&gt;
+  &lt;li&gt;런타임시 선언과 할당이 분리되는 것&lt;/li&gt;
+  &lt;li&gt;런타임시 선언이 최상단으로 끌어올려진다.&lt;/li&gt;
+  &lt;li&gt;var 경우, 할당이 제대로 되지 않았을 때, 선언했다면 undefined&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; 문자와 결합&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '11 문자와 결합'&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 10&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 
-&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;9.999&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 9 (10진수)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 명시적 변환 (옳은 예)&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; 문자와 결합&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '11 문자와 결합'&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;문자열&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 100&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;사용자가 형변환시 명시적 변환&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;자바스크립트 엔진이 평가시 암묵적 형변환&lt;/strong&gt;&lt;br /&gt;
-▻ 타입 변환시 명시적 변환을 해주어야 한다.&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;isnan&quot;&gt;isNaN👍&lt;/h3&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MAX_SAFE_INTEGER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//9007199254740991&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//ƒ isInteger() {}&lt;/span&gt;
-
-
-&lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;숫자가&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;아니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false =&amp;gt; 숫자가 맞다.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;테스트&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true =&amp;gt; 숫자가 아니다.&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;테스트&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false =&amp;gt; 숫자가 맞다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// functon&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ES2015+ 이후 버전&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;isNaN ▻ 느슨한 검사&lt;/li&gt;
-  &lt;li&gt;Number.isNaN ▻ 엄격한 검사&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary></entry><entry><title type="html">클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)</title><link href="http://localhost:4000/js-basic" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)" /><published>2022-02-08T21:00:00+09:00</published><updated>2022-02-08T21:00:00+09:00</updated><id>http://localhost:4000/js-basic</id><content type="html" xml:base="http://localhost:4000/js-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+  &lt;li&gt;const를 사용해 함수를 만들고 할당하는 방식(함수 표현식)을 추천
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//error&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;호이스팅-문제-&quot;&gt;호이스팅 문제 😫&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;코드 작성시 예측과 실행이 다른 문제가 생긴다.&lt;/li&gt;
+  &lt;li&gt;var 사용 X &amp;gt; let,const 지향&lt;/li&gt;
+  &lt;li&gt;함수 조심 &amp;gt; 함수 표현식 사용&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)</title><link href="http://localhost:4000/js-basic" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)" /><published>2022-02-08T21:00:00+09:00</published><updated>2022-02-08T21:00:00+09:00</updated><id>http://localhost:4000/js-basic</id><content type="html" xml:base="http://localhost:4000/js-basic">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
@@ -316,84 +498,15 @@ console.log(global) // 전역
 &lt;p&gt;배열 조작시에도 문제 없음&lt;/p&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;numList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary></entry><entry><title type="html">클린코드 자바스크립트 1-3 변수 다루기(호이스팅)</title><link href="http://localhost:4000/js-basic-3" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-3 변수 다루기(호이스팅)" /><published>2022-02-08T21:00:00+09:00</published><updated>2022-02-08T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-3</id><content type="html" xml:base="http://localhost:4000/js-basic-3">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)</title><link href="http://localhost:4000/js-basic-2" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)" /><published>2022-02-08T21:00:00+09:00</published><updated>2022-02-08T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-2</id><content type="html" xml:base="http://localhost:4000/js-basic-2">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
-
-&lt;h3 id=&quot;호이스팅-&quot;&gt;호이스팅 👍&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;런타임시 선언과 할당이 분리되는 것&lt;/li&gt;
-  &lt;li&gt;런타임시 선언이 최상단으로 끌어올려진다.&lt;/li&gt;
-  &lt;li&gt;var 경우, 할당이 제대로 되지 않았을 때, 선언했다면 undefined&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 10&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 100&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;duplicatedVar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// functon&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;const를 사용해 함수를 만들고 할당하는 방식(함수 표현식)을 추천
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//error&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;호이스팅-문제-&quot;&gt;호이스팅 문제 😫&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;코드 작성시 예측과 실행이 다른 문제가 생긴다.&lt;/li&gt;
-  &lt;li&gt;var 사용 X &amp;gt; let,const 지향&lt;/li&gt;
-  &lt;li&gt;함수 조심 &amp;gt; 함수 표현식 사용&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary></entry><entry><title type="html">클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)</title><link href="http://localhost:4000/js-basic-2" rel="alternate" type="text/html" title="클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)" /><published>2022-02-08T21:00:00+09:00</published><updated>2022-02-08T21:00:00+09:00</updated><id>http://localhost:4000/js-basic-2</id><content type="html" xml:base="http://localhost:4000/js-basic-2">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Clean Code JS 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic&quot;&gt;클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-2&quot;&gt;클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-3&quot;&gt;클린코드 자바스크립트 1-3 변수 다루기(호이스팅)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-4&quot;&gt;클린코드 자바스크립트 2-1 타입 다루기(타입 검사)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-5&quot;&gt;클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./js-basic-6&quot;&gt;클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./js-basic-7&quot;&gt;클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;변수-다루기-&quot;&gt;변수 다루기 😎&lt;/h3&gt;
@@ -583,7 +696,7 @@ console.log(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
   &lt;li&gt;고차 함수(map,filter,reduce)&lt;/li&gt;
   &lt;li&gt;바로 반환&lt;/li&gt;
   &lt;li&gt;선언형 프로그래밍&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</summary></entry><entry><title type="html">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</title><link href="http://localhost:4000/cnn-basic-6" rel="alternate" type="text/html" title="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" /><published>2022-01-27T21:00:00+09:00</published><updated>2022-01-27T21:00:00+09:00</updated><id>http://localhost:4000/cnn-basic-6</id><content type="html" xml:base="http://localhost:4000/cnn-basic-6">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>John</name></author><category term="frontend" /><summary type="html">Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp;amp; const 사용, function scope &amp;amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp;amp; null, eqeq 줄이기) 클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN) 클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</summary></entry><entry><title type="html">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</title><link href="http://localhost:4000/cnn-basic-6" rel="alternate" type="text/html" title="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" /><published>2022-01-27T21:00:00+09:00</published><updated>2022-01-27T21:00:00+09:00</updated><id>http://localhost:4000/cnn-basic-6</id><content type="html" xml:base="http://localhost:4000/cnn-basic-6">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
@@ -720,7 +833,7 @@ console.log(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
 
 &lt;hr /&gt;
 &lt;p&gt;참조 문헌&lt;br /&gt;
-&lt;a href=&quot;https://arxiv.org/pdf/1409.1556.pdf&quot;&gt;https://arxiv.org/pdf/1409.1556.pdf&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary></entry><entry><title type="html">합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</title><link href="http://localhost:4000/cnn-basic-4" rel="alternate" type="text/html" title="합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)" /><published>2022-01-17T21:00:00+09:00</published><updated>2022-01-17T21:00:00+09:00</updated><id>http://localhost:4000/cnn-basic-4</id><content type="html" xml:base="http://localhost:4000/cnn-basic-4">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;a href=&quot;https://arxiv.org/pdf/1409.1556.pdf&quot;&gt;https://arxiv.org/pdf/1409.1556.pdf&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary></entry><entry><title type="html">합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)</title><link href="http://localhost:4000/cnn-basic-2" rel="alternate" type="text/html" title="합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)" /><published>2022-01-17T21:00:00+09:00</published><updated>2022-01-17T21:00:00+09:00</updated><id>http://localhost:4000/cnn-basic-2</id><content type="html" xml:base="http://localhost:4000/cnn-basic-2">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
@@ -730,111 +843,93 @@ console.log(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span
     &lt;li&gt;&lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;가중치-초기화&quot;&gt;가중치 초기화&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;가중치가 중요한 이유&lt;/strong&gt;&lt;/p&gt;
-
+&lt;h3 id=&quot;cnn-foward-pass&quot;&gt;CNN foward pass&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/1.gif&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Overfitting-Underfitting 문제가 발생해 제대로 학습이 되지 않을 수 있다.&lt;/li&gt;
-  &lt;li&gt;그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제가 발생한다.&lt;/li&gt;
-  &lt;li&gt;지역 최적화(Local Optimization)에 실패해 Local mnimum에 수렴하기도 한다.&lt;/li&gt;
-  &lt;li&gt;즉, 같은 모델을 훈련시키더라도 가중치가 어떤 초기 값을 갖느냐에 따라서 모델 훈련 결과가 달라진다.
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/0.png&quot; alt=&quot;0&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;가중치 값이 0일 경우, 학습이 불가능하다.&lt;/li&gt;
-  &lt;li&gt;가중치 값을 같은 값으로 할 경우, 1개 신경망에 학습시키는 것과 동일&lt;/li&gt;
-  &lt;li&gt;평균 0 ,1보다 작은 표준편차 분포를 사용한다.&lt;/li&gt;
+  &lt;li&gt;CNN은 필터가 입력데이터를 슬라이딩하면서 지역적 특징(feature)을 추출&lt;/li&gt;
+  &lt;li&gt;이 특징을 최대값(Max Pooling)이나 평균값(Average Pooling)으로 압축해 다음 레이어로 전달&lt;/li&gt;
+  &lt;li&gt;이런 과정을 반복해 분류 등 원하는 결과를 만들어내는 것이 CNN의 일반적인 구조&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;1) Sigmoid, 정규분포&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[Cross-Correlation]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/1_2.png&quot; alt=&quot;1_2&quot; /&gt;
+[Convolution]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/1_1.png&quot; alt=&quot;1_1&quot; /&gt;
+K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/4.png&quot; alt=&quot;4&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/3.gif&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;표준편차가 크기 때문에 학습이 반복될 수록 0,1로 치우치는 문제가 발생&lt;/li&gt;
+  &lt;li&gt;𝑥𝑖𝑗 는 각각 입력값의 𝑖번째 행, 𝑗번째 열의 요소&lt;/li&gt;
+  &lt;li&gt;3x3 행렬, 2x2 필터(커널), 스트라이드 1&lt;/li&gt;
+  &lt;li&gt;이후 conv 레이어에 최대값이나 평균값을 취해서 정보를 압축(pooling)되어 2x2 행렬이 2x1 벡터로 바뀐다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;2) 1)에서 표준편차를 줄였을 경우&lt;/strong&gt;
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/5.png&quot; alt=&quot;5&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;cnn-backward-pass&quot;&gt;CNN backward pass&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;[Average Pooling 레이어의 그래디언트 전파 과정]&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Sigmoid 그래디언트 최댓값이 0.25이므로 현상을 완화할 수는 있지만 0.5로 몰리는 현상&lt;/li&gt;
+  &lt;li&gt;CNN 역전파 공식 (가중치 변화에 따른 오차 변화량)&lt;/li&gt;
+  &lt;li&gt;HxW feature Map, k1 x k2 kernel 일 때, output은 (H-k1+1),(W-k2+1)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;“더 나은 방법을 찾아보자”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;LeCun Initialization&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_1.png&quot; alt=&quot;eq_1&quot; /&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_2.png&quot; alt=&quot;eq_2&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;CNN LeNet 창시자 LeCun이 도입&lt;/li&gt;
-  &lt;li&gt;정규분포, Uniform 분포를 따르는 방법 2가지가 있다.&lt;/li&gt;
+  &lt;li&gt;현재 지점(x)의 그래디언트 식
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_3.png&quot; alt=&quot;eq_3&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;최종 식
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/eq_4.png&quot; alt=&quot;eq_4&quot; width=&quot;50%&quot; height=&quot;45%&quot; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/6.png&quot; alt=&quot;6&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;[Average Pooling]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/4.png&quot; alt=&quot;4&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Xavier Initialization&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;이전 노드와 다음 노드 개수에 의존하는 방법&lt;/li&gt;
-  &lt;li&gt;비선형함수(ex. sigmoid, tanh)에서 효과적인 결과&lt;/li&gt;
+  &lt;li&gt;바로 뒤 레이어로부터 전파된 그래디언트가 𝑑1, 𝑑2&lt;/li&gt;
+  &lt;li&gt;현재 지점의 그래디언트는 미분의 연쇄법칙(chain rule)에 의해 흘러들어온 그래디언트(d)에 로컬 그래디언트(w 혹은 x)를 곱한 것과 같음&lt;/li&gt;
+  &lt;li&gt;Average Pooling을 하는 지점의 로컬 그래디언트는 1/𝑚&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/7.png&quot; alt=&quot;7&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;He Initialization&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;[Max Pooling]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/5.png&quot; alt=&quot;5&quot; width=&quot;60%&quot; height=&quot;60%&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Relu 활성화 함수 사용시, Xavier 설정이 비효율적인 결과를 가져온다.(평균, 표준편차 0으로 수렴)&lt;/li&gt;
-  &lt;li&gt;최근 대부분 모델에서 He 초기화를 사용한다.&lt;/li&gt;
+  &lt;li&gt;가장 큰 값이 속해 있는 요소의 로컬 그래디언트는 1, 나머지는 0&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/8.png&quot; alt=&quot;8&quot; width=&quot;70%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;[Convolution Layer]
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/6.png&quot; alt=&quot;6&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;⭐️ 최근 Deep CNN 모델들은 &lt;span style=&quot;color:#2D3748; background-color:#fff5b1;&quot;&gt;Gaussian Distribution&lt;/span&gt; 초기화 방법 사용&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;𝑥11 은 forward pass 과정에서 2x2필터 가운데 빨간색(𝑤1) 
+가중치하고만 합성곱이 수행 되므로 역전파 때도 마찬가지로 딱 한번의 역전파가 일어남&lt;/li&gt;
+  &lt;li&gt;Kapathy의 계산그래프 형태로 나타내면 &lt;strong&gt;𝑥11 의 그래디언트&lt;/strong&gt;는 흘러들어온 그래디언트
+𝑑11에 로컬 그래디언트(𝑤1)를 곱해서 구할 수 있다.&lt;/li&gt;
+  &lt;li&gt;마찬가지로 &lt;strong&gt;𝑤1 의 그래디언트&lt;/strong&gt;는 흘러들어온 그래디언트 𝑑11에 로컬 그래디언트(𝑥11)를 곱해 계산&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/7.png&quot; alt=&quot;7&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;하지만 이렇게 하나하나 따져가면서 구하려면 식이 복잡하고 이해가 어렵다.&lt;/li&gt;
+  &lt;li&gt;conv layer가 역전파를 할 때 약간의 트릭을 쓰면 조금 더 간단히 그래디언트를 구할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;간단한 방법&lt;/strong&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/5_1.png&quot; alt=&quot;5_1&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;
+&lt;img src=&quot;../../assets/built/images/cnn/22-01-17/8.png&quot; alt=&quot;8&quot; width=&quot;85%&quot; height=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;흘러들어온 그래디언트 행렬에(2x2 크기)을 conv layer를 만들 때 썼던 필터가 슬라이딩하면서 값을 구한다&lt;/li&gt;
+  &lt;li&gt;필터 요소의 순서를 정반대로 바꿔 예컨대 빨-파-노-초 필터를 초-노-파-빨 필터로 바꿔서 
+그래디언트 행렬에 합성곱을 수행해주면 입력벡터(x)에 대한 그래디언트를 구할 수 있다.&lt;/li&gt;
+  &lt;li&gt;필터의 그래디언트는 그래디언트 행렬 첫번째 요소인 𝑑11은 𝑥11, 𝑥12, 𝑥21, 𝑥22와 연결되어 있는 걸 확인할 수 있다. (영향을 끼치는 곳)
+흘러들어온 그래디언트(𝑑11, 𝑑12, 𝑑21, 𝑑22)에 로컬 그래디언트(x11, x12, x21, x22)를 곱한다.&lt;/li&gt;
+  &lt;li&gt;각각의 로컬 그래다언트는 합성곱 필터 가중치로 연결된 입력값들이기 때문에 𝑑𝑤11은 𝑥11𝑑11+𝑥12𝑑12+𝑥21𝑑21+𝑥22𝑑22&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;참조 문헌
-&lt;a href=&quot;https://kharshit.github.io/blog/2018/12/28/why-batch-normalization&quot;&gt;https://kharshit.github.io/blog/2018/12/28/why-batch-normalization&lt;/a&gt;
-&lt;a href=&quot;https://reniew.github.io/13/&quot;&gt;https://reniew.github.io/13/&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://wooono.tistory.com/227&quot;&gt;https://wooono.tistory.com/227&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary></entry><entry><title type="html">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</title><link href="http://localhost:4000/cnn-basic-3" rel="alternate" type="text/html" title="합성곱 신경망 기초 3(배치정규화, Batch Normalization)" /><published>2022-01-17T21:00:00+09:00</published><updated>2022-01-17T21:00:00+09:00</updated><id>http://localhost:4000/cnn-basic-3</id><content type="html" xml:base="http://localhost:4000/cnn-basic-3">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;&lt;/li&gt; &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;참조 문헌&lt;/p&gt;
 
-&lt;h3 id=&quot;배치-정규화&quot;&gt;배치 정규화&lt;/h3&gt;
-&lt;p&gt;깊은 신경망일 수록 같은 Input 이라도 가중치가 조금이라도 다르다면 완전히 다른 결과를 가져올 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;“각 층이 활성화를 적당히 퍼뜨리도록 강제로 해보자”&lt;/strong&gt;
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/1.jpeg&quot; alt=&quot;1&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;배치란?&lt;/strong&gt; 신경망 학습시, 전체 데이터를 한 번에 학습시키지 않고, 조그만 단위로 분할해서 학습 시키는 것.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;배치 정규화란?&lt;/strong&gt; 배치 단위로 정규화 하는 것.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;[배치 정규화 알고리즘]&lt;/strong&gt;
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/2.png&quot; alt=&quot;2&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;엡실론은 분모가 0 이 되는 것을 막기 위한 아주 작은 숫자(1e-5~7)&lt;/li&gt;
-  &lt;li&gt;정규화 이후, 배치 데이터들을 scale(감마(γ)), shift(베타(β)) 를 통해 새로운 값으로 바꾼다.&lt;/li&gt;
-  &lt;li&gt;데이터를 계속 정규화 하게 되면, 활성화 함수의 비선형 성질을 잃게 되는 문제 발생&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 그림과 같이 Sigmoid 함수 경우, 입력 값이 N(0, 1) 이라면, 95% 의 입력 값은 Sigmoid 함수 그래프의 중간 (x = (-1.96, 1.96) 구간)에 속하게 된다.
-&lt;img src=&quot;../../assets/built/images/cnn/22-01-18/3.png&quot; alt=&quot;3&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;감마(γ), 베타(β)를 통해 활성함수로 들어가는 값의 범위를 변환하여 비선형 성질을 보존&lt;/li&gt;
-  &lt;li&gt;감마(γ), 베타(β) 값은 학습 가능한 변수, 역전파를 통해서 학습&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;⭐&lt;strong&gt;배치 정규화 효과&lt;/strong&gt;⭐&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;학습이 빠르게 진행(Epoch 수를 줄이는데 효과적)&lt;/li&gt;
-  &lt;li&gt;Dropout 필요성 감소&lt;/li&gt;
-  &lt;li&gt;더 높은 Learning rate 사용 가능&lt;/li&gt;
-  &lt;li&gt;규제 효과 (과적합 방지)&lt;/li&gt;
-  &lt;li&gt;그래디언트 손실(Vanishing Gradient)와 폭주(Exploding)문제 해결&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;참조 문헌
-&lt;a href=&quot;https://kharshit.github.io/blog/2018/12/28/why-batch-normalization&quot;&gt;https://kharshit.github.io/blog/2018/12/28/why-batch-normalization&lt;/a&gt;
-&lt;a href=&quot;https://reniew.github.io/13/&quot;&gt;https://reniew.github.io/13/&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://wooono.tistory.com/227&quot;&gt;https://wooono.tistory.com/227&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://cs231n.github.io/optimization-2/&quot;&gt;https://cs231n.github.io/optimization-2/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/&quot;&gt;https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://ratsgo.github.io/deep%20learning/2017/04/05/CNNbackprop/&quot;&gt;https://ratsgo.github.io/deep%20learning/2017/04/05/CNNbackprop/&lt;/a&gt;&lt;/p&gt;</content><author><name>John</name></author><category term="data" /><summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</summary></entry></feed>
