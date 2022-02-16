@@ -11,7 +11,7 @@
 
 
 
-    <title>클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)</title>
+    <title>클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,23 +49,23 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="AI & Frontend Developer" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/js-basic-5" />
+    <link rel="canonical" href="http://localhost:4000/js-basic-8" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)" />
+    <meta property="og:title" content="클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)" />
     <meta property="og:description" content="Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq" />
-    <meta property="og:url" content="http://localhost:4000/js-basic-5" />
+    <meta property="og:url" content="http://localhost:4000/js-basic-8" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/js-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-02-10T21:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-02-10T21:00:00+09:00" />
+    <meta property="article:published_time" content="2022-02-16T21:00:01+09:00" />
+    <meta property="article:modified_time" content="2022-02-16T21:00:01+09:00" />
     <meta property="article:tag" content="Frontend" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)" />
+    <meta name="twitter:title" content="클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)" />
     <meta name="twitter:description" content="Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/js-logo.png" />
@@ -87,7 +87,7 @@
         "name": "John's IT Blog",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/js-basic-5",
+    "url": "http://localhost:4000/js-basic-8",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/built/images/js-logo.png",
@@ -96,7 +96,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/js-basic-5"
+        "@id": "http://localhost:4000/js-basic-8"
     },
     "description": "Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq"
 }
@@ -111,7 +111,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)" href="/feed.xml" />
 
 
 </head>
@@ -172,7 +172,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="10 February 2022">10 February 2022</time>
+                    <time class="post-full-meta-date" datetime="16 February 2022">16 February 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -182,7 +182,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)</h1>
+                <h1 class="post-full-title">클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)</h1>
             </header>
 <!-- 글 포스트하면 뒷 배경화면 -->
 <!--            -->
@@ -238,67 +238,164 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<h3 id="타입-다루기-">타입 다루기 😎</h3>
+<h3 id="분기-다루기-">분기 다루기 😎</h3>
 
-<h3 id="undefined--null-">undefined &amp; null 👍</h3>
+<h3 id="값식문">값식문👍</h3>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// null</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">!</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">!!</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// false</span>
+<p>고차함수 활용 (map,filter,reduce)</p>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span> <span class="o">===</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// false</span>
-
-<span class="c1">// null =&gt; math =&gt; 0</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span> <span class="o">+</span> <span class="mi">123</span><span class="p">);</span> <span class="c1">// 123</span>
-</code></pre></div></div>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 선언했지만 정의되지 않고 할당 X</span>
-<span class="kd">let</span> <span class="nx">varb</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">varb</span><span class="p">);</span> <span class="c1">//undefined</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">varb</span><span class="p">);</span> <span class="c1">// undefined</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">varb</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// NaN</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">!</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">undefined</span> <span class="o">==</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">undefined</span> <span class="o">===</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">// false</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">!</span><span class="kc">undefined</span> <span class="o">===</span> <span class="o">!</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// true</span>
-</code></pre></div></div>
-
-<p>차이점</p>
 <ul>
-  <li>
-    <p>undefined, null =&gt; 값이 없거나(명시적 표현) 정의되지 않음</p>
-  </li>
-  <li>undefined ▻ NaN ▻ type undefined</li>
-  <li>null ▻ 0 ▻ type Object</li>
+  <li>식이 들어올 자리에 값이 들어올 수 있는가?</li>
+  <li>값이 들어올 자리에 식이 들어올 수 있는가?</li>
+  <li>This JSX:</li>
 </ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 틀린 예</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="k">if</span> <span class="p">(</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="c1">// transfiling</span>
+<span class="c1">// Is transformed to this JS:</span>
+<span class="c1">//틀린 예</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,{</span><span class="na">id</span><span class="p">:</span> <span class="k">if</span><span class="p">(</span><span class="nx">contion</span><span class="p">)</span> <span class="p">{</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">}},</span> <span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">));</span>
+
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">id</span> <span class="p">:</span> <span class="k">if</span><span class="p">(</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">}}</span>
+
+<span class="c1">//옳은 예</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="nx">condition</span><span class="p">?</span> <span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span> <span class="p">:</span> <span class="kc">null</span><span class="p">}</span><span class="o">&gt;</span> <span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="sr">/div&gt;,moundMode</span><span class="se">)</span><span class="err">;
+</span></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//틀린 예</span>
+<span class="p">{</span>
+  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">objectRows</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">rows</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">ObjectRow</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">objectRows</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span> <span class="sr">/&gt;</span><span class="se">)</span><span class="err">;
+</span>      <span class="k">return</span> <span class="nx">rows</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// 옳은 예</span>
+<span class="p">{</span>
+  <span class="nx">objectRows</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="nx">ObjectRow</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">obj</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//틀린 예</span>
+<span class="p">{</span>
+  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">contidionOne</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">One</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
+</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">contidionTwo</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Two</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
+</span>    <span class="k">else</span> <span class="nx">conditionOne</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Three</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
+</span>  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">//옳은 예</span>
+<span class="p">{</span>
+  <span class="nx">conditionOne</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">One</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
+</span><span class="p">}</span>
+<span class="p">{</span>
+  <span class="nx">contidionTwo</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Two</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
+</span><span class="p">}</span>
+<span class="p">{</span>
+  <span class="o">!</span><span class="nx">contidionTwo</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Three</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
+</span><span class="p">}</span>
+</code></pre></div></div>
 
 <hr />
 
-<h3 id="eqeq-줄이기-동등-연산자-">eqeq 줄이기 (동등 연산자 ==)👍</h3>
+<h3 id="삼항-연산자">삼항 연산자👍</h3>
 
-<p><strong>equality (==)</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 코드를 해석하기 어렵다.</span>
+<span class="kd">function</span> <span class="nx">example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">condition1</span>
+    <span class="p">?</span> <span class="nx">value1</span>
+    <span class="p">:</span> <span class="nx">condition2</span>
+    <span class="p">?</span> <span class="nx">value2</span>
+    <span class="p">:</span> <span class="nx">condition3</span>
+    <span class="p">?</span> <span class="nx">value3</span>
+    <span class="p">:</span> <span class="nx">value4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// if else 반복</span>
+<span class="kd">function</span> <span class="nx">example2</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">condition1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">condition2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value2</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">condition3</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value3</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value4</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Switch 문 이용하는 것이 유용하다.</span>
+<span class="kd">function</span> <span class="nx">example3</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">condition1</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">condition2</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">condition3</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">example</span> <span class="o">=</span> <span class="nx">condition</span> <span class="p">?</span> <span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">zero</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">positive</span><span class="dl">"</span><span class="p">)</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">negative</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">welcomeMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isLogin</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">isLogin</span> <span class="p">?</span> <span class="nx">getName</span><span class="p">()</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">이름없음</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">welcomeMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isLogin</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isLogin</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">getName</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">이름없음</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
 <ul>
-  <li>형변환(type casting)이 일어난다.</li>
+  <li>삼항연산자를 이용해 값을 만들어 변수로 만들 때 사용</li>
+  <li>함수가 내뱉는 값을 반환하는 간단한 식일 때(return) 사용</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// true</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">alertMessage</span><span class="p">(</span><span class="nx">isAdult</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">isAdult</span>
+  <span class="p">?</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">입장이 가능합니다.</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">:</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">입장이 불가능합니다.</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span class="c1">//Strict equality(===)</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="kd">function</span> <span class="nx">alertMessage</span><span class="p">(</span><span class="nx">isAdult</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">isAdult</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">입장이 가능합니다.</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="p">:</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">입장이 불가능합니다.</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">ticketNum</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#ticketNum</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ticketNum</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// '0'</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ticketNum</span><span class="p">.</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// false</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ticketNum</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// false</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ticketNum</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// 위험 협업시 알아듣기 어렵다.</span>
-<span class="c1">// 옳은 예</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="nx">ticketNum</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ticketNum</span><span class="p">.</span><span class="nx">valueAsNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div></div>
+
+<h3 id="solution">Solution🌼</h3>
+
+<p>삼항 연산자 사용할 때</p>
+
+<ol>
+  <li>좌항 우항을 따졌을 때</li>
+  <li>3개 피연산자를 사용할 때</li>
+  <li>조건? 참:거짓</li>
+</ol>
+
+<hr />
 
                 </div>
             </section>
@@ -364,9 +461,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/js-basic-5';
-                            var this_page_identifier = '/js-basic-5';
-                            var this_page_title = '클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)';
+                            var this_page_url = 'http://localhost:4000/js-basic-8';
+                            var this_page_identifier = '/js-basic-8';
+                            var this_page_title = '클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -438,9 +535,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -458,6 +552,9 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -520,12 +617,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/js-basic-6">
+            <a class="post-card-image-link" href="/js-basic-9">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/js-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-basic-6">
+            <a class="post-card-content-link" href="/js-basic-9">
                 <header class="post-card-header">
                     
                         
@@ -535,7 +632,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</h2>
+                    <h2 class="post-card-title">클린코드 자바스크립트 4-2 분기 다루기(truthy & falsy, 단락 회로 평가)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -572,12 +669,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/js-basic-4">
+            <a class="post-card-image-link" href="/js-basic-7">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/js-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-basic-4">
+            <a class="post-card-content-link" href="/js-basic-7">
                 <header class="post-card-header">
                     
                         
@@ -587,7 +684,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">클린코드 자바스크립트 2-1 타입 다루기(타입 검사)</h2>
+                    <h2 class="post-card-title">클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -631,18 +728,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">클린코드 자바스크립트 2-2 타입 다루기(undefined & null, eqeq 줄이기)</div>
+    <div class="floating-header-title">클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+2-2+%ED%83%80%EC%9E%85+%EB%8B%A4%EB%A3%A8%EA%B8%B0%28undefined+%26+null%2C+eqeq+%EC%A4%84%EC%9D%B4%EA%B8%B0%29&amp;url=https://jonghae5.github.io/js-basic-5"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+4-1+%EB%B6%84%EA%B8%B0+%EB%8B%A4%EB%A3%A8%EA%B8%B0%28%EA%B0%92%EC%8B%9D%EB%AC%B8%2C+%EC%82%BC%ED%95%AD+%EC%97%B0%EC%82%B0%EC%9E%90%29&amp;url=https://jonghae5.github.io/js-basic-8"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/js-basic-5"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/js-basic-8"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
