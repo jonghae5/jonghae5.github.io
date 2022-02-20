@@ -236,6 +236,18 @@ into the {body} of the default.hbs template -->
     <a href="./js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish
       coalescing operator, 드모르간 법칙)</a>
   </li>
+  <li>
+    <a href="./js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length,
+      배열 요소에 접근하기)</a>
+  </li>
+  <li>
+    <a href="./js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열
+      고차 함수로 리팩토링)</a>
+  </li>
+  <li>
+    <a href="./js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs
+      forEach, continue&amp;break)</a>
+  </li>
 </ul>
 
 <h3 id="변수-다루기-">변수 다루기 😎</h3>
@@ -250,30 +262,44 @@ into the {body} of the default.hbs template -->
 let &amp; const : 블록 단위 스코프 + Temporary Dead Zone</p>
 
 <ul>
-  <li>var는 변수 선언 및 할당 재사용 가능
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름</span><span class="dl">"</span><span class="p">;</span>
+  <li>var는 변수 선언 및 할당 재사용 가능</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름</span><span class="dl">"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름2</span><span class="dl">"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-</code></pre></div>    </div>
-  </li>
-  <li>호이스팅으로 인해, 변수 선언이 먼저 가기 때문에 아래와 같이 undefined가 나온다.
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name2</span><span class="p">);</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<ul>
+  <li>호이스팅으로 인해, 변수 선언이 먼저 가기 때문에 아래와 같이 undefined가 나온다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name2</span><span class="p">);</span> <span class="c1">// undefined</span>
 <span class="kd">var</span> <span class="nx">name2</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name2</span><span class="p">);</span>
-</code></pre></div>    </div>
-  </li>
-  <li>let (변수 선언 및 재할당 가능)
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름</span><span class="dl">"</span><span class="p">;</span>
-<span class="nx">name</span> <span class="o">=</span><span class="dl">"</span><span class="s2">이름2</span><span class="dl">"</span><span class="p">;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>const (변수 선언시 할당해주어야 한다)
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름;
-</span></code></pre></div>    </div>
-    <hr />
-    <h3 id="function-scope--block-scope-">function scope &amp; block scope 👍</h3>
-  </li>
+</code></pre></div></div>
+
+<ul>
+  <li>let (변수 선언 및 재할당 가능)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름2</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>const (변수 선언시 할당해주어야 한다)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">이름;
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="function-scope--block-scope-">function scope &amp; block scope 👍</h3>
+
+<ul>
   <li>var는 Function 단위이므로 지역에서 할당한 변수가 전역까지 오염된다.</li>
 </ul>
 
@@ -305,6 +331,7 @@ console.log(global) // 전역
 </ul>
 
 <p>객체 조작은 문제 없음</p>
+
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">name</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">john</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">age</span> <span class="p">:</span> <span class="mi">27</span><span class="p">,</span>
@@ -321,9 +348,11 @@ console.log(global) // 전역
 
 
 </code></pre></div></div>
+
 <p>배열 조작시에도 문제 없음</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
-<span class="nx">numList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="nx">numList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </code></pre></div></div>
 
                 </div>
@@ -439,7 +468,7 @@ console.log(global) // 전역
                                     
                                         
                                         
-                                            <li><a href="/js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish coalescing operator, 드모르간 법칙)</a></li>
+                                            <li><a href="/js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs forEach, continue&break)</a></li>
                                         
                                     
                                   
@@ -448,7 +477,7 @@ console.log(global) // 전역
                                     
                                         
                                         
-                                            <li><a href="/js-basic-10">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return, Default case 고려하기)</a></li>
+                                            <li><a href="/js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열 고차 함수로 리팩토링)</a></li>
                                         
                                     
                                   
@@ -457,7 +486,28 @@ console.log(global) // 전역
                                     
                                         
                                         
-                                            <li><a href="/js-basic-9">클린코드 자바스크립트 4-2 분기 다루기(truthy & falsy, 단락 회로 평가)</a></li>
+                                            <li><a href="/js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length, 배열 요소에 접근하기)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -532,7 +582,7 @@ console.log(global) // 전역
                         <footer class="read-next-card-footer">
                             <a href="/tag/frontend/">
                                 
-                                    See all 10 posts  →
+                                    See all 13 posts  →
                                 
                             </a>
                         </footer>

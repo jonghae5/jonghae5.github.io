@@ -236,11 +236,23 @@ into the {body} of the default.hbs template -->
     <a href="./js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish
       coalescing operator, 드모르간 법칙)</a>
   </li>
+  <li>
+    <a href="./js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length,
+      배열 요소에 접근하기)</a>
+  </li>
+  <li>
+    <a href="./js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열
+      고차 함수로 리팩토링)</a>
+  </li>
+  <li>
+    <a href="./js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs
+      forEach, continue&amp;break)</a>
+  </li>
 </ul>
 
 <h3 id="분기-다루기-">분기 다루기 😎</h3>
 
-<h3 id="default-case-고려하기">Default case 고려하기</h3>
+<h3 id="default-case-고려하기">Default case 고려하기👍</h3>
 
 <ul>
   <li>기본값을 정해놓는다.</li>
@@ -292,7 +304,7 @@ into the {body} of the default.hbs template -->
 
 <hr />
 
-<h3 id="nullish-coalescing-operator">Nullish coalescing operator</h3>
+<h3 id="nullish-coalescing-operator">Nullish coalescing operator👍</h3>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">createElement</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">type</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">);</span>
@@ -335,12 +347,12 @@ into the {body} of the default.hbs template -->
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 에러가 발생한다.</span>
 <span class="kc">null</span> <span class="o">||</span> <span class="kc">undefined</span> <span class="p">??</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span> <span class="c1">// JS가 오류를 방지하기 위해 만듬 Syntax error</span>
-<span class="p">(</span><span class="kc">null</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">??</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span> <span class="c1">// 이렇게 우선순위를 둬서 사용해야한다.</span>
+<span class="p">(</span><span class="kc">null</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">??</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span> <span class="c1">// 이렇게 우선순위를 두어서 사용해야한다.</span>
 </code></pre></div></div>
 
 <hr />
 
-<h3 id="드모르간-법칙">드모르간 법칙</h3>
+<h3 id="드모르간-법칙">드모르간 법칙👍</h3>
 
 <p>무엇이 더 명시적인가?</p>
 
@@ -482,13 +494,9 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                    
                                         
                                         
-                                            <li><a href="/js-basic-10">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return, Default case 고려하기)</a></li>
+                                            <li><a href="/js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs forEach, continue&break)</a></li>
                                         
                                     
                                   
@@ -497,7 +505,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-9">클린코드 자바스크립트 4-2 분기 다루기(truthy & falsy, 단락 회로 평가)</a></li>
+                                            <li><a href="/js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열 고차 함수로 리팩토링)</a></li>
                                         
                                     
                                   
@@ -506,7 +514,32 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-8">클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)</a></li>
+                                            <li><a href="/js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length, 배열 요소에 접근하기)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -577,7 +610,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/frontend/">
                                 
-                                    See all 10 posts  →
+                                    See all 13 posts  →
                                 
                             </a>
                         </footer>
@@ -586,6 +619,55 @@ into the {body} of the default.hbs template -->
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/js-basic-12">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/js-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/js-basic-12">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Frontend</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length, 배열 요소에 접근하기)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/author-logo.jpg" alt="John" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/John/">John</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -609,7 +691,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return, Default case 고려하기)</h2>
+                    <h2 class="post-card-title">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     

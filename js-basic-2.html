@@ -236,6 +236,18 @@ into the {body} of the default.hbs template -->
     <a href="./js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish
       coalescing operator, 드모르간 법칙)</a>
   </li>
+  <li>
+    <a href="./js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length,
+      배열 요소에 접근하기)</a>
+  </li>
+  <li>
+    <a href="./js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열
+      고차 함수로 리팩토링)</a>
+  </li>
+  <li>
+    <a href="./js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs
+      forEach, continue&amp;break)</a>
+  </li>
 </ul>
 
 <h3 id="변수-다루기-">변수 다루기 😎</h3>
@@ -294,8 +306,8 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
   <li>let 이나 const 로 바꾸어주어야함</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">index</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">index</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">index</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
 <span class="p">}</span>
 <span class="c1">//</span>
 </code></pre></div></div>
@@ -349,31 +361,40 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
     <span class="p">};</span>
  <span class="p">}</span>
 </code></pre></div></div>
+
 <ul>
   <li>추가적인 스펙을 요구할 때 (날짜에 대한 요구 사항)</li>
-  <li>내가 할 수 있는 것은 2가지 방식이 있다.
-    <ol>
-      <li>함수 추가</li>
-      <li>함수 수정 (문제가 생길 수 있다.)</li>
-    </ol>
-  </li>
-  <li>함수 수정 예시
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 잘못된 예</span>
+  <li>내가 할 수 있는 것은 2가지 방식이 있다.</li>
+</ul>
+
+<ol>
+  <li>함수 추가</li>
+  <li>함수 수정 (문제가 생길 수 있다.)</li>
+</ol>
+
+<ul>
+  <li>함수 수정 예시</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 잘못된 예</span>
 <span class="kd">function</span> <span class="nx">getDateTime</span><span class="p">(</span><span class="nx">targetDate</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">month</span> <span class="o">=</span> <span class="nx">targetDate</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">();</span>
   <span class="kd">let</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">targetDate</span><span class="p">.</span><span class="nx">getDay</span><span class="p">();</span>
   <span class="kd">let</span> <span class="nx">hour</span> <span class="o">=</span> <span class="nx">targetDate</span><span class="p">.</span><span class="nx">getHour</span><span class="p">();</span>
 
-  <span class="nx">month</span> <span class="o">=</span> <span class="nx">month</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">?</span> <span class="nx">month</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">month</span><span class="p">;</span>
-  <span class="nx">day</span> <span class="o">=</span> <span class="nx">day</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">?</span> <span class="nx">month</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">day</span><span class="p">;</span>
-  <span class="nx">hour</span> <span class="o">=</span> <span class="nx">hour</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">?</span> <span class="nx">hour</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">hour</span><span class="p">;</span>
+  <span class="nx">month</span> <span class="o">=</span> <span class="nx">month</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="p">?</span> <span class="nx">month</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">month</span><span class="p">;</span>
+  <span class="nx">day</span> <span class="o">=</span> <span class="nx">day</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="p">?</span> <span class="nx">month</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">day</span><span class="p">;</span>
+  <span class="nx">hour</span> <span class="o">=</span> <span class="nx">hour</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="p">?</span> <span class="nx">hour</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">hour</span><span class="p">;</span>
 
   <span class="k">return</span> <span class="p">{</span>
-       <span class="nx">month</span><span class="p">,</span> <span class="nx">day</span><span class="p">,</span> <span class="nx">hour</span>
+    <span class="nx">month</span><span class="p">,</span>
+    <span class="nx">day</span><span class="p">,</span>
+    <span class="nx">hour</span><span class="p">,</span>
   <span class="p">};</span>
 <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+</code></pre></div></div>
+
+<ul>
   <li>함수 추가 예시
     <ul>
       <li>임시 변수의 유혹을 벗어나야 한다. (추상화 과정을 거친다.)</li>
@@ -404,9 +425,9 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">genRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span><span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">randomNumber</span> <span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">max</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">min</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">randomNumber</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">genRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">randomNumber</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">min</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">randomNumber</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -540,7 +561,7 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
                                     
                                         
                                         
-                                            <li><a href="/js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish coalescing operator, 드모르간 법칙)</a></li>
+                                            <li><a href="/js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs forEach, continue&break)</a></li>
                                         
                                     
                                   
@@ -549,7 +570,7 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
                                     
                                         
                                         
-                                            <li><a href="/js-basic-10">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return, Default case 고려하기)</a></li>
+                                            <li><a href="/js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열 고차 함수로 리팩토링)</a></li>
                                         
                                     
                                   
@@ -558,7 +579,28 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
                                     
                                         
                                         
-                                            <li><a href="/js-basic-9">클린코드 자바스크립트 4-2 분기 다루기(truthy & falsy, 단락 회로 평가)</a></li>
+                                            <li><a href="/js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length, 배열 요소에 접근하기)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -633,7 +675,7 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
                         <footer class="read-next-card-footer">
                             <a href="/tag/frontend/">
                                 
-                                    See all 10 posts  →
+                                    See all 13 posts  →
                                 
                             </a>
                         </footer>
@@ -718,7 +760,7 @@ console.log(</span><span class="dl">'</span><span class="mi">1</span><span class
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초</p>
+                        <p>&lt;span class=”table-of-contents-list” CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt; 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</p>
                     
                 </section>
             </a>

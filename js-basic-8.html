@@ -236,6 +236,18 @@ into the {body} of the default.hbs template -->
     <a href="./js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish
       coalescing operator, 드모르간 법칙)</a>
   </li>
+  <li>
+    <a href="./js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length,
+      배열 요소에 접근하기)</a>
+  </li>
+  <li>
+    <a href="./js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열
+      고차 함수로 리팩토링)</a>
+  </li>
+  <li>
+    <a href="./js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs
+      forEach, continue&amp;break)</a>
+  </li>
 </ul>
 
 <h3 id="분기-다루기-">분기 다루기 😎</h3>
@@ -247,24 +259,25 @@ into the {body} of the default.hbs template -->
 <ul>
   <li>식이 들어올 자리에 값이 들어올 수 있는가?</li>
   <li>값이 들어올 자리에 식이 들어올 수 있는가?</li>
-  <li>This JSX:</li>
+  <li>JSX</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 틀린 예</span>
 <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="k">if</span> <span class="p">(</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span>
 <span class="c1">// transfiling</span>
-<span class="c1">// Is transformed to this JS:</span>
-<span class="c1">//틀린 예</span>
+<span class="c1">// Is transformed to this JS</span>
+
+<span class="c1">// 틀린 예</span>
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,{</span><span class="na">id</span><span class="p">:</span> <span class="k">if</span><span class="p">(</span><span class="nx">contion</span><span class="p">)</span> <span class="p">{</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">}},</span> <span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">));</span>
 
 <span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">id</span> <span class="p">:</span> <span class="k">if</span><span class="p">(</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">}}</span>
 
-<span class="c1">//옳은 예</span>
+<span class="c1">// 옳은 예</span>
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="nx">condition</span><span class="p">?</span> <span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span> <span class="p">:</span> <span class="kc">null</span><span class="p">}</span><span class="o">&gt;</span> <span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="sr">/div&gt;,moundMode</span><span class="se">)</span><span class="err">;
 </span></code></pre></div></div>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//틀린 예</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 틀린 예</span>
 <span class="p">{</span>
   <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="p">[];</span>
@@ -283,7 +296,7 @@ into the {body} of the default.hbs template -->
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//틀린 예</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 틀린 예</span>
 <span class="p">{</span>
   <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">contidionOne</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">One</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
@@ -293,7 +306,7 @@ into the {body} of the default.hbs template -->
 </span>  <span class="p">};</span>
 <span class="p">}</span>
 
-<span class="c1">//옳은 예</span>
+<span class="c1">// 옳은 예</span>
 <span class="p">{</span>
   <span class="nx">conditionOne</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">One</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">;
 </span><span class="p">}</span>
@@ -510,7 +523,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish coalescing operator, 드모르간 법칙)</a></li>
+                                            <li><a href="/js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs forEach, continue&break)</a></li>
                                         
                                     
                                   
@@ -519,7 +532,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-10">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return, Default case 고려하기)</a></li>
+                                            <li><a href="/js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열 고차 함수로 리팩토링)</a></li>
                                         
                                     
                                   
@@ -528,7 +541,28 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-9">클린코드 자바스크립트 4-2 분기 다루기(truthy & falsy, 단락 회로 평가)</a></li>
+                                            <li><a href="/js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length, 배열 요소에 접근하기)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -603,7 +637,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/frontend/">
                                 
-                                    See all 10 posts  →
+                                    See all 13 posts  →
                                 
                             </a>
                         </footer>

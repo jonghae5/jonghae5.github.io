@@ -236,6 +236,18 @@ into the {body} of the default.hbs template -->
     <a href="./js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish
       coalescing operator, 드모르간 법칙)</a>
   </li>
+  <li>
+    <a href="./js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length,
+      배열 요소에 접근하기)</a>
+  </li>
+  <li>
+    <a href="./js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열
+      고차 함수로 리팩토링)</a>
+  </li>
+  <li>
+    <a href="./js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs
+      forEach, continue&amp;break)</a>
+  </li>
 </ul>
 
 <h3 id="경계-다루기-">경계 다루기 😎</h3>
@@ -268,17 +280,19 @@ into the {body} of the default.hbs template -->
 <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
 <hr />
 
 <h3 id="begin-end">Begin-End👍</h3>
+
 <ul>
   <li>경계를 포함하지만 제외하는 경우</li>
   <li>달력, 에어비엔비와 같은 출국,입국일을 생각하면 쉽다.</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">reservationDate</span><span class="p">(</span><span class="nx">beginDate</span><span class="p">,</span> <span class="nx">endDate</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// ....some code</span>
-    <span class="k">return</span><span class="p">;</span>
+  <span class="c1">// ....some code</span>
+  <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">reservationDate</span><span class="p">(</span><span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">);</span>
@@ -297,7 +311,7 @@ into the {body} of the default.hbs template -->
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">students</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">];</span>
 
 <span class="kd">function</span> <span class="nx">getStudents</span><span class="p">(</span><span class="nx">first</span><span class="p">,</span> <span class="nx">last</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// ...some code</span>
+  <span class="c1">// ...some code</span>
 <span class="p">}</span>
 
 <span class="nx">getStudents</span><span class="p">(</span><span class="nx">students</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">students</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
@@ -306,6 +320,7 @@ into the {body} of the default.hbs template -->
 <hr />
 
 <h3 id="prefix접두사---suffix접미사의-중요성-규칙-">Prefix(접두사) - Suffix(접미사)의 중요성 (규칙) 👍</h3>
+
 <ul>
   <li>JS의 prefix getter, setter</li>
   <li>React usePrefix (기본 Hooks, useState,useEffect …)</li>
@@ -313,8 +328,11 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <hr />
+
 <h3 id="매개변수-순서가-경계-">매개변수 순서가 경계 👍</h3>
+
 <p>호출하는 함수의 네이밍과 인자의 순서의 연관성을 고려한다.</p>
+
 <ol>
   <li>매개변수를 2개가 넘지 않도록 만든다.</li>
   <li>arguments, rest parameter 사용</li>
@@ -325,8 +343,8 @@ into the {body} of the default.hbs template -->
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunc</span><span class="p">(</span><span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span><span class="p">,</span> <span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span><span class="p">)</span> <span class="p">{}</span>
 
 <span class="kd">function</span> <span class="nx">getFunc</span><span class="p">(</span><span class="nx">someArg3</span><span class="p">,</span> <span class="nx">someArg4</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// 많이 쓰는 매개변수 일 경우 이렇게 들고온다.</span>
-<span class="nx">someFunc</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="nx">someArg3</span><span class="p">,</span> <span class="nx">someArg4</span><span class="p">);</span>
+  <span class="c1">// 많이 쓰는 매개변수 일 경우 이렇게 들고온다.</span>
+  <span class="nx">someFunc</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="nx">someArg3</span><span class="p">,</span> <span class="nx">someArg4</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">someFunc2</span><span class="p">({</span> <span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span><span class="p">,</span> <span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span> <span class="p">})</span> <span class="p">{}</span>
@@ -449,7 +467,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-11">클린코드 자바스크립트 4-4 분기 다루기(Default case 고려하기, Nullish coalescing operator, 드모르간 법칙)</a></li>
+                                            <li><a href="/js-basic-14">클린코드 자바스크립트 5-3 배열 다루기(배열 메소드 체이닝 활용, map vs forEach, continue&break)</a></li>
                                         
                                     
                                   
@@ -458,7 +476,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-10">클린코드 자바스크립트 4-3 분기 다루기(else if & else 피하기, Early Return, Default case 고려하기)</a></li>
+                                            <li><a href="/js-basic-13">클린코드 자바스크립트 5-2 배열 다루기(유사 배열 객체, 불변성, for문 배열 고차 함수로 리팩토링)</a></li>
                                         
                                     
                                   
@@ -467,7 +485,28 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/js-basic-9">클린코드 자바스크립트 4-2 분기 다루기(truthy & falsy, 단락 회로 평가)</a></li>
+                                            <li><a href="/js-basic-12">클린코드 자바스크립트 5-1 배열 다루기(JS의 배열은 객체다, Array.length, 배열 요소에 접근하기)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -542,7 +581,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/frontend/">
                                 
-                                    See all 10 posts  →
+                                    See all 13 posts  →
                                 
                             </a>
                         </footer>
