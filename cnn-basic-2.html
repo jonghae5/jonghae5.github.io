@@ -56,7 +56,7 @@
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)" />
-    <meta property="og:description" content="&lt;span class=”table-of-contents-list” CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt; 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" />
+    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) CNN foward pass" />
     <meta property="og:url" content="http://localhost:4000/cnn-basic-2" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -66,7 +66,7 @@
     <meta property="article:tag" content="Data" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="합성곱 신경망 기초 2(CNN, 역전파 Backpropagation)" />
-    <meta name="twitter:description" content="&lt;span class=”table-of-contents-list” CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt; 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" />
+    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) CNN foward pass" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -98,7 +98,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/cnn-basic-2"
     },
-    "description": "&lt;span class=”table-of-contents-list” CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt; 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)"
+    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) CNN foward pass"
 }
     </script>
 
@@ -192,11 +192,9 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>&lt;span class=”table-of-contents-list”</p>
-<blockquote>
-  <p>CNN 강좌는 여러 절로 구성되어 있습니다.
-&lt;/span&gt;</p>
-</blockquote>
+                    <p><span class="table-of-contents-list">
+  CNN 강좌는 여러 절로 구성되어 있습니다.
+</span></p>
 <ul class="table-of-contents-list">
   <li>
     <a href="./cnn-basic">합성곱 신경망 기초(CNN, Convolution Neural Network)</a>
@@ -449,6 +447,10 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
                                     
                                         
                                         
@@ -531,7 +533,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>&lt;span class=”table-of-contents-list” CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt; 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</p>
+                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초</p>
                     
                 </section>
             </a>
@@ -583,7 +585,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>&lt;span class=”table-of-contents-list” CNN 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt; 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)</p>
+                        <p>CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초</p>
                     
                 </section>
             </a>
