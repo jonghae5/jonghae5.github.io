@@ -56,7 +56,7 @@
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" />
-    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) ResNet ILSVRC 2015" />
+    <meta property="og:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초" />
     <meta property="og:url" content="http://localhost:4000/cnn-basic-6" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -66,7 +66,7 @@
     <meta property="article:tag" content="Data" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)" />
-    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) ResNet ILSVRC 2015" />
+    <meta name="twitter:description" content="CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/ai-logo.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -98,7 +98,7 @@
         "@type": "WebPage",
         "@id": "http://localhost:4000/cnn-basic-6"
     },
-    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) ResNet ILSVRC 2015"
+    "description": "CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초"
 }
     </script>
 
@@ -215,9 +215,14 @@ into the {body} of the default.hbs template -->
   <li>
     <a href="./cnn-basic-6">합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)</a>
   </li>
+  <li>
+    <a href="./cnn-basic-7">합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)</a>
+  </li>
 </ul>
 
 <h3 id="resnet">ResNet</h3>
+
 <ul>
   <li>ILSVRC 2015 우승 (3.6% Top 5 Error)한 모델이며 Deep Residual Learning 이라고도 부른다.</li>
   <li>152개의 Layer 구조이며 8배 깊은 Layers를 가졌음에도 불구하고 실행 시간이 VGGNet보다 빠르다.</li>
@@ -225,6 +230,7 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h3 id="introduction">Introduction</h3>
+
 <ul>
   <li>VGGNet 논문에서 CNN 의 레이어가 깊어질수록 성능이 더 좋다는 것을 확인할 수 있었다.</li>
   <li>하지만 레이어가 너무 깊어지면 Vanishing/Exploding gradient, 그리고 degradation problem 크게 이 두 가지 문제점에 봉착한다.</li>
@@ -248,6 +254,7 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h3 id="resnet-architecture">ResNet Architecture</h3>
+
 <p><img src="../../assets/built/images/cnn/22-01-27/4.png" alt="4" width="65%" height="65%" /></p>
 
 <ul>
@@ -256,15 +263,19 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <h3 id="deeper-bottleneck-architectures">Deeper Bottleneck Architectures</h3>
+
 <p><img src="../../assets/built/images/cnn/22-01-27/7.png" alt="7" width="65%" height="65%" /></p>
+
 <ul>
   <li>네트워크의 깊이가 50 을 넘어가면, 제아무리 ResNet을 이용하고 3x3 필터만 사용한다 할지라도 Training 시간이 매우 길어질 수 있다. 따라서 이 경우엔 원래 모델 구조에서 약간의 수정이 필요하다.</li>
   <li>3x3 필터를 두 번 사용하는 대신, 1x1 -&gt; 3x3 -&gt; 1x1 필터들을 사용하는 구조를 만든다. 이렇게 수정한 구조는 Dimension 의 크기를 줄일 뿐만 아니라 시간 복잡도도 줄이는 효과를 볼 수 있다.</li>
 </ul>
 
 <h3 id="experiments">Experiments</h3>
+
 <p>ResNet 은 1000개의 클라스로 이루어진 ImageNet 2012 데이터셋으로 training
 <img src="../../assets/built/images/cnn/22-01-27/5.png" alt="5" width="65%" height="65%" /></p>
+
 <ul>
   <li>위 그래프에서 왼쪽 그림은 Plain Network 의 18, 34 Layer, 오른쪽 그림은 ResNet 의 18, 34 layer 의 Loss 과정이다.</li>
   <li>우선 왼쪽 그림에서는 Degradation Problem 이 보이는 것을 확인할 수 있다. 34-Layer 네트워크가 18-layer 보다 Loss 가 높기 때문이다.</li>
@@ -272,12 +283,14 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <p><img src="../../assets/built/images/cnn/22-01-27/6.png" alt="6" width="65%" height="65%" /></p>
+
 <ul>
   <li>위 표에서는 더 깊은 ResNet 들의 성능을 보여준다. 레이어가 깊어지면 깊어질수록 error 는 줄어드는 경향성을 볼 수 있고, 110 개의 레이어가 있을 때 가장 적은 에러가 나온다.</li>
   <li>하지만 그렇다고 너무 깊어지면, 예를 들어 1000 개 이상의 레이어가 존재할 때는 오버피팅으로 인하여 성능이 더 얕은 모델들보다 더 안 좋게 나온다.</li>
 </ul>
 
 <hr />
+
 <p>참조 문헌<br />
 [1] He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).<br />
 <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf">https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf</a></p>
@@ -396,6 +409,15 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/cnn-basic-7">합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -449,8 +471,6 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/cnn-basic-3">합성곱 신경망 기초 3(배치정규화, Batch Normalization)</a></li>
-                                        
                                     
                                   
                                 
@@ -473,7 +493,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/data/">
                                 
-                                    See all 5 posts  →
+                                    See all 6 posts  →
                                 
                             </a>
                         </footer>

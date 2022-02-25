@@ -74,6 +74,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -153,6 +165,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -161,6 +185,48 @@
         <link>
         http://localhost:4000/js-basic-15</link>
         <guid isPermaLink="true">http://localhost:4000/js-basic-15</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;
+  CNN 강좌는 여러 절로 구성되어 있습니다.
+&lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Thu, 24 Feb 2022 21:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/cnn-basic-7</link>
+        <guid isPermaLink="true">http://localhost:4000/cnn-basic-7</guid>
       </item>
       
     
@@ -231,6 +297,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -311,6 +389,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -389,6 +479,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -469,6 +571,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -547,6 +661,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -627,6 +753,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -705,6 +843,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -785,6 +935,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -863,6 +1025,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -943,6 +1117,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -1021,6 +1207,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1101,6 +1299,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -1179,6 +1389,18 @@
   &lt;li&gt;
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1259,6 +1481,18 @@
     &lt;a href=&quot;./js-basic-16&quot;&gt;클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기,
       hasOwnProperty, 직접 접근 지양하기)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-17&quot;&gt;클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument &amp;amp;
+      parameter,복잡한 인자 관리하기)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-18&quot;&gt;클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters,
+      void &amp;amp; return, 화살표 함수)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./js-basic-19&quot;&gt;클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수,
+      Closure)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -1296,6 +1530,10 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1335,6 +1573,10 @@
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -1372,6 +1614,10 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1411,6 +1657,10 @@
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -1449,6 +1699,10 @@
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -1486,6 +1740,10 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
