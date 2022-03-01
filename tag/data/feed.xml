@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/data/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-02-25T18:20:54+09:00</updated>
+  <updated>2022-03-01T21:56:56+09:00</updated>
   <id>http://localhost:4000/tag/data/feed.xml</id>
 
   
@@ -34,8 +34,8 @@
     <entry>
       <title type="html">합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</title>
       <link href="http://localhost:4000/cnn-basic-7" rel="alternate" type="text/html" title="합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)" />
-      <published>2022-02-24T21:00:00+09:00</published>
-      <updated>2022-02-24T21:00:00+09:00</updated>
+      <published>2022-02-25T21:00:10+09:00</published>
+      <updated>2022-02-25T21:00:10+09:00</updated>
       <id>http://localhost:4000/cnn-basic-7</id>
       <content type="html" xml:base="http://localhost:4000/cnn-basic-7">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;
   CNN 강좌는 여러 절로 구성되어 있습니다.

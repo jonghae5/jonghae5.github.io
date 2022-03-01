@@ -11,7 +11,7 @@
 
 
 
-    <title>클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</title>
+    <title>클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,23 +49,23 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="AI & Frontend Developer" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/js-basic-7" />
+    <link rel="canonical" href="http://localhost:4000/js-basic-18" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="John's IT Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)" />
+    <meta property="og:title" content="클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)" />
     <meta property="og:description" content="Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq" />
-    <meta property="og:url" content="http://localhost:4000/js-basic-7" />
+    <meta property="og:url" content="http://localhost:4000/js-basic-18" />
     <meta property="og:image" content="http://localhost:4000/assets/built/images/js-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-02-13T21:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-02-13T21:00:00+09:00" />
+    <meta property="article:published_time" content="2022-02-28T21:00:02+09:00" />
+    <meta property="article:modified_time" content="2022-02-28T21:00:02+09:00" />
     <meta property="article:tag" content="Frontend" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)" />
+    <meta name="twitter:title" content="클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)" />
     <meta name="twitter:description" content="Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/built/images/js-logo.png" />
@@ -87,7 +87,7 @@
         "name": "John's IT Blog",
         "logo": "http://localhost:4000/"
     },
-    "url": "http://localhost:4000/js-basic-7",
+    "url": "http://localhost:4000/js-basic-18",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/built/images/js-logo.png",
@@ -96,7 +96,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/js-basic-7"
+        "@id": "http://localhost:4000/js-basic-18"
     },
     "description": "Clean Code JS 강좌는 여러 절로 구성되어 있습니다. 클린코드 자바스크립트 1-1 변수 다루기(let &amp; const 사용, function scope &amp; block scope) 클린코드 자바스크립트 1-2 변수 다루기(전역 공간 사용 최소화,임시 변수 제거하기) 클린코드 자바스크립트 1-3 변수 다루기(호이스팅) 클린코드 자바스크립트 2-1 타입 다루기(타입 검사) 클린코드 자바스크립트 2-2 타입 다루기(undefined &amp; null, eqeq"
 }
@@ -111,7 +111,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)" href="/feed.xml" />
 
 
 </head>
@@ -172,7 +172,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="13 February 2022">13 February 2022</time>
+                    <time class="post-full-meta-date" datetime="28 February 2022">28 February 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -182,7 +182,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</h1>
+                <h1 class="post-full-title">클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)</h1>
             </header>
 <!-- 글 포스트하면 뒷 배경화면 -->
 <!--            -->
@@ -270,109 +270,256 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<h3 id="경계-다루기-">경계 다루기 😎</h3>
+<h3 id="함수-다루기-">함수 다루기 😎</h3>
 
-<h3 id="min-max">min-max👍</h3>
+<h3 id="default-value">default value👍</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">createCarousel</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+  <span class="kd">var</span> <span class="nx">margin</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">margin</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">center</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">center</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">navElement</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">navElement</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">margin</span><span class="p">,</span>
+    <span class="nx">center</span><span class="p">,</span>
+    <span class="nx">navElement</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// 객체 구조 분해 이용</span>
+<span class="kd">function</span> <span class="nx">createCarousel2</span><span class="p">({</span>
+  <span class="nx">margin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">center</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">navElement</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">}</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">margin</span><span class="p">,</span>
+    <span class="nx">center</span><span class="p">,</span>
+    <span class="nx">navElement</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="nx">createCarousel</span><span class="p">();</span> <span class="c1">// default value</span>
+<span class="nx">createCarousel2</span><span class="p">();</span> <span class="c1">// default value</span>
+</code></pre></div></div>
+
+<ul>
+  <li>default parameter 적용</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">required</span> <span class="o">=</span> <span class="p">(</span><span class="nx">argName</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">required is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">argName</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">createCarousel</span><span class="p">({</span>
+  <span class="nx">items</span> <span class="o">=</span> <span class="nx">required</span><span class="p">(</span><span class="dl">"</span><span class="s2">items</span><span class="dl">"</span><span class="p">),</span>
+  <span class="nx">margin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">center</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">navElement</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">}</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">margin</span><span class="p">,</span>
+    <span class="nx">center</span><span class="p">,</span>
+    <span class="nx">navElement</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">createCarousel</span><span class="p">({</span> <span class="na">center</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">navElement</span><span class="p">:</span> <span class="dl">"</span><span class="s2">span</span><span class="dl">"</span> <span class="p">}));</span> <span class="c1">// "required is items"</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="rest-parameters">Rest Parameters👍</h3>
 
 <ol>
-  <li>최소값과 최대값을 다룬다.</li>
-  <li>포함 여부를 결정해야 한다(이상-초과 / 이하-미만)</li>
-  <li>혹은 네이밍에 최소값 최대값 포함 여부를 작성한다.</li>
+  <li>나머지 매개변수는 가장 마지막에 들어가야 한다.</li>
+  <li>인자가 가변적으로 들어올 때 유용하다.</li>
+  <li>유사배열객체가 아닌 배열로 사용 가능하다.</li>
 </ol>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">genRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">max</span> <span class="o">-</span> <span class="nx">min</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="nx">min</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sumTotal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">typeof</span> <span class="nx">arguments</span><span class="p">;</span> <span class="c1">//object</span>
+  <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span> <span class="c1">// false</span>
+  <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">args</span><span class="p">).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">curr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">curr</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">MIN_NUMBER</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">MAX_NUMBER</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+<span class="nx">sumTotal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 
-<span class="c1">// MAX_NUMBER_LIMIT 초과</span>
-<span class="c1">// MAX_IN_NUMBER 포함</span>
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">genRandomNumber</span><span class="p">(</span><span class="nx">MIN_NUMBER</span><span class="p">,</span> <span class="nx">MAX_NUMBER</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="c1">// Rest Parameter로 들어온 것은 배열로 사용 가능</span>
+<span class="kd">function</span> <span class="nx">sumTotal2</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">,</span> <span class="nx">bonusValue</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span> <span class="c1">// true</span>
 
-<span class="kd">const</span> <span class="nx">MAX_AGE</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">isAdult</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// 최소값, 최대값 (포함되는지 vs 안되는지)</span>
-<span class="c1">// 이상, 초과 vs 이하, 미만</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">age</span><span class="o">&gt;=</span><span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">);</span> <span class="c1">// 100</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bonusValue</span><span class="p">);</span> <span class="c1">// 1000</span>
+  <span class="k">return</span> <span class="nx">args</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">curr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">curr</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="nx">sumTotal2</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 </code></pre></div></div>
 
 <hr />
 
-<h3 id="begin-end">Begin-End👍</h3>
+<h3 id="void--return">void &amp; return👍</h3>
 
 <ul>
-  <li>경계를 포함하지만 제외하는 경우</li>
-  <li>달력, 에어비엔비와 같은 출국,입국일을 생각하면 쉽다.</li>
+  <li>void는 undefined를 return 한다.</li>
+  <li>return을 쓰지 않아도 되는데 굳이 사용하는 것을 방지하자.</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">reservationDate</span><span class="p">(</span><span class="nx">beginDate</span><span class="p">,</span> <span class="nx">endDate</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// ....some code</span>
-  <span class="k">return</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">setState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">reservationDate</span><span class="p">(</span><span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">showAlert</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 개선</span>
+<span class="kd">function</span> <span class="nx">handleClick2</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">setState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">showAlert2</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">sum1</span><span class="p">,</span> <span class="nx">sum2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">sum1</span> <span class="o">+</span> <span class="nx">sum2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// undefined</span>
+
+<span class="kd">function</span> <span class="nx">testVoidFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">testVoidFunc</span><span class="p">());</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<ul>
+  <li>return이 있는 함수 =&gt; get…, is…</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isAdult</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">age</span> <span class="o">&gt;</span> <span class="mi">19</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getUserName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">유저 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">isFlag</span> <span class="o">=</span> <span class="nx">isAdult</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isFlag</span><span class="p">);</span> <span class="c1">// false</span>
 </code></pre></div></div>
 
 <hr />
 
-<h3 id="first-last">First-Last👍</h3>
-
-<ul>
-  <li>포함된 양 끝을 의미한다.</li>
-  <li>포함되어 있는 규칙이나 연속성에 대해 보장 X</li>
-  <li>부터 ~~~ 까지</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">students</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">];</span>
-
-<span class="kd">function</span> <span class="nx">getStudents</span><span class="p">(</span><span class="nx">first</span><span class="p">,</span> <span class="nx">last</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// ...some code</span>
-<span class="p">}</span>
-
-<span class="nx">getStudents</span><span class="p">(</span><span class="nx">students</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">students</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="prefix접두사---suffix접미사의-중요성-규칙-">Prefix(접두사) - Suffix(접미사)의 중요성 (규칙) 👍</h3>
-
-<ul>
-  <li>JS의 prefix getter, setter</li>
-  <li>React usePrefix (기본 Hooks, useState,useEffect …)</li>
-  <li>jQuery prefix $</li>
-</ul>
-
-<hr />
-
-<h3 id="매개변수-순서가-경계-">매개변수 순서가 경계 👍</h3>
-
-<p>호출하는 함수의 네이밍과 인자의 순서의 연관성을 고려한다.</p>
+<h3 id="화살표-함수arrow-function">화살표 함수(Arrow Function)👍</h3>
 
 <ol>
-  <li>매개변수를 2개가 넘지 않도록 만든다.</li>
-  <li>arguments, rest parameter 사용</li>
-  <li>랩핑하는 함수 사용</li>
-  <li>매개변수를 객체로 담아서 넘긴다</li>
+  <li>렉시컬 스코프를 바라보게 된다.</li>
+  <li>객체를 바라보지 않고 상위 문맥을 따르는 경우가 있다.</li>
+  <li>this 사용시 화살표 함수를 주의해야한다.</li>
 </ol>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">someFunc</span><span class="p">(</span><span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span><span class="p">,</span> <span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span><span class="p">)</span> <span class="p">{}</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Poco</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">getName</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
 
-<span class="kd">function</span> <span class="nx">getFunc</span><span class="p">(</span><span class="nx">someArg3</span><span class="p">,</span> <span class="nx">someArg4</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// 많이 쓰는 매개변수 일 경우 이렇게 들고온다.</span>
-  <span class="nx">someFunc</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="nx">someArg3</span><span class="p">,</span> <span class="nx">someArg4</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span> <span class="c1">// undefined</span>
+
+<span class="kd">const</span> <span class="nx">user2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Poco</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user2</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span> <span class="c1">// Poco</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Poco</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">getName</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">newFriends</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// call, apply, bind 사용X</span>
+    <span class="kd">const</span> <span class="nx">newFriendList</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="nx">newFriendList</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">user2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Poco</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">getName</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">newFriends</span><span class="p">:</span> <span class="p">(...</span><span class="nx">rest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="nx">rest</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Person</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">city</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">city</span> <span class="o">=</span> <span class="nx">city</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">poco</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">korea</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Person is not a constructor</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Parent</span> <span class="p">{</span>
+  <span class="nx">parentMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">parentMethod</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">parentMethodArrow</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">parentMethodArrow</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">overrideMethod</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">parent</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">};</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">someFunc2</span><span class="p">({</span> <span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span><span class="p">,</span> <span class="nx">someArg1</span><span class="p">,</span> <span class="nx">someArg2</span> <span class="p">})</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="nx">Chiled</span> <span class="kd">extends</span> <span class="nx">Parent</span> <span class="p">{</span>
+  <span class="nx">chileMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="nx">parentMethodArrow</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">overrideMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Child</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="nx">getRandomNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
-<span class="nx">getDates</span><span class="p">(</span><span class="dl">"</span><span class="s2">2021-01-01</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">2021-12-31</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">shuffleArray</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="k">new</span> <span class="nx">Child</span><span class="p">().</span><span class="nx">childMethod</span><span class="p">();</span> <span class="c1">// Error 발생, 생성자 함수 내부에서 초기화가 되는 현상 발생</span>
+
+<span class="k">new</span> <span class="nx">Child</span><span class="p">().</span><span class="nx">overrideMethod</span><span class="p">();</span> <span class="c1">// 'Parent' 부모 메서드 호출</span>
 </code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span><span class="o">*</span> <span class="nx">gen</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">??</span> <span class="c1">//문법적으로 지원 X</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="o">*</span> <span class="nx">gen</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//... some Code</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>주의할 점🌼</p>
+
+<ol>
+  <li>this 동작 방식</li>
+  <li>Class 입장에서의 Override, 부모 메서드 응용 단계</li>
+  <li>new 산자 조합 X</li>
+  <li>arguments, call, apply, bind X</li>
+  <li>React ,Vue 등 라이브러리말고 Vanilla JS 사용시 주의 필요!</li>
+</ol>
 
                 </div>
             </section>
@@ -438,9 +585,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/js-basic-7';
-                            var this_page_identifier = '/js-basic-7';
-                            var this_page_title = '클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)';
+                            var this_page_url = 'http://localhost:4000/js-basic-18';
+                            var this_page_identifier = '/js-basic-18';
+                            var this_page_title = '클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -494,11 +641,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/js-basic-18">클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -516,12 +658,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/js-basic-16">클린코드 자바스크립트 6-2 객체 다루기(Prototype 조작 지양하기, hasOwnProperty, 직접 접근 지양하기)</a></li>
                                         
                                     
                                   
@@ -576,6 +713,16 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -652,12 +799,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/js-basic-8">
+            <a class="post-card-image-link" href="/js-basic-19">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/js-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-basic-8">
+            <a class="post-card-content-link" href="/js-basic-19">
                 <header class="post-card-header">
                     
                         
@@ -667,7 +814,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">클린코드 자바스크립트 4-1 분기 다루기(값식문, 삼항 연산자)</h2>
+                    <h2 class="post-card-title">클린코드 자바스크립트 7-3 함수 다루기(Callback Function, 순수 함수, Closure)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -689,7 +836,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
+                      2 min read
                     
                 </span>
             </footer>
@@ -704,12 +851,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/js-basic-6">
+            <a class="post-card-image-link" href="/js-basic-17">
                 <div class="post-card-image" style="background-image: url(/assets/built/images/js-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/js-basic-6">
+            <a class="post-card-content-link" href="/js-basic-17">
                 <header class="post-card-header">
                     
                         
@@ -719,7 +866,7 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">클린코드 자바스크립트 2-3 타입 다루기(형변환 주의하기, isNaN)</h2>
+                    <h2 class="post-card-title">클린코드 자바스크립트 7-1 함수 다루기([함수,메서드,생성자], argument & parameter,복잡한 인자 관리하기)</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -741,7 +888,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
+                      2 min read
                     
                 </span>
             </footer>
@@ -763,18 +910,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">클린코드 자바스크립트 3-1 경계 다루기(min-max,begin-end,first-last,접두사와 접미사, 매개변수 순서가 경계)</div>
+    <div class="floating-header-title">클린코드 자바스크립트 7-2 함수 다루기(default value, Rest Parameters, void & return, 화살표 함수)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+3-1+%EA%B2%BD%EA%B3%84+%EB%8B%A4%EB%A3%A8%EA%B8%B0%28min-max%2Cbegin-end%2Cfirst-last%2C%EC%A0%91%EB%91%90%EC%82%AC%EC%99%80+%EC%A0%91%EB%AF%B8%EC%82%AC%2C+%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98+%EC%88%9C%EC%84%9C%EA%B0%80+%EA%B2%BD%EA%B3%84%29&amp;url=https://jonghae5.github.io/js-basic-7"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+7-2+%ED%95%A8%EC%88%98+%EB%8B%A4%EB%A3%A8%EA%B8%B0%28default+value%2C+Rest+Parameters%2C+void+%26+return%2C+%ED%99%94%EC%82%B4%ED%91%9C+%ED%95%A8%EC%88%98%29&amp;url=https://jonghae5.github.io/js-basic-18"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/js-basic-7"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jonghae5.github.io/js-basic-18"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
