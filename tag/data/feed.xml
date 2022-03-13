@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="http://localhost:4000/tag/data/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2022-03-12T22:56:07+09:00</updated>
+  <updated>2022-03-13T22:22:42+09:00</updated>
   <id>http://localhost:4000/tag/data/feed.xml</id>
 
   
@@ -30,6 +30,152 @@
   
   
 
+  
+    <entry>
+      <title type="html">합성곱 신경망 기초 8(데이터 증강, Data Augmentation)</title>
+      <link href="http://localhost:4000/cnn-basic-8" rel="alternate" type="text/html" title="합성곱 신경망 기초 8(데이터 증강, Data Augmentation)" />
+      <published>2022-03-13T21:00:10+09:00</published>
+      <updated>2022-03-13T21:00:10+09:00</updated>
+      <id>http://localhost:4000/cnn-basic-8</id>
+      <content type="html" xml:base="http://localhost:4000/cnn-basic-8">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;
+  CNN 강좌는 여러 절로 구성되어 있습니다.
+&lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic&quot;&gt;합성곱 신경망 기초(CNN, Convolution Neural Network)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;!-- 확장자 X 시간 X 파일의 이름만 작성--&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-2&quot;&gt;합성곱 신경망 기초 2(역전파, Backpropagation)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-3&quot;&gt;합성곱 신경망 기초 3(배치정규화, Batch Normalization)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-4&quot;&gt;합성곱 신경망 기초 4(가중치 초기화, Weight Initialization)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-5&quot;&gt;합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-6&quot;&gt;합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
+      Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;data-augmentation이란&quot;&gt;Data Augmentation이란?&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-03-13/image2.png&quot; alt=&quot;2&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data Augmentation은 데이터의 양을 늘리기 위해 원본에 각종 변환을 적용하여 충분히 학습에 활용될 수 있는 데이터 개수를 증강시키는 기법이다.&lt;/li&gt;
+  &lt;li&gt;CNN은 영상의 2차원 변환인 회전(Rotation), 크기(Scale), 밀림(Shearing), 반사(Reflection), 이동(Translation)와 같은 2차원 변환인 &lt;strong&gt;Affine Transform&lt;/strong&gt;에 취약하다.&lt;/li&gt;
+  &lt;li&gt;즉, Affine Tranform으로 변환된 영상은 다른 영상으로 인식한다.&lt;/li&gt;
+  &lt;li&gt;또한 Noise삽입, 색상, 밝기 변형 등을 활용하여 Data Augmentation 효과를 얻을 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;어떻게-data-augumentation이-나왔을까&quot;&gt;어떻게 Data Augumentation이 나왔을까?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Augmenation 기술은 사실 많이 활용되던 기술이 아니다. 이는 알고리즘적인 해결방법이 아니라, 순수한 공학적 접근을 통한 추론을 위한 전처리 기술 중 하나였다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;딥러닝의 고질적인 문제는 여러가지 있는데, 그 중 대표적인 문제가 Overfitting이다. 과거 Overfitting을 해결하기 위해 익히 알고있는 모델링 수정 Regularization, Normalization을 활용했다.&lt;/li&gt;
+  &lt;li&gt;하지만, 이와 같은 Overfitting을 해결 방법은 편향 학습 방향을 조금 죽이는 정도다. 따라서 결과적으로 우리가 원하는 Overfitting을 해결하는 기술이 되진 않았다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;👉 공학적 방법으로 학습의 방향성을 상하좌우 더 넓힐 수 있는 방법이 없을지 고민하게 된다. 단순히 편향된 학습은 오류를 발생시키지만,&lt;strong&gt;여기서의 목적은 적당한 힘으로 학습을 아주 조금 골고루 넓히자는 의미이다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;방법론에는 Image Manipulation, Generative Model,AutoML 기반 방법론 등 다양한게 있지만 주요 방법론인 Image Manipulation 기반을 살펴보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;image-manipulation-기반-방법론&quot;&gt;Image Manipulation 기반 방법론&lt;/h3&gt;
+
+&lt;h3 id=&quot;pixel-level-transforms&quot;&gt;Pixel-Level Transforms&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-03-13/image1.png&quot; alt=&quot;2&quot; width=&quot;65%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;우선 Pixel 단위로 변환을 시키는 Pixel-Level Transform은 대표적으로 Blur, Jitter, Noise 등을 이미지에 적용하는 기법이다.&lt;/li&gt;
+  &lt;li&gt;Gaussian Blur, Motion Blur, Brightness Jitter, Contrast Jitter, Saturation Jitter, ISO Noise, JPEG Compression 등 다양한 기법이 사용된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;spatial-level-transforms&quot;&gt;Spatial-Level Transforms&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-03-13/image3.png&quot; alt=&quot;3&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Image 자체를 변화시키는 Spatial-Level Transform으로, 대표적으로 Flip과 Rotation이 있으며, Image의 일부 영역을 잘라내는 Crop도 많이 사용한다.&lt;/li&gt;
+  &lt;li&gt;주의해야할 점은 Detection (Bounding Box), Segmentation (Mask) Task의 경우 Image에 적용한 Transform을 GT에도 동일하게 적용을 해줘야 하고, Classification의 경우 적용하였을 때 Class 가 바뀔 수 있음을 고려하여 적용해야 한다. (Ex, 6을 180도 회전하면 9)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mixup-beyond-empirical-risk-minimization-2018&quot;&gt;&lt;span style=&quot;color:green&quot;&gt;“MixUp: Beyond Empirical Risk Minimization”, 2018&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-03-13/image4.png&quot; alt=&quot;4&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;두 image와 Label을 0~1 사이의 lambda 값을 통해 Weighted Linear Interpolation 해주는 기법이다.&lt;/li&gt;
+  &lt;li&gt;보통 lambda 값은 beta distribution을 통해 뽑아낸다. 이 방법은 굉장히 단순하지만 모델의 일반화 성능도 좋아지고 corrupt label의 memorization을 방지해주고, adversarial example에 sensitive해지는 등 다양한 효과를 얻을 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cutmix-regularization-strategy-to-train-strong-classifiers-with-localizable-features-2019&quot;&gt;&lt;span style=&quot;color:green&quot;&gt;“CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features”, 2019&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/built/images/cnn/22-03-13/image5.png&quot; alt=&quot;5&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;우리 나라 연구 성과인 CutMix, MixUp은 두 image를 섞는 방식이고, Cutout은 image의 box를 쳐서 지우는 방식이었다면, CutMix는 두 방법을 합친 방법이다.&lt;/li&gt;
+  &lt;li&gt;이미지 데이터를 Convex combination하여 새로운 데이터를 만드는 것으로 클래스가 다른 이미지들도 mixup하여 label 또한 mixup을 한다는 것이다.&lt;/li&gt;
+  &lt;li&gt;원본 image에서 box를 쳐서 지운 다음 그 빈 영역을 다른 image로부터 patch를 추출하여 집어넣는다. Patch의 면적에 비례하여 Label도 섞어주는 방식이다.&lt;/li&gt;
+  &lt;li&gt;이 방법을 적용하면 실제로 데이터 모델링시 성능이 많이 좋아지는 경우가 많다고 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data augmentation의 경우 over fitting을 방지하기 위한 여러 기술 중 하나로 발전되고 있다.&lt;/li&gt;
+  &lt;li&gt;Over fitting은 알고리즘의 Variance가 클 때 발생하는 문제로, train data set에 대해 learning을 정상적으로 마친 후 test data set에 적용할 때 그 결과가 매우 다르게 나온다는 것을 의미한다.&lt;/li&gt;
+  &lt;li&gt;이러한 Over fitting을 방지하기 위해 Variance를 낮추는 방법으로는 training data를 많이 모으는 방법, feature의 개수를 줄이는 방법, regularization을 통해 weight 값을 조절해주는 방법 등이 있다.&lt;/li&gt;
+  &lt;li&gt;여기에서 training data를 많이 모으는 방법은 금전적, 시간적으로 손실이 큰데, 이를 해결하기 위한 &lt;strong&gt;기존에 있는 Data를 활용하여 변형하는 방법이 Data augmentation이다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;참조 문헌&lt;br /&gt;
+[1] A survey on Image Data Augmentation for Deep Learning, 2019&lt;br /&gt;
+&lt;a href=&quot;https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0197-0&quot;&gt;https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0197-0&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>John</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="data" />
+      
+
+      
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</title>
@@ -63,6 +209,9 @@
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -236,7 +385,7 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
@@ -275,6 +424,9 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -371,7 +523,7 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
@@ -410,6 +562,9 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -488,7 +643,7 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
@@ -527,6 +682,9 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -611,7 +769,7 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
@@ -650,6 +808,9 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -711,7 +872,7 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
@@ -750,6 +911,9 @@ squeeze-and-excitation optimization 사용&lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -863,7 +1027,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
@@ -902,6 +1066,9 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
   &lt;li&gt;
     &lt;a href=&quot;./cnn-basic-7&quot;&gt;합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for
       Convolutional Neural Networks)&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;./cnn-basic-8&quot;&gt;합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)&lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1033,7 +1200,7 @@ K(−m,−n) == K(m,n)일 때, Convolution 과 Cross-Correlation이 동일하다
       
 
       
-        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks)</summary>
+        <summary type="html">CNN 강좌는 여러 절로 구성되어 있습니다. 합성곱 신경망 기초(CNN, Convolution Neural Network) 합성곱 신경망 기초 2(역전파, Backpropagation) 합성곱 신경망 기초 3(배치정규화, Batch Normalization) 합성곱 신경망 기초 4(가중치 초기화, Weight Initialization) 합성곱 신경망 기초 5(VGGNet, Very Deep Convolutional Network) 합성곱 신경망 기초 6(ResNet, Residual Learning for Image Recognition) 합성곱 신경망 기초 7(EfficientNet, Rethinking Model Scaling for Convolutional Neural Networks) 합성곱 신경망 기초 8(Data Augmentation, 데이터 증강)</summary>
       
 
       
